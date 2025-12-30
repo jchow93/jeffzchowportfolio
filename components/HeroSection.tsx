@@ -22,7 +22,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ personalizationData }: HeroSectionProps) {
   const [handshake, setHandshake] = useState(
-    getPersonaHandshake("default", personalizationData?.jobTitle || "")
+    getPersonaHandshake("default", personalizationData?.jobTitle || "", personalizationData?.name || "")
   );
 
   useEffect(() => {
@@ -31,12 +31,13 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
       const persona = getPersonaFromJobTitle(personalizationData.jobTitle);
       const personaHandshake = getPersonaHandshake(
         persona,
-        personalizationData.jobTitle
+        personalizationData.jobTitle,
+        personalizationData.name || ""
       );
       setHandshake(personaHandshake);
     } else {
       // Default persona
-      setHandshake(getPersonaHandshake("default", ""));
+      setHandshake(getPersonaHandshake("default", "", ""));
     }
 
     // Listen for personalization updates
@@ -48,7 +49,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
           return;
         }
         const persona = getPersonaFromJobTitle(data.jobTitle);
-        const personaHandshake = getPersonaHandshake(persona, data.jobTitle);
+        const personaHandshake = getPersonaHandshake(persona, data.jobTitle, data.name || "");
         setHandshake(personaHandshake);
       } catch (error) {
         logger.error("Error handling personalization update:", error);
@@ -58,11 +59,6 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
     window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
     return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
   }, [personalizationData]);
-
-  // Combined greeting with intro text
-  const combinedGreeting = personalizationData?.name
-    ? `Hi ${personalizationData.name}, I'm Jeff—a Product Manager who lives at the intersection of technical precision and creative flow.`
-    : "Hi, I'm Jeff—a Product Manager who lives at the intersection of technical precision and creative flow.";
 
   const statusStyles = getStatusStyles(currentStatus.type);
   const statusText = getStatusText(currentStatus);
@@ -80,14 +76,19 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
               {handshake.headline}
             </h2>
 
-            {/* Combined Greeting */}
-            <p className="mb-6 text-xl leading-relaxed text-gray-700 md:mb-8 md:text-2xl">
-              {combinedGreeting}
+            {/* Greeting */}
+            <p className="mb-2 text-xl font-medium text-gray-800 md:text-2xl">
+              {handshake.greeting}
             </p>
 
-            {/* Persona-Based Subheadline */}
-            <p className="mb-8 text-xl leading-relaxed text-gray-600 md:text-2xl">
-              {handshake.subheadline}
+            {/* Intro - One punchy sentence */}
+            <p className="mb-4 text-xl leading-relaxed text-gray-700 md:mb-6 md:text-2xl">
+              {handshake.intro}
+            </p>
+
+            {/* Body - 3-4 sentences */}
+            <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
+              {handshake.body}
             </p>
 
             {/* Key Stats */}
@@ -106,7 +107,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
               </div>
             )}
 
-            {/* CTAs */}
+            {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <a
                 href="#featured-work"
@@ -118,7 +119,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
                 href="#contact"
                 className="px-6 py-3 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200 text-center"
               >
-                Get In Touch
+                {handshake.cta}
               </a>
             </div>
           </div>

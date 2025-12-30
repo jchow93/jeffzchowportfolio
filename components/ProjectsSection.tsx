@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getFeaturedProjects, getFeaturedWork, Project } from "@/lib/contentMapper";
+import { getFeaturedProjects, getFeaturedWork, Project, getPersonaFromJobTitle } from "@/lib/contentMapper";
 import { logger } from "@/lib/logger";
 import ProjectCard from "./ProjectCard";
 
@@ -20,13 +20,16 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
   const [featuredWork, setFeaturedWork] = useState<Project[]>([]);
 
   useEffect(() => {
+    // Get persona from jobTitle
+    const persona = getPersonaFromJobTitle(personalizationData?.jobTitle || "");
+    
     // Featured Projects - Always show Hoolie and portfolio website
-    setFeaturedProjects(getFeaturedProjects());
+    setFeaturedProjects(getFeaturedProjects(persona));
 
     // Featured Work - Show industry-relevant work projects
     const industry = personalizationData?.industry || "default";
-    logger.log("ProjectsSection: Setting featured work for industry:", industry, "from personalizationData:", personalizationData);
-    const work = getFeaturedWork(industry);
+    logger.log("ProjectsSection: Setting featured work for industry:", industry, "persona:", persona, "from personalizationData:", personalizationData);
+    const work = getFeaturedWork(industry, persona);
     logger.log("ProjectsSection: Featured work projects:", work.map(p => p.id));
     setFeaturedWork(work);
 
@@ -39,10 +42,12 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
           return;
         }
         const industry = data.industry || "default";
-        logger.log("ProjectsSection: Personalization update event - industry:", industry);
-        const work = getFeaturedWork(industry);
+        const persona = getPersonaFromJobTitle(data.jobTitle || "");
+        logger.log("ProjectsSection: Personalization update event - industry:", industry, "persona:", persona);
+        const work = getFeaturedWork(industry, persona);
         logger.log("ProjectsSection: Updated featured work projects:", work.map(p => p.id));
         setFeaturedWork(work);
+        setFeaturedProjects(getFeaturedProjects(persona));
       } catch (error) {
         logger.error("Error handling personalization update:", error);
       }

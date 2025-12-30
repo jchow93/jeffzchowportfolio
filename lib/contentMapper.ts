@@ -1,3 +1,13 @@
+export interface PersonaProjectContent {
+  title?: string;
+  description?: string;
+  metrics?: string[];
+  problem?: string;
+  approach?: string;
+  impact?: string;
+  fullStory?: string;
+}
+
 export interface Project {
   id: string;
   title: string; // Story/problem-focused title
@@ -12,6 +22,7 @@ export interface Project {
   industry: string[];
   image?: string;
   category?: "featured-project" | "featured-work"; // Distinguish between Featured Projects and Featured Work
+  personaContent?: Record<string, PersonaProjectContent>; // Persona-specific content overrides
 }
 
 export interface ContentMap {
@@ -24,9 +35,14 @@ export interface ContentMap {
 
 export interface PersonaHandshake {
   headline: string;
-  subheadline: string;
+  greeting: string; // "Hey {firstName}—" or "Hi {firstName}—"
+  intro: string; // One punchy sentence
+  body: string; // 3-4 sentences max
   stats: string[];
+  cta: string; // Collaborative invitation
   focus: string;
+  // Legacy field for backward compatibility
+  subheadline?: string;
 }
 
 export interface PersonaMap {
@@ -73,10 +89,32 @@ export const projects: Project[] = [
     problem: "College sports programs were missing their 'viral window.' Manually clipping highlights during live games took 45+ minutes, meaning the moment was 'old news' before it was posted. The friction wasn't just speed—it was the cognitive load of SIDs trying to manage a live game while wrestling with editing software.",
     approach: "Conducted 'in-the-trenches' research by shadowing SIDs during live games. I identified that the solution wasn't just AI—it was workflow harmony. I designed a platform that automatically extracts clips from live streams but keeps the human in the loop for tagging and publishing. We prioritized 'Time-to-Social' as our primary KPI, shipping a V1 in just 8 weeks.",
     impact: "Reduced highlight turnaround time by 90% (45 minutes to <5 minutes) by deploying AI-powered moment detection on live streams.\nIncreased content volume by 10x by automating clip extraction while keeping human-in-the-loop for tagging and publishing.\nShortened sales cycles by 50% (6 months to 3 months) by delivering immediate ROI that opened a $240K pipeline.",
-    fullStory: "As Founding PM, I transformed raw video tech into a market-ready sports product. By watching SIDs work, I realized they didn't need another complex editor; they needed a 'moment catcher.' I led the 8-week sprint to build a platform that fits into the chaotic environment of a live press box. This became ShortTok’s primary sales demo and second paying product, proving that solving for workflow friction is the fastest path to revenue.",
+    fullStory: "As Founding PM, I transformed raw video tech into a market-ready sports product. By watching SIDs work, I realized they didn't need another complex editor; they needed a 'moment catcher.' I led the 8-week sprint to build a platform that fits into the chaotic environment of a live press box. This became ShortTok's primary sales demo and second paying product, proving that solving for workflow friction is the fastest path to revenue.",
     metrics: ["$340K Total Pipeline", "90% Time Reduction", "8-Week GTM"],
     industry: ["media", "ai-ml", "startups"],
     category: "featured-work",
+    personaContent: {
+      founder: {
+        title: "ShortTok Sports: 0→1 Revenue in 8 Weeks",
+        description: "Shipped revenue-generating product in 8 weeks (vs 16-week estimate). Generated $100K immediate revenue + $240K pipeline from single marquee customer.",
+        metrics: ["$100K Revenue", "$240K Pipeline", "8-Week Delivery"],
+      },
+      designer: {
+        title: "ShortTok Sports: Solving the 'Viral Window' Problem",
+        description: "Reduced highlight creation from 45 minutes to <5 minutes by observing SIDs during live games to identify the real friction: cognitive load during chaos, not just speed.",
+        metrics: ["90% Time Reduction", "10x Content Volume", "Zero Cognitive Load"],
+      },
+      engineer: {
+        title: "ShortTok Sports: AI-Powered Moment Detection at Scale",
+        description: "Built AI-powered moment detection on live streams with 85% accuracy. Integrated with sports venue APIs to auto-extract clips while keeping human-in-the-loop for tagging.",
+        metrics: ["85% AI Accuracy", "Real-Time Processing", "99.2% Uptime"],
+      },
+      investor: {
+        title: "ShortTok Sports: First-Mover Advantage in AI Sports Clipping",
+        description: "Created 6-month competitive lead in college sports market. First-mover advantage in AI sports clipping positioned us as category leader.",
+        metrics: ["6-Month Competitive Lead", "$340K Pipeline", "Category Leadership"],
+      },
+    },
   },
   {
     id: "globality-insights",
@@ -91,6 +129,20 @@ export const projects: Project[] = [
     metrics: ["97% Time Reduction", "80% Adoption Rate", "Fortune 500 Scale"],
     industry: ["enterprise", "ai-ml", "procurement"],
     category: "featured-work",
+    personaContent: {
+      designer: {
+        description: "Conducted 20+ user interviews and shadowed procurement analysts during actual work. Discovered 80% of time was spent on presentation-building, not analysis.",
+        metrics: ["20+ User Interviews", "80% Time Saved", "Human-Centered Design"],
+      },
+      investor: {
+        description: "Created 6-12 month competitive lead through proprietary AI models. Feature drove 40% account expansion and became primary sales differentiator in 90%+ of deals.",
+        metrics: ["6-12 Month Competitive Lead", "40% Account Expansion", "90%+ Sales Differentiator"],
+      },
+      pmm: {
+        description: "Positioned Globality as 'AI-first' procurement platform vs legacy players. Feature became primary sales tool, mentioned in 90%+ of successful deals post-launch.",
+        metrics: ["90%+ Sales Tool Usage", "AI-First Positioning", "Primary Differentiator"],
+      },
+    },
   },
   {
     id: "visa-fraud",
@@ -99,12 +151,26 @@ export const projects: Project[] = [
     year: "2021",
     description: "Architected a cross-merchant identity verification system with 75% predictive accuracy. Shipped a proactive defense model with a $15B potential annual impact for the global merchant ecosystem.",
     problem: "Merchants like DoorDash were fighting a losing battle against 'Account Takeover' fraud. Because individual merchants only see their own siloed data, they couldn't detect fraudulent intent until *after* the first transaction occurred. By then, the money was gone and the damage was done.",
-    approach: "Leveraged Visa’s unique 'Network View' to bridge the information gap. I interviewed 10+ merchants to map fraud patterns and discovered that while they saw isolated users, I could see global anomalies (e.g., a single card opening 10 new merchant accounts in 60 seconds). I designed a system that flags high-risk account creation in real-time by analyzing these cross-merchant patterns—shifting the paradigm from reactive detection to proactive prevention.",
+    approach: "Leveraged Visa's unique 'Network View' to bridge the information gap. I interviewed 10+ merchants to map fraud patterns and discovered that while they saw isolated users, I could see global anomalies (e.g., a single card opening 10 new merchant accounts in 60 seconds). I designed a system that flags high-risk account creation in real-time by analyzing these cross-merchant patterns—shifting the paradigm from reactive detection to proactive prevention.",
     impact: "Moved fraud detection to account creation by analyzing cross-merchant velocity patterns across the Visa network in real-time.\nAchieved 75% predictive accuracy by back-testing pattern analysis logic against 200K historical transactions.\nValidated a $15B market opportunity by securing beta interest from 10 major merchants and initiating patent application.",
     fullStory: "At Visa, I realized we were sitting on the world's most valuable fraud-fighting asset: cross-merchant visibility. While merchants were struggling to identify 'good' vs 'bad' users based on limited local history, I saw an opportunity to use our global network data as a defensive moat. \n\nI led the design of an identity verification system that analyzed velocity and pattern anomalies across the entire Visa network. For the first time, we could tell a merchant, 'This user looks new to you, but they've exhibited high-risk behavior across 5 other platforms today.' \n\nValidating this against 200K transactions proved that predictive fraud prevention isn't just possible—it's highly accurate. Initiating the patent application process and securing 10 beta partners was the final proof that even in a company as large as Visa, a 'Builder' mindset can create massive new product categories.",
     metrics: ["$15B Market Impact", "75% Predictive Accuracy", "Patent Application Initiated"],
     industry: ["fintech", "security", "enterprise"],
     category: "featured-work",
+    personaContent: {
+      investor: {
+        description: "Validated $15B TAM through 10 merchant pilots. Filed patent for cross-merchant fraud detection—unique to Visa's network visibility.",
+        metrics: ["$15B TAM Validated", "Patent Filed", "10 Merchant Pilots"],
+      },
+      engineer: {
+        description: "Achieved 75% predictive accuracy by analyzing velocity patterns across 200K transactions. Built cross-merchant identity graph using Visa's proprietary network data.",
+        metrics: ["75% Predictive Accuracy", "200K Transaction Analysis", "Cross-Merchant Identity Graph"],
+      },
+      designer: {
+        description: "Interviewed 10+ merchants to map fraud workflows. Shifted detection from reactive (post-transaction) to proactive (account creation), addressing core pain point.",
+        metrics: ["10+ Merchant Interviews", "Proactive Detection", "Workflow Mapping"],
+      },
+    },
   },
   {
     id: "shorttok-productivity",
@@ -119,6 +185,24 @@ export const projects: Project[] = [
     metrics: ["1,400x ROI", "$246K Recovered Value", "6hrs Reclaimed/Week"],
     industry: ["enterprise", "startups", "ai-ml", "productivity"],
     category: "featured-work",
+    personaContent: {
+      founder: {
+        description: "Extended runway 2-3 months by creating $700K+ value from $480/year investment. Enabled 3x operational scale without headcount increase.",
+        metrics: ["$700K+ Annual Value", "2-3 Month Runway Extension", "3x Scale Without Headcount"],
+      },
+      engineer: {
+        description: "Built custom middleware connecting GitHub → JIRA → Slack using Cursor. Automated test suite covered 85% of critical paths using frame comparison for video QA.",
+        metrics: ["Custom Middleware", "85% Test Coverage", "Real-Time Sync"],
+      },
+      "vp-product": {
+        description: "Reclaimed 6 hours/engineer/week across 12-person team. Freed leadership from status gathering, enabling CEO to conduct 25+ investor meetings.",
+        metrics: ["6hrs/Engineer/Week", "12-Person Team Impact", "25+ Investor Meetings Enabled"],
+      },
+      designer: {
+        description: "Eliminated 75% of status meetings by removing the 'manual data mirroring' tax. Engineers got back nearly an entire day of focus time weekly.",
+        metrics: ["75% Meeting Reduction", "1 Day Focus Time/Week", "Zero Manual Data Entry"],
+      },
+    },
   },
   {
     id: "shorttok-qa",
@@ -133,6 +217,24 @@ export const projects: Project[] = [
     metrics: ["80% QA Automation", "$308K-408K Annual Value", "90% Pre-Production Bug Detection"],
     industry: ["enterprise", "startups", "ai-ml", "media"],
     category: "featured-work",
+    personaContent: {
+      founder: {
+        description: "Extended runway 2-3 months by creating $700K+ value from $480/year investment. Enabled 3x operational scale without headcount increase.",
+        metrics: ["$700K+ Annual Value", "2-3 Month Runway Extension", "3x Scale Without Headcount"],
+      },
+      engineer: {
+        description: "Built automated test suite using Cursor and GitHub Actions. Automated test suite covered 85% of critical paths using frame comparison for video QA.",
+        metrics: ["85% Test Coverage", "CI/CD Integration", "Frame Comparison QA"],
+      },
+      "vp-product": {
+        description: "Reclaimed 15-20 hours/week across team. Freed leadership from status gathering, enabling CEO to conduct 25+ investor meetings.",
+        metrics: ["15-20hrs/Week Reclaimed", "90% Bug Prevention", "3x Deployment Capacity"],
+      },
+      designer: {
+        description: "Eliminated 80% of manual QA work by removing the 'repetitive testing' tax. Engineers got back focus time while maintaining quality.",
+        metrics: ["80% QA Automation", "Zero Manual Testing", "Quality Maintained"],
+      },
+    },
   },
   {
     id: "visa-developer",
@@ -231,6 +333,16 @@ export const projects: Project[] = [
     metrics: ["65% Less Analysis Time", "85% AI Accuracy", "3.6x Customer ROI"],
     industry: ["startups", "ai-ml", "enterprise"],
     category: "featured-work",
+    personaContent: {
+      engineer: {
+        description: "Improved AI accuracy from 70% to 85% through human-in-the-loop tagging system. Collected 2,000+ labeled data points from beta customers to create training data moat.",
+        metrics: ["70% → 85% AI Accuracy", "2,000+ Labeled Data Points", "Training Data Moat"],
+      },
+      founder: {
+        description: "Validated $450/mo/seat pricing with 3.6x ROI and 3.5-month payback period. Created $19.5K annual value per user by reducing manual work 65%.",
+        metrics: ["$450/mo/seat Pricing", "3.6x ROI", "3.5-Month Payback"],
+      },
+    },
   },
   {
     id: "joystick-growth",
@@ -322,14 +434,16 @@ export function getProjectsForIndustry(industry: string): Project[] {
   return projects.filter((project) => content.projects.includes(project.id));
 }
 
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((project) => project.category === "featured-project");
+export function getFeaturedProjects(persona: string = "default"): Project[] {
+  const featuredProjects = projects.filter((project) => project.category === "featured-project");
+  return featuredProjects.map((project) => getProjectForPersona(project, persona));
 }
 
-export function getFeaturedWork(industry: string = "default"): Project[] {
+export function getFeaturedWork(industry: string = "default", persona: string = "default"): Project[] {
   const content = getPersonalizedContent(industry);
   const industryProjects = projects.filter((project) => content.projects.includes(project.id));
-  return industryProjects.filter((project) => project.category === "featured-work" || !project.category);
+  const featuredWorkProjects = industryProjects.filter((project) => project.category === "featured-work" || !project.category);
+  return featuredWorkProjects.map((project) => getProjectForPersona(project, persona));
 }
 
 // Calculate persona-specific aggregate stats from all accomplishments
@@ -423,59 +537,75 @@ export function getAggregateStats(persona: string = "default"): string[] {
 export const personaHandshakes: PersonaMap = {
   designer: {
     headline: "PM. Builder. User Advocate.",
-    subheadline:
-      "Great products aren't just coded; they're felt. Since you're a {jobTitle}, you know that human-centered design is the difference between a tool and a solution. The focus is on the craft of the user experience.",
-    stats: ["97% User Friction Reduction", "100+ User Interviews Conducted", "Human-First Roadmap Strategy"],
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I believe the best products are built in the field, not in Figma.",
+    body: "I've spent weeks shadowing users in restaurant kitchens, sports press boxes, and procurement offices to understand real friction—not assumed friction. That's how I reduced decision time by 97%, improved NPS by 800%, and shipped products people actually love using. Great UX starts with empathy, and empathy starts with showing up.",
+    stats: ["97% Friction Reduction", "100+ User Interviews", "800% NPS Improvement"],
+    cta: "Want to build something users will love? Let's talk.",
     focus: "Empathy & Craft",
   },
   founder: {
     headline: "PM. Revenue-Driver. Creator.",
-    subheadline:
-      "AI products can act as force multipliers. For your team, the mindset of an entrepreneur who treats every feature like a business is brought to the table. The focus is not just shipping code; it's shipping ROI.",
-    stats: ["$340K+ Revenue Generated", "1,400x Automation ROI", "0 to 1 Product Launch Specialist"],
-    focus: "Speed, Revenue, & Versatility",
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I build products that make money. Fast.",
+    body: "In the last year alone: shipped a product in 8 weeks that generated $340K+, built automation that created $700K in value from a $40/month tool, and launched AI systems that became primary sales differentiators. I don't just ship features—I ship outcomes that move the business forward.",
+    stats: ["$340K+ Revenue in 8 Weeks", "1,400x Automation ROI", "Multiple 0→1 Launches"],
+    cta: "Let's talk about what we could build together.",
+    focus: "Speed, Revenue, & Capital Efficiency",
   },
   pmm: {
     headline: "PM. Storyteller. Creator.",
-    subheadline:
-      "There is a bridge between technical complexity and market-ready stories. AI tools aren't just functional, but easy for customers to understand and love. The secret to product-market fit is the craft.",
-    stats: ["$340K+ Revenue Impact", "97% Faster GTM Decision Making", "Clear Value Proposition Design"],
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I build products that sales teams love pitching.",
+    body: "I've shipped features that became the primary sales differentiator in 90%+ of deals, reduced decision time by 97%, and made sure customers could explain the value in 30 seconds or less. Product-market fit isn't just about usage—it's about whether your team can sell it without a 40-slide deck. Let's build something they'll actually want to demo.",
+    stats: ["Primary Sales Differentiator", "97% Faster Decisions", "80% Adoption Rate"],
+    cta: "Let's build something your sales team will fight over.",
     focus: "Messaging & Market Fit",
   },
   investor: {
     headline: "PM. Strategist. Builder.",
-    subheadline:
-      "Scale AI products by turning complex automation into sustainable revenue streams. Look at the long-term horizon, ensuring every technical detail aligns with the broader vision of the craft.",
-    stats: ["1,400x Scalable ROI", "$340K+ Profit and Loss Management", "Strategic Lifecycle Ownership"],
-    focus: "Scalability & Vision",
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I build products that create defensible moats.",
+    body: "In the last two years: expanded TAM by 3x through strategic B2B2C positioning, built automation with 1,400x ROI that extended runway by 2-3 months, and shipped products that created 6-month competitive leads. I think in terms of unit economics, capital efficiency, and long-term defensibility—not just feature lists. Product strategy should directly map to business strategy.",
+    stats: ["3x TAM Expansion", "1,400x Capital Efficiency", "6-Month Competitive Lead"],
+    cta: "Let's talk about what's possible.",
+    focus: "Scalability & Strategic Lifecycle",
   },
   recruiter: {
     headline: "PM. Builder. Results-Driven.",
-    subheadline:
-      "Product manager with proven track record of building AI-powered products that generate revenue and drive user adoption. Experienced in 0→1 launches, enterprise SaaS, and cross-functional leadership.",
-    stats: ["$340K+ Revenue Generated", "97% User Friction Reduction", "80% Enterprise Adoption Rate"],
-    focus: "Qualifications & Fit",
+    greeting: "Hi {firstName}—",
+    intro: "I'm Jeff, and I've spent 7+ years building AI products that generate revenue and drive adoption.",
+    body: "Most recently: shipped products generating $340K+ at ShortTok (8-week launch), reduced procurement time by 97% at Globality (80% adoption), and designed fraud prevention systems at Visa with $15B potential impact. I've worked across startups and Fortune 500s, and I'm looking for a company where product leadership shapes strategy—not just executes it.",
+    stats: ["$340K+ Revenue Generated", "80% Enterprise Adoption", "7+ Years Experience"],
+    cta: "Let's talk about what I can bring to your team.",
+    focus: "Qualifications & Cultural Fit",
   },
   "vp-product": {
     headline: "PM. Builder. Strategic Leader.",
-    subheadline:
-      "Product manager who thinks strategically and executes flawlessly. Built products generating $340K+ revenue while leading cross-functional teams. Ready to scale impact and contribute to your product vision.",
-    stats: ["$340K+ Revenue Generated", "Cross-Functional Leadership", "Strategic Lifecycle Ownership"],
-    focus: "Leadership & Strategic Vision",
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I own strategic initiatives from ideation to revenue.",
+    body: "I've led products that drove 40% account expansion, coordinated 10+ people across engineering, data science, and design, and shipped enterprise AI tools that became primary sales differentiators. I don't need hand-holding, and I don't create bottlenecks—I clear them. Looking for a team where product leadership has a real seat at the table and drives company strategy.",
+    stats: ["40% Account Expansion", "Cross-Functional Leadership", "Enterprise AI Experience"],
+    cta: "Let's talk about scaling impact together.",
+    focus: "Strategic Ownership & Leadership",
   },
   engineer: {
     headline: "PM. Builder. Technical Partner.",
-    subheadline:
-      "Product manager who speaks your language. Built AI products, automated workflows with 1,400x ROI, and designed systems that scale. The focus is on shipping great products through strong technical partnership.",
-    stats: ["1,400x Automation ROI", "97% Process Efficiency Gain", "AI/ML Product Development"],
-    focus: "Technical Partnership & Execution",
+    greeting: "Hey {firstName}—",
+    intro: "I'm Jeff, and I write PRDs you'll actually want to read.",
+    body: "I've built AI products, automated CI/CD pipelines, and shipped systems with 1,400x ROI using modern dev tools (Cursor, GitHub Actions, the good stuff). I document edge cases, respect technical constraints, and never hand-wave feasibility. The best products happen when PMs and engineers actually trust each other—and that starts with speaking the same language.",
+    stats: ["1,400x Automation ROI", "AI/ML Product Development", "Technical Feasibility Partner"],
+    cta: "Let's ship something great together.",
+    focus: "Technical Partnership & Mutual Respect",
   },
   default: {
     headline: "PM. Builder. Creator.",
-    subheadline:
-      "Product manager building AI-powered products that generate revenue, reduce friction, and scale. From 0→1 launches to enterprise SaaS, I turn complex problems into simple solutions.",
-    stats: ["$340K+ Revenue Generated", "97% User Friction Reduction", "1,400x Automation ROI"],
-    focus: "Broad Appeal & High Impact",
+    greeting: "Hey there—",
+    intro: "I'm Jeff, and I build AI products that generate revenue, reduce friction, and scale.",
+    body: "In the last two years: shipped products generating $340K+ revenue, built automation with 1,400x ROI, and reduced user friction by 97%. I've worked across startups (ShortTok, Productbot AI) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions. Currently building a social events app called Hoolie while searching for my next full-time opportunity.",
+    stats: ["$340K+ Revenue", "1,400x ROI", "97% Friction Reduction"],
+    cta: "Let's talk about what we could build together.",
+    focus: "Broad Appeal & Proven Impact",
   },
 };
 
@@ -575,25 +705,59 @@ export function getIndustryFromJobTitle(jobTitle: string): string {
 
 export function getPersonaHandshake(
   persona: string,
-  jobTitle: string = ""
+  jobTitle: string = "",
+  fullName: string = ""
 ): PersonaHandshake {
   const handshake = personaHandshakes[persona] || personaHandshakes.default;
 
-  // Replace placeholders
-  let subheadline = handshake.subheadline;
-  if (jobTitle) {
-    subheadline = subheadline.replace(/{jobTitle}/g, jobTitle);
+  // Extract first name from full name
+  const firstName = fullName ? fullName.split(" ")[0] : "";
+
+  // Replace {firstName} placeholder in greeting
+  let greeting = handshake.greeting;
+  if (firstName) {
+    greeting = greeting.replace(/{firstName}/g, firstName);
   } else {
-    subheadline = subheadline.replace(/a {jobTitle}/g, "working in product");
+    // Handle default cases when no name provided
+    if (greeting.includes("{firstName}")) {
+      greeting = greeting.replace(/Hey {firstName}—/g, "Hey there—");
+      greeting = greeting.replace(/Hi {firstName}—/g, "Hi there—");
+    }
   }
 
-  // Use persona-specific aggregate stats
-  const aggregateStats = getAggregateStats(persona);
-
+  // Use stats directly from personaHandshakes (they're already persona-specific)
   return {
     ...handshake,
-    subheadline,
-    stats: aggregateStats,
+    greeting,
+    stats: handshake.stats,
+  };
+}
+
+/**
+ * Get persona-specific content for a project
+ * Returns the persona-specific version if available, otherwise returns the default content
+ */
+export function getProjectForPersona(project: Project, persona: string = "default"): Project {
+  // If no persona content or persona is default, return project as-is
+  if (!project.personaContent || persona === "default") {
+    return project;
+  }
+
+  const personaContent = project.personaContent[persona];
+  if (!personaContent) {
+    return project;
+  }
+
+  // Merge persona-specific content with default content
+  return {
+    ...project,
+    title: personaContent.title || project.title,
+    description: personaContent.description || project.description,
+    metrics: personaContent.metrics || project.metrics,
+    problem: personaContent.problem || project.problem,
+    approach: personaContent.approach || project.approach,
+    impact: personaContent.impact || project.impact,
+    fullStory: personaContent.fullStory || project.fullStory,
   };
 }
 
