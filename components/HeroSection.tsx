@@ -8,6 +8,7 @@ import {
 } from "@/lib/contentMapper";
 import { currentStatus, getStatusStyles, getStatusText, getStatusIcon } from "@/lib/status";
 import { logger } from "@/lib/logger";
+import { formatTextWithBold } from "@/lib/textFormatter";
 import Image from "next/image";
 
 interface PersonalizationData {
@@ -78,17 +79,17 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
 
             {/* Greeting */}
             <p className="mb-2 text-xl font-medium text-gray-800 md:text-2xl">
-              {handshake.greeting}
+              {formatTextWithBold(handshake.greeting)}
             </p>
 
             {/* Intro - One punchy sentence */}
             <p className="mb-4 text-xl leading-relaxed text-gray-700 md:mb-6 md:text-2xl">
-              {handshake.intro}
+              {formatTextWithBold(handshake.intro)}
             </p>
 
             {/* Body - 3-4 sentences */}
             <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
-              {handshake.body}
+              {formatTextWithBold(handshake.body)}
             </p>
 
             {/* Key Stats */}

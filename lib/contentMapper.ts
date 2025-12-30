@@ -392,12 +392,12 @@ export const contentMap: Record<string, ContentMap> = {
     metrics: ["97% Time Reduction", "80% Adoption", "$946K+ Value"],
   },
   "ai-ml": {
-    headline: "Building AI products generating $340K+ in revenue",
+    headline: "Building AI products generating $1.3M+ in revenue",
     subheadline:
       "Product Manager specializing in AI/ML product development. I've built AI-powered video tools, procurement insights platforms, and automation systems—all with measurable impact.",
     projects: ["shorttok-sports", "globality-insights", "shorttok-qa", "artifactlabs-museum", "productbot-dashboard", "productbot-okrs"],
     skills: ["AI/ML Product Development", "Automation", "Data-Driven Decisions", "Rapid Prototyping"],
-    metrics: ["$340K+ Revenue", "97% Time Reduction", "AI-Powered"],
+    metrics: ["$1.3M+ Revenue", "97% Time Reduction", "AI-Powered"],
   },
   media: {
     headline: "Building sports clip platform generating $100K+ revenue in 8 weeks",
@@ -405,23 +405,23 @@ export const contentMap: Record<string, ContentMap> = {
       "Product Manager who designed and launched ShortTok's sports clip platform—first-to-market with live-to-social video workflow.",
     projects: ["shorttok-sports", "shorttok-qa", "shorttok-productivity", "meed-receipt-scanning", "joystick-growth", "obscura-mgm"],
     skills: ["Video Production", "Real-time Workflows", "Media Products", "Rapid Prototyping"],
-    metrics: ["$340K Revenue", "90% Time Reduction", "8-week Launch"],
+    metrics: ["$1.3M+ Revenue", "90% Time Reduction", "8-week Launch"],
   },
   startups: {
-    headline: "Building 0→1 products generating $340K+ in revenue",
+    headline: "Building 0→1 products generating $1.3M+ in revenue",
     subheadline:
-      "Founding PM who built ShortTok's sports clip platform from 0→1 in 8 weeks, generating $340K+ in revenue and pipeline.",
+      "Founding PM who built products across ShortTok ($340K+), Artifact Labs ($680K), Productbot ($260K), and Meed ($26K) in the past 2 years—all with measurable revenue impact.",
     projects: ["shorttok-sports", "shorttok-productivity", "shorttok-qa", "meed-receipt-scanning", "starterspath-tenant-passport", "starterspath-rfid-inventory", "productbot-okrs", "productbot-dashboard", "joystick-growth"],
     skills: ["0→1 Product Development", "Rapid Prototyping", "Lean Startup", "Founder-Friendly"],
-    metrics: ["$340K+ Revenue", "8-week Launch", "0→1 Products"],
+    metrics: ["$1.3M+ Revenue", "8-week Launch", "0→1 Products"],
   },
   default: {
     headline: "Building products that create measurable impact",
     subheadline:
-      "Product Manager with experience building AI products, enterprise software, and consumer platforms. I've generated $1.4M+ in revenue and value, reduced decision time by 97%, and created automation with 1,400x ROI.",
+      "Product Manager with experience building AI products, enterprise software, and consumer platforms. I've generated $2M+ in revenue and value, reduced decision time by 97%, and created automation with 1,400x ROI.",
     projects: ["shorttok-sports", "globality-insights", "visa-fraud", "artifactlabs-museum", "productbot-dashboard"],
     skills: ["Product Strategy", "AI/ML Development", "Cross-functional Leadership", "High Impact"],
-    metrics: ["$1.4M+ Revenue & Value", "97% Time Reduction", "1,400x ROI"],
+    metrics: ["$2M+ Revenue & Value", "97% Time Reduction", "1,400x ROI"],
   },
 };
 
@@ -453,8 +453,8 @@ export function getAggregateStats(persona: string = "default"): string[] {
   );
 
   // Base aggregate calculations (all are sums of accomplishments)
-  const totalRevenue = "$340K+ Revenue Generated";
-  const totalValue = "$1.4M+ Revenue & Value Generated";
+  const totalRevenue = "$1.3M+ Revenue & Pipeline Generated";
+  const totalValue = "$2M+ Revenue & Value Generated";
   const timeSavings = "85K+ Hours Saved Annually";
   const highestROI = "1,400x ROI Achieved";
   const userAdoption = "80% Enterprise Adoption Rate";
@@ -539,7 +539,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. User Advocate.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I believe the best products are built in the field, not in Figma.",
-    body: "I've spent weeks shadowing users in restaurant kitchens, sports press boxes, and procurement offices to understand real friction—not assumed friction. That's how I reduced decision time by 97%, improved NPS by 800%, and shipped products people actually love using. Great UX starts with empathy, and empathy starts with showing up.",
+    body: "I've spent weeks shadowing users in restaurant kitchens, sports press boxes, and procurement offices to understand real friction—not assumed friction. That's how I **reduced decision time by 97%**, **improved NPS by 800%**, and shipped products people actually **love** using. Great UX starts with empathy, and empathy starts with showing up.",
     stats: ["97% Friction Reduction", "100+ User Interviews", "800% NPS Improvement"],
     cta: "Want to build something users will love? Let's talk.",
     focus: "Empathy & Craft",
@@ -548,8 +548,8 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Revenue-Driver. Creator.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I build products that make money. Fast.",
-    body: "In the last year alone: shipped a product in 8 weeks that generated $340K+, built automation that created $700K in value from a $40/month tool, and launched AI systems that became primary sales differentiators. I don't just ship features—I ship outcomes that move the business forward.",
-    stats: ["$340K+ Revenue in 8 Weeks", "1,400x Automation ROI", "Multiple 0→1 Launches"],
+    body: "In the last two years: shipped products generating **$1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation that created **$700K** in value from a $40/month tool, and launched AI systems that became primary sales differentiators. I don't just ship features—I ship outcomes that move the business forward.",
+    stats: ["$1.3M+ Revenue Generated", "1,400x Automation ROI", "Multiple 0→1 Launches"],
     cta: "Let's talk about what we could build together.",
     focus: "Speed, Revenue, & Capital Efficiency",
   },
@@ -557,7 +557,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Storyteller. Creator.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I build products that sales teams love pitching.",
-    body: "I've shipped features that became the primary sales differentiator in 90%+ of deals, reduced decision time by 97%, and made sure customers could explain the value in 30 seconds or less. Product-market fit isn't just about usage—it's about whether your team can sell it without a 40-slide deck. Let's build something they'll actually want to demo.",
+    body: "I've shipped features that became the primary sales differentiator in 90%+ of deals, reduced decision time by **97%**, and made sure customers could explain the value in 30 seconds or less. Product-market fit isn't just about usage—it's about whether your team can sell it without a 40-slide deck. Let's build something they'll actually want to demo.",
     stats: ["Primary Sales Differentiator", "97% Faster Decisions", "80% Adoption Rate"],
     cta: "Let's build something your sales team will fight over.",
     focus: "Messaging & Market Fit",
@@ -566,7 +566,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Strategist. Builder.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I build products that create defensible moats.",
-    body: "In the last two years: expanded TAM by 3x through strategic B2B2C positioning, built automation with 1,400x ROI that extended runway by 2-3 months, and shipped products that created 6-month competitive leads. I think in terms of unit economics, capital efficiency, and long-term defensibility—not just feature lists. Product strategy should directly map to business strategy.",
+    body: "In the last two years: expanded TAM by **3x** through strategic B2B2C positioning, built automation with **1,400x ROI** that extended runway by 2-3 months, and shipped products that created 6-month competitive leads. I think in terms of unit economics, capital efficiency, and long-term defensibility—not just feature lists. Product strategy should directly map to business strategy.",
     stats: ["3x TAM Expansion", "1,400x Capital Efficiency", "6-Month Competitive Lead"],
     cta: "Let's talk about what's possible.",
     focus: "Scalability & Strategic Lifecycle",
@@ -575,8 +575,8 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. Results-Driven.",
     greeting: "Hi {firstName}—",
     intro: "I'm Jeff, and I've spent 7+ years building AI products that generate revenue and drive adoption.",
-    body: "Most recently: shipped products generating $340K+ at ShortTok (8-week launch), reduced procurement time by 97% at Globality (80% adoption), and designed fraud prevention systems at Visa with $15B potential impact. I've worked across startups and Fortune 500s, and I'm looking for a company where product leadership shapes strategy—not just executes it.",
-    stats: ["$340K+ Revenue Generated", "80% Enterprise Adoption", "7+ Years Experience"],
+    body: "Most recently: shipped products generating **$1.3M+ in revenue** across ShortTok ($340K+), Artifact Labs ($680K), Productbot ($260K), and Meed ($26K), reduced procurement time by **97%** at Globality (80% adoption), and designed fraud prevention systems at Visa with **$15B** potential impact. I've worked across startups and Fortune 500s, and I'm looking for a company where product leadership shapes strategy—not just executes it.",
+    stats: ["$1.3M+ Revenue Generated", "80% Enterprise Adoption", "7+ Years Experience"],
     cta: "Let's talk about what I can bring to your team.",
     focus: "Qualifications & Cultural Fit",
   },
@@ -584,7 +584,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. Strategic Leader.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I own strategic initiatives from ideation to revenue.",
-    body: "I've led products that drove 40% account expansion, coordinated 10+ people across engineering, data science, and design, and shipped enterprise AI tools that became primary sales differentiators. I don't need hand-holding, and I don't create bottlenecks—I clear them. Looking for a team where product leadership has a real seat at the table and drives company strategy.",
+    body: "I've led products that drove **40% account expansion**, coordinated teams of **10+ people** across engineering, data science, and design, and shipped enterprise AI tools that became primary sales differentiators. I don't need hand-holding, and I don't create bottlenecks—I clear them. Looking for a team where product leadership has a real seat at the table and drives company strategy.",
     stats: ["40% Account Expansion", "Cross-Functional Leadership", "Enterprise AI Experience"],
     cta: "Let's talk about scaling impact together.",
     focus: "Strategic Ownership & Leadership",
@@ -593,7 +593,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. Technical Partner.",
     greeting: "Hey {firstName}—",
     intro: "I'm Jeff, and I write PRDs you'll actually want to read.",
-    body: "I've built AI products, automated CI/CD pipelines, and shipped systems with 1,400x ROI using modern dev tools (Cursor, GitHub Actions, the good stuff). I document edge cases, respect technical constraints, and never hand-wave feasibility. The best products happen when PMs and engineers actually trust each other—and that starts with speaking the same language.",
+    body: "I've built AI products, automated CI/CD pipelines, and shipped systems with **1,400x ROI** using modern dev tools (Cursor, GitHub Actions, the good stuff). I document edge cases, respect technical constraints, and never hand-wave feasibility. The best products happen when PMs and engineers actually trust each other—and that starts with speaking the same language.",
     stats: ["1,400x Automation ROI", "AI/ML Product Development", "Technical Feasibility Partner"],
     cta: "Let's ship something great together.",
     focus: "Technical Partnership & Mutual Respect",
@@ -602,8 +602,8 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. Creator.",
     greeting: "Hey there—",
     intro: "I'm Jeff, and I build AI products that generate revenue, reduce friction, and scale.",
-    body: "In the last two years: shipped products generating $340K+ revenue, built automation with 1,400x ROI, and reduced user friction by 97%. I've worked across startups (ShortTok, Productbot AI) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions. Currently building a social events app called Hoolie while searching for my next full-time opportunity.",
-    stats: ["$340K+ Revenue", "1,400x ROI", "97% Friction Reduction"],
+    body: "In the last two years: I shipped products **generating $1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation with **1,400x ROI**, and reduced user friction by **97%**. I've worked across startups (ShortTok, Productbot AI, Artifact Labs, Meed Loyalty, Joystick) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions. \n\nCurrently building a social events app called Hoolie while searching for my next full-time opportunity.",
+    stats: ["$1.3M+ Revenue", "1,400x ROI", "97% Friction Reduction"],
     cta: "Let's talk about what we could build together.",
     focus: "Broad Appeal & Proven Impact",
   },
