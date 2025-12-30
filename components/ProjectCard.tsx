@@ -62,7 +62,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </p>
 
           {/* Expanded Details (like mprogano's + expandable) */}
-          {project.fullStory && (
+          {(project.problem || project.approach || project.impact || project.fullStory) && (
             <div className="space-y-4">
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
@@ -79,7 +79,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                       <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
                         The Problem
                       </h4>
-                      <p className="text-base leading-relaxed text-gray-700">
+                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
                         {project.problem}
                       </p>
                     </div>
@@ -90,7 +90,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                       <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
                         The Approach
                       </h4>
-                      <p className="text-base leading-relaxed text-gray-700">
+                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
                         {project.approach}
                       </p>
                     </div>
@@ -101,8 +101,19 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                       <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
                         The Impact
                       </h4>
-                      <p className="text-base leading-relaxed text-gray-700">
+                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
                         {project.impact}
+                      </p>
+                    </div>
+                  )}
+
+                  {project.fullStory && (
+                    <div>
+                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                        The Story
+                      </h4>
+                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
+                        {project.fullStory}
                       </p>
                     </div>
                   )}

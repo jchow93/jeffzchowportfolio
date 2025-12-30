@@ -35,7 +35,7 @@ const beyondTheBullets: FAQ[] = [
   },
   {
     question: "What are you building right now?",
-    answer: "I'm building Hoolie—a social events coordination app that eliminates the screenshot-to-group-chat coordination hell. You know the pattern: someone posts an event on Instagram, you screenshot it, text 5 friends, then it dies in the group chat.\n\nI'm leading product and building the frontend (React, Next.js, Tailwind) with a small team. We're launching our PoC in January 2025.\n\n**Transparency:** This is nights and weekends. My primary focus is finding the right full-time role. If I join a company, Hoolie transitions to the team or shuts down—I'm not looking to split my attention. I mention it because it shows I'm a builder who stays sharp, not because I'm hedging my career bets."
+    answer: "I'm building Hoolie—a social events coordination app that eliminates the screenshot-to-group-chat coordination hell. You know the pattern: someone posts an event on Instagram, you screenshot it, text 5 friends, then it dies in the group chat.\n\nI'm leading product and building the frontend (React, Next.js, Tailwind) with a small team. I started the build on December 26, 2025, and we're launching our PoC with customers in January 2026.\n\n**Transparency:** This is nights and weekends. My primary focus is finding the right full-time role. If I join a company, Hoolie transitions to the team or shuts down—I'm not looking to split my attention. I mention it because it shows I'm a builder who stays sharp, not because I'm hedging my career bets."
   },
   {
     question: "What's something that would surprise people about you?",
