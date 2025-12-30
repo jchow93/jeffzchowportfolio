@@ -134,7 +134,7 @@ npm run dev
 3. **Test the webhook directly:**
    ```bash
    curl -X POST \
-     https://script.google.com/macros/s/AKfycbw56yktJbL6J3z761WH-XJkpuCv8xB_ZmVWUUTIXQ-hJL5RpHtF4cyZFg59G-wvwvdbFA/exec \
+     https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec \
      -H "Content-Type: application/json" \
      -d '{"name":"Test","jobTitle":"Engineer","source":"test"}'
    ```

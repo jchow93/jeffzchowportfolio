@@ -3,7 +3,15 @@
 # Quick test script for the Google Apps Script backend
 # This helps verify your backend is working before testing the full app
 
-BACKEND_URL="https://script.google.com/macros/s/AKfycbw56yktJbL6J3z761WH-XJkpuCv8xB_ZmVWUUTIXQ-hJL5RpHtF4cyZFg59G-wvwvdbFA/exec"
+# Get backend URL from environment variable or use placeholder
+BACKEND_URL="${NEXT_PUBLIC_BACKEND_URL:-https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec}"
+
+if [[ "$BACKEND_URL" == *"YOUR_SCRIPT_ID"* ]]; then
+  echo "❌ ERROR: Backend URL not configured!"
+  echo "   Set NEXT_PUBLIC_BACKEND_URL environment variable:"
+  echo "   export NEXT_PUBLIC_BACKEND_URL='https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'"
+  exit 1
+fi
 
 echo "🧪 Testing Google Apps Script Backend..."
 echo ""
