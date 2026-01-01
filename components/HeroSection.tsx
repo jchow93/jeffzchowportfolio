@@ -23,22 +23,18 @@ interface HeroSectionProps {
 
 export default function HeroSection({ personalizationData }: HeroSectionProps) {
   const [handshake, setHandshake] = useState(
-    getPersonaHandshake("default", personalizationData?.jobTitle || "", personalizationData?.name || "")
+    getPersonaHandshake("default", personalizationData?.jobTitle || "")
   );
 
   useEffect(() => {
     if (personalizationData) {
       // Detect persona from job title
       const persona = getPersonaFromJobTitle(personalizationData.jobTitle);
-      const personaHandshake = getPersonaHandshake(
-        persona,
-        personalizationData.jobTitle,
-        personalizationData.name || ""
-      );
+      const personaHandshake = getPersonaHandshake(persona, personalizationData.jobTitle);
       setHandshake(personaHandshake);
     } else {
       // Default persona
-      setHandshake(getPersonaHandshake("default", "", ""));
+      setHandshake(getPersonaHandshake("default", ""));
     }
 
     // Listen for personalization updates
@@ -50,7 +46,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
           return;
         }
         const persona = getPersonaFromJobTitle(data.jobTitle);
-        const personaHandshake = getPersonaHandshake(persona, data.jobTitle, data.name || "");
+        const personaHandshake = getPersonaHandshake(persona, data.jobTitle);
         setHandshake(personaHandshake);
       } catch (error) {
         logger.error("Error handling personalization update:", error);

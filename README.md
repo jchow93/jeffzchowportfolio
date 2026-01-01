@@ -5,9 +5,7 @@ Personalized portfolio built with Next.js, React, and Tailwind CSS.
 ## Features
 
 - ✅ Industry-based personalization
-- ✅ Visitor tracking (Google Sheets backend)
-- ✅ Source tracking (LinkedIn vs Resume)
-- ✅ Loading animations
+- ✅ View selector dropdown (Founder, Engineer, Product Leader, Designer, Investor, General)
 - ✅ Minimal, clean design (inspired by johnyvino.com)
 - ✅ Responsive design
 
@@ -19,17 +17,7 @@ Personalized portfolio built with Next.js, React, and Tailwind CSS.
 npm install
 ```
 
-### 2. Configure Backend URL
-
-Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_BACKEND_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
-```
-
-Replace `YOUR_SCRIPT_ID` with your Google Apps Script webhook URL.
-
-### 3. Update Email
+### 2. Update Email
 
 Edit `components/Navigation.tsx` and replace `jeff@example.com` with your actual email.
 
@@ -51,15 +39,13 @@ portfolio-site/
 │   └── globals.css       # Global styles
 ├── components/
 │   ├── Navigation.tsx    # Top navigation
-│   ├── OnboardingModal.tsx # Personalization modal
-│   ├── LoadingAnimation.tsx # Loading state
+│   ├── ViewSelector.tsx  # View selector dropdown
 │   ├── HeroSection.tsx   # Hero section
 │   ├── ProjectsSection.tsx # Projects list
 │   └── ProjectCard.tsx   # Individual project card
 ├── lib/
 │   ├── localStorage.ts   # LocalStorage management
-│   ├── contentMapper.ts # Content mapping logic
-│   └── api.ts           # Backend API calls
+│   └── contentMapper.ts # Content mapping logic
 └── package.json
 ```
 
@@ -84,8 +70,7 @@ Styles are in Tailwind CSS. Edit `tailwind.config.ts` for theme customization.
 
 1. Push to GitHub
 2. Import project in Vercel
-3. Add environment variable: `NEXT_PUBLIC_BACKEND_URL`
-4. Deploy!
+3. Deploy!
 
 ### Other Platforms
 
@@ -95,12 +80,6 @@ Build the project:
 npm run build
 npm start
 ```
-
-## URLs for Tracking
-
-- **LinkedIn**: `https://yourportfolio.com/?source=linkedin`
-- **Resume**: `https://yourportfolio.com/?source=resume`
-- **Direct**: `https://yourportfolio.com`
 
 ## License
 

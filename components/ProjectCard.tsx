@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Project } from "@/lib/contentMapper";
 
 interface ProjectCardProps {
@@ -10,145 +11,184 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const formattedIndex = String(index + 1).padStart(2, "0");
 
-  // Get industry tags (first 2-3)
-  const industryTags = project.industry.slice(0, 3).map((ind) => {
-    const tagMap: Record<string, string> = {
-      fintech: "Fintech",
-      enterprise: "Enterprise",
-      "ai-ml": "AI/ML",
-      media: "Media",
-      startups: "Product",
-      procurement: "Operations",
-    };
-    return tagMap[ind] || ind;
-  });
+  // Get 3 tags from metrics (these change by persona)
+  const tags = project.metrics.slice(0, 3);
 
   return (
-    <article className="group relative border-b border-gray-200 px-10 py-10 transition-all hover:bg-gray-50/30 md:px-12 md:py-12">
-      <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-16">
-        {/* Number - Left side */}
-        <div className="flex-shrink-0 md:w-16">
-          <span className="text-3xl font-bold text-gray-300 transition-colors group-hover:text-gray-400 md:text-4xl">
-            {formattedIndex}
-          </span>
-        </div>
-
-        {/* Content - Right side */}
-        <div className="flex-1 space-y-5">
-          {/* Title - Story-focused */}
-          <h3 className="text-2xl font-bold leading-tight text-black transition-colors group-hover:text-gray-800 md:text-3xl">
-            {project.title}
-          </h3>
-
-          {/* Key Metrics - Show first 3 metrics */}
-          {project.metrics.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {project.metrics.slice(0, 3).map((metric, idx) => (
-                <span
-                  key={idx}
-                  className="inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700 transition-colors group-hover:border-gray-300"
-                >
-                  {metric}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Description - Narrative, not resume-like */}
-          <p className="text-base leading-relaxed text-gray-600 md:text-lg">
-            {project.description}
-          </p>
-
-          {/* Expanded Details (like mprogano's + expandable) */}
-          {(project.problem || project.approach || project.impact || project.fullStory) && (
-            <div className="space-y-4">
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="flex items-center gap-2 text-sm font-medium text-black transition-colors hover:text-gray-700"
-              >
-                <span className="text-xl">{isExpanded ? "−" : "+"}</span>
-                <span>{isExpanded ? "Less" : "More"}</span>
-              </button>
-
-              {isExpanded && (
-                <div className="animate-expand space-y-6 border-t border-gray-200 pt-6">
-                  {project.problem && (
-                    <div>
-                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        The Problem
-                      </h4>
-                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
-                        {project.problem}
-                      </p>
-                    </div>
-                  )}
-
-                  {project.approach && (
-                    <div>
-                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        The Approach
-                      </h4>
-                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
-                        {project.approach}
-                      </p>
-                    </div>
-                  )}
-
-                  {project.impact && (
-                    <div>
-                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        The Impact
-                      </h4>
-                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
-                        {project.impact}
-                      </p>
-                    </div>
-                  )}
-
-                  {project.fullStory && (
-                    <div>
-                      <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        The Story
-                      </h4>
-                      <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
-                        {project.fullStory}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Industry Tags - Moved to expanded section */}
-                  {project.industry.length > 0 && (
-                    <div>
-                      <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        Industry
-                      </h4>
-                      <div className="flex flex-wrap gap-3">
-                        {industryTags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+    <article 
+      className="group relative cursor-pointer border-b border-gray-200 transition-all hover:bg-gray-50/30"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      {/* Collapsed State: Image on left + 3 Tags + 1 Sentence */}
+      {!isExpanded && (
+        <div className="px-6 py-8 md:px-10 md:py-10">
+          <div className="flex gap-6">
+            {/* Image/Screenshot - Left side */}
+            <div className="relative h-48 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform group-hover:scale-105"
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                  <span className="text-3xl text-gray-400">{project.company.charAt(0)}</span>
                 </div>
               )}
             </div>
-          )}
 
-          {/* Company & Year - Bottom */}
-          <div className="flex items-center gap-4 pt-1">
-            <span className="text-sm text-gray-500">
-              {project.company} · {project.year}
-            </span>
+            {/* Content - Right side */}
+            <div className="flex-1 space-y-4">
+              {/* 3 Tags */}
+              {tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* 1 Sentence Description */}
+              <p className="text-base leading-relaxed text-gray-700 md:text-lg">
+                {project.description}
+              </p>
+
+              {/* Click hint */}
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <span>Click to expand case study</span>
+                <span className="text-lg">→</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {/* Expanded State: Full Case Study */}
+      {isExpanded && (
+        <div className="animate-expand px-6 py-8 md:px-10 md:py-10">
+          <div className="space-y-6">
+            {/* Header with close button */}
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <h3 className="mb-2 text-2xl font-bold leading-tight text-black md:text-3xl">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {project.company} · {project.year}
+                </p>
+              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsExpanded(false);
+                }}
+                className="ml-4 text-2xl text-gray-400 hover:text-gray-600"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Image and Tags side by side */}
+            <div className="flex gap-6">
+              {/* Image if available */}
+              {project.image && (
+                <div className="relative h-48 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+
+              {/* Tags */}
+              {tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 items-start pt-2">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* External Link if available */}
+            {project.link && (
+              <div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#8BA888] hover:text-[#6B8E6B] transition-colors"
+                >
+                  → View Project
+                </a>
+              </div>
+            )}
+
+            {/* Full Case Study Content */}
+            <div className="space-y-6 border-t border-gray-200 pt-6">
+              {project.problem && (
+                <div>
+                  <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    The Problem
+                  </h4>
+                  <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
+                    {project.problem}
+                  </p>
+                </div>
+              )}
+
+              {project.approach && (
+                <div>
+                  <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    The Approach
+                  </h4>
+                  <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
+                    {project.approach}
+                  </p>
+                </div>
+              )}
+
+              {project.impact && (
+                <div>
+                  <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    The Impact
+                  </h4>
+                  <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
+                    {project.impact}
+                  </p>
+                </div>
+              )}
+
+              {project.fullStory && (
+                <div>
+                  <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    The Story
+                  </h4>
+                  <p className="text-base leading-relaxed text-gray-700 whitespace-pre-line">
+                    {project.fullStory}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </article>
   );
 }

@@ -21,6 +21,8 @@ export interface Project {
   metrics: string[];
   industry: string[];
   image?: string;
+  imageCredit?: string; // Credit/attribution for the image (HTML allowed)
+  link?: string; // External link to view project/demo
   category?: "featured-project" | "featured-work"; // Distinguish between Featured Projects and Featured Work
   personaContent?: Record<string, PersonaProjectContent>; // Persona-specific content overrides
 }
@@ -35,7 +37,7 @@ export interface ContentMap {
 
 export interface PersonaHandshake {
   headline: string;
-  greeting: string; // "Hey {firstName}—" or "Hi {firstName}—"
+  greeting: string; // "Hey there—" or "Hi there—"
   intro: string; // One punchy sentence
   body: string; // 3-4 sentences max
   stats: string[];
@@ -56,28 +58,31 @@ export const projects: Project[] = [
     title: "Hoolie: Eliminating 'Coordination Friction' in Social Discovery",
     company: "Hoolie",
     year: "2025-2026 (In Progress / PoC Phase)",
-    description: "Engineering an AI-assisted social aggregator to bridge the gap between seeing an event on Instagram and actually showing up. Using a 'Build-to-Learn' approach to validate user intent in under 30 days.",
-    problem: "Event discovery is fragmented and 'leaky.' Users screenshot events on social media, but coordination dies in the group chat. There is no 'Single Source of Truth' for event intent, leading to a 70% drop-off between 'that looks cool' and 'I am going.'",
-    approach: "Applied 'High-Velocity Development' via Cursor/AI to ship a full-stack Next.js UI in just 7 days. I prioritized the 'Core Loop' (Save → Interest → Status) over vanity features. Developed a PRD focused on 'Time-to-Coordination' as the primary success metric.",
-    impact: "Reduced idea-to-functional-PoC time by 75% by shipping a full-stack Next.js UI quickly using AI-assisted development.\nBuilt a responsive, mobile-first experience with real-time status toggles by prioritizing the core event coordination loop over vanity features.\nValidated product-market fit hypothesis by launching PoC with customers in January 2026.",
-    fullStory: "Hoolie is a living lab for my product and technical skills. I'm solving a personal pain point: the frustration of losing event details in a sea of screenshots and dead-end group chats. \n\nI own the full lifecycle: from writing the PRD and defining the data schema to building the frontend with React, Next.js, and Tailwind. By leveraging AI-assisted development (Cursor), I bypassed the 'validation paralysis' that kills most startups, shipping a complete UI quickly after starting the build on December 26, 2025. \n\nSuccess isn't 'launching'—it's learning. If my January 2026 PoC with customers shows that users aren't saving at least 3 events weekly, I'll pivot or sunset the project. This project demonstrates my ability to move from 'Problem' to 'Working Solution' at a speed that most PMs can't match.",
-    metrics: ["Started: Dec 26, 2025", "Launch: Jan 2026", "AI-Assisted (Cursor)"],
+    description: "Leading product for a social events app that eliminates coordination friction. Shipped a functional frontend in 5 days using Cursor to unblock the team and maintain velocity.",
+    problem: "Event discovery is fragmented and 'leaky.' Users screenshot events on social media, but coordination dies in the group chat. There's no single source of truth for event intent, leading to a 70% drop-off between 'that looks cool' and 'I'm going.",
+    approach: "Leading a team of 4 (backend engineer, designer, PM, and me). I own product strategy, wrote the PRD, and defined 'Time-to-Coordination' as our primary success metric. I built the frontend experience myself in React/Next.js using Cursor—shipped in 5 days to keep the team moving.",
+    impact: "Built functional frontend in 5 days using Cursor to eliminate bottleneck and maintain team velocity. \n\nLed cross-functional team of 4 to align on core loop (Save → Interest → Status). \n\nLaunching with real customers in January 2026 to validate product-market fit hypothesis",
+    fullStory: "Hoolie is a living lab for my product and technical skills. I'm solving a personal pain point: the frustration of losing event details in a sea of screenshots and dead-end group chats. \n\nI own the full lifecycle: from writing the PRD and designing the user experience, to building the frontend with React, Next.js, and Tailwind. By leveraging AI-assisted development (Cursor), I bypassed the 'validation paralysis' that kills most startups, shipping a complete UI quickly after starting the build on December 26, 2025. \n\nSuccess isn't launching—it's learning. This project shows I can move from problem to working solution at a speed most PMs can't match.",
+    metrics: ["Started: Dec 26, 2025", "Frontend shipped: 5 days", "Launch: Jan 2026"],
     industry: ["consumer", "startups", "social media"],
     category: "featured-project",
+    image: "/assets/hoolie.png",
   },
   {
     id: "portfolio-website",
     title: "The Dynamic Portfolio: A Study in Conversion UX",
     company: "Personal Portfolio",
     year: "2025",
-    description: "Engineered a 'Morphic' portfolio that adapts content in real-time. By segmenting visitors into 6 professional personas, I increased messaging relevance and narrative clarity.",
+    description: "Designed and engineered a portfolio that adapts to each visitor's role—founders see revenue impact, engineers see technical depth, recruiters see qualifications. Built it myself to prove personalization beats static portfolios.",
     problem: "Static portfolios suffer from 'Generalist Dilution'—they try to speak to everyone and resonate with no one. Recruiters need qualifications; CEOs need revenue; Engineers need technical feasibility. A single page cannot effectively serve all three.",
-    approach: "Built a 'Contextual Onboarding' engine that captures Role and Name. Mapped 8 distinct content schemas to persona triggers. If a 'Founder' visits, the site prioritizes Revenue metrics; if an 'Engineer' visits, it prioritizes System Architecture.",
-    impact: "Created personalized content experiences for 6 distinct professional personas by building a dynamic content routing engine.\nEliminated static portfolio dilution by implementing real-time content adaptation based on visitor role and context.\nIncreased messaging relevance by mapping 8 distinct content schemas to persona triggers using Next.js and TypeScript.",
+    approach: "Mapped out 6 visitor personas (Founder, Engineer, Recruiter, Designer, PMM, Investor). Defined what each persona cares about most. Created content schemas that swap in/out based on who's visiting. Then built the system in Next.js to validate the concept.",
+    impact: "Eliminated 'generalist dilution' by showing relevant content to each persona. \n\nCreated 6 distinct narrative paths from a single codebase. \n\nProved that personal branding benefits from product thinking",
     fullStory: "This portfolio is a meta-project: a product that showcases product work. I realized that traditional portfolios suffer from 'Generalist Dilution'—they try to speak to everyone and resonate with no one. A recruiter needs to see qualifications and metrics; a CEO needs revenue impact; an engineer needs technical depth. A single static page cannot effectively serve all three.\n\nI built a 'Contextual Onboarding' engine that captures the visitor's role and name on first visit. Behind the scenes, I mapped 8 distinct content schemas to persona triggers. When a 'Founder' visits, the site prioritizes revenue metrics and 0→1 launches. When an 'Engineer' visits, it highlights system architecture and technical implementation. When a 'Recruiter' visits, it emphasizes qualifications and cross-industry experience.\n\nThis project demonstrates my core product philosophy: treat every touchpoint as a conversion funnel. By personalizing the experience from the first interaction, I've created a 'Digital Handshake' that adapts to each visitor's needs—proving that even personal branding can benefit from a product-first approach.",
     metrics: ["6 Dynamic Personas", "Zero Static Content", "Next.js + Tailwind"],
     industry: ["ux"],
     category: "featured-project",
+    image: "/assets/20943517.jpg",
+    imageCredit: '<a href="http://www.freepik.com" target="_blank" rel="noopener noreferrer">Designed by vectorjuice / Freepik</a>',
   },
   // Featured Work - Professional projects
   {
@@ -85,6 +90,7 @@ export const projects: Project[] = [
     title: "ShortTok Sports: Capturing Live Highlights in Real-Time",
     company: "ShortTok",
     year: "2025",
+    image: "https://images.sidearmdev.com/resize?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fredstormsports.com%2Fimages%2F2025%2F10%2F30%2FShortTok_WEB.jpg&height=1100&type=webp",
     description: "Shipped an AI-powered sports clipping platform in 8 weeks that reduced highlight creation time by 90%. Generated $100K in immediate revenue and accelerated sales cycles by 50%.",
     problem: "College sports programs were missing their 'viral window.' Manually clipping highlights during live games took 45+ minutes, meaning the moment was 'old news' before it was posted. The friction wasn't just speed—it was the cognitive load of SIDs trying to manage a live game while wrestling with editing software.",
     approach: "Conducted 'in-the-trenches' research by shadowing SIDs during live games. I identified that the solution wasn't just AI—it was workflow harmony. I designed a platform that automatically extracts clips from live streams but keeps the human in the loop for tagging and publishing. We prioritized 'Time-to-Social' as our primary KPI, shipping a V1 in just 8 weeks.",
@@ -121,6 +127,7 @@ export const projects: Project[] = [
     title: "Glo Insights: Automating Fortune 500 Strategic Sourcing",
     company: "Globality",
     year: "2022",
+    image: "https://www.globality.com/hubfs/Globality_FI_B_1600x900.jpg",
     description: "Reduced procurement decision time by 97% for global enterprises. Transformed a 10-hour manual document grind into a 20-minute automated insight dashboard.",
     problem: "Fortune 500 procurement teams were drowning in 'Document Debt.' Analysts spent 10+ hours per decision manually copying data from 100-page vendor proposals into spreadsheets. This manual friction delayed million-dollar contracts by weeks and reduced strategic sourcing to a game of data entry.",
     approach: "Shadowed analysts to pinpoint the 'Value Leak.' I discovered that 80% of their time was spent on repetitive extraction rather than negotiation or strategy. I designed an AI-powered dashboard that didn't just summarize text, but visualized cost breakdowns and compliance risks in the exact table formats they already used, ensuring the product felt like an extension of their existing expertise.",
@@ -138,10 +145,6 @@ export const projects: Project[] = [
         description: "Created 6-12 month competitive lead through proprietary AI models. Feature drove 40% account expansion and became primary sales differentiator in 90%+ of deals.",
         metrics: ["6-12 Month Competitive Lead", "40% Account Expansion", "90%+ Sales Differentiator"],
       },
-      pmm: {
-        description: "Positioned Globality as 'AI-first' procurement platform vs legacy players. Feature became primary sales tool, mentioned in 90%+ of successful deals post-launch.",
-        metrics: ["90%+ Sales Tool Usage", "AI-First Positioning", "Primary Differentiator"],
-      },
     },
   },
   {
@@ -149,6 +152,7 @@ export const projects: Project[] = [
     title: "Visa ID Verify: Predictive Fraud Detection at Scale",
     company: "Visa",
     year: "2021",
+    image: "https://s.wsj.net/public/resources/images/BN-XG830_3og3V_OR_20180201113258.jpg",
     description: "Architected a cross-merchant identity verification system with 75% predictive accuracy. Shipped a proactive defense model with a $15B potential annual impact for the global merchant ecosystem.",
     problem: "Merchants like DoorDash were fighting a losing battle against 'Account Takeover' fraud. Because individual merchants only see their own siloed data, they couldn't detect fraudulent intent until *after* the first transaction occurred. By then, the money was gone and the damage was done.",
     approach: "Leveraged Visa's unique 'Network View' to bridge the information gap. I interviewed 10+ merchants to map fraud patterns and discovered that while they saw isolated users, I could see global anomalies (e.g., a single card opening 10 new merchant accounts in 60 seconds). I designed a system that flags high-risk account creation in real-time by analyzing these cross-merchant patterns—shifting the paradigm from reactive detection to proactive prevention.",
@@ -177,6 +181,7 @@ export const projects: Project[] = [
     title: "The Meeting Killer: Automating Developer Velocity",
     company: "ShortTok",
     year: "2025",
+    image: "/assets/9837494.jpg",
     description: "Reclaimed 6 hours per engineer/week by automating the 'Status Tax.' Converted a $480 tool investment into $246K of recovered engineering value (1,400x ROI).",
     problem: "The engineering team was suffering from 'Process Debt.' Engineers were losing 8+ hours per week to redundant status updates across JIRA, Confluence, and Slack. This fragmentation created a constant 'context-switching tax' that killed deep work and left leadership with stale, 24-hour-old data.",
     approach: "Audited the SDLC (Software Development Life Cycle) to identify redundant touchpoints. I discovered that 75% of status reporting was simply 'manual data mirroring'—copying GitHub PR status into JIRA and Slack. I used Cursor to build custom middleware and AI automations that synced GitHub commits directly to JIRA tickets and auto-generated Slack summaries for leadership. This created a 'Single Source of Truth' that updated in real-time without human intervention.",
@@ -194,7 +199,7 @@ export const projects: Project[] = [
         description: "Built custom middleware connecting GitHub → JIRA → Slack using Cursor. Automated test suite covered 85% of critical paths using frame comparison for video QA.",
         metrics: ["Custom Middleware", "85% Test Coverage", "Real-Time Sync"],
       },
-      "vp-product": {
+      "product-leader": {
         description: "Reclaimed 6 hours/engineer/week across 12-person team. Freed leadership from status gathering, enabling CEO to conduct 25+ investor meetings.",
         metrics: ["6hrs/Engineer/Week", "12-Person Team Impact", "25+ Investor Meetings Enabled"],
       },
@@ -209,6 +214,7 @@ export const projects: Project[] = [
     title: "Automated QA System: Preventing $300K+ in Production Bugs",
     company: "ShortTok",
     year: "2025",
+    image: "/assets/q&a.jpg",
     description: "Built an automated QA pipeline that reduced manual testing by 80% and caught 90% of bugs pre-production. Generated $308K-408K in annual value from the same $40/month investment.",
     problem: "Manual QA for video features was consuming 15-20 hours per week across the team. Engineers manually tested video encoding, format compatibility, export quality, and platform integrations after every release—slowing deployment velocity and introducing human error.",
     approach: "Mapped the complete manual QA process and identified 85% of test cases that could be automated. Partnered with engineering to build an automated test suite using Cursor and GitHub Actions that ran smoke tests on every pull request, validated video output quality using frame comparison, and tested export workflows end-to-end.",
@@ -226,7 +232,7 @@ export const projects: Project[] = [
         description: "Built automated test suite using Cursor and GitHub Actions. Automated test suite covered 85% of critical paths using frame comparison for video QA.",
         metrics: ["85% Test Coverage", "CI/CD Integration", "Frame Comparison QA"],
       },
-      "vp-product": {
+      "product-leader": {
         description: "Reclaimed 15-20 hours/week across team. Freed leadership from status gathering, enabling CEO to conduct 25+ investor meetings.",
         metrics: ["15-20hrs/Week Reclaimed", "90% Bug Prevention", "3x Deployment Capacity"],
       },
@@ -241,6 +247,7 @@ export const projects: Project[] = [
     title: "Visa Dev Portal: Accelerating the API Onboarding Funnel",
     company: "Visa",
     year: "2020",
+    image: "/assets/20945230.jpg",
     description: "Automated the API access workflow, reducing manual processing time by 70%. Saved $130K annually and enabled 2X faster developer onboarding by integrating the sales pipeline with the developer portal.",
     problem: "Slow onboarding created friction at the top of the sales funnel. PMs spent 10-20 hours manually verifying each of the 1,000+ monthly API requests, forcing developers to wait weeks for access. The core bottleneck: treating a low-risk, known customer with the same rigor as an edge case.",
     approach: "Applied 'Workflow Harmony' principles. Shadowed PMs to identify the 80/20 rule: 80% of requests were simple, 20% were edge cases. I built a 'Tiered Verification' system that integrated Salesforce (our sales system) and account management tools. The logic auto-approved known contacts for immediate access while routing high-risk requests for manual review. We sped up the 80% without compromising security on the 20%.",
@@ -255,6 +262,7 @@ export const projects: Project[] = [
     title: "Artifact Labs: The Blockchain Licensing Engine",
     company: "Artifact Labs",
     year: "2023",
+    image: "/assets/36748616061539.jpg",
     description: "Generated $680K in new contracts in 3 months by building a Web3 licensing platform. Reduced the museum licensing cycle from 4 weeks to 48 hours, increasing revenue by 35%.",
     problem: "Museums managed high-value digital asset licensing through fragmented 4-6 week email chains. This 'Workflow Drag' meant museums were leaving money and cultural exposure on the table, unable to monetize their archives efficiently.",
     approach: "Applied 'Workflow Harmony' principles to the B2B licensing space. Designed a two-sided marketplace (Museum Admin Portal + Publisher Marketplace) that created a single, frictionless flow for discovery, rights negotiation, payment, and file delivery. Strategically chose Polygon over expensive Layer 1 solutions, cutting transaction costs by 95% ($20-$50 to $0.50-$2.00 per license) to ensure commercial viability.",
@@ -269,6 +277,8 @@ export const projects: Project[] = [
     title: "Meed: Solving Adoption via 'Zero-Touch' Loyalty",
     company: "Meed Loyalty",
     year: "2024",
+    image: "https://static.wixstatic.com/media/62e80a_22e5f68e11e54c9a9f06e730df4bc939~mv2.png/v1/fill/w_934,h_1172,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Scan%20Reciept%20-%20Scan%20by%20meed%20(1).png",
+    link: "https://www.meedloyalty.com/features-scan",
     description: "Achieved 78% user adoption—nearly 4X the original target—by automating receipt capture. Transformed a high-friction manual process into a 15-second 'Zero-Touch' experience, driving a 15X increase in active users.",
     problem: "The loyalty program was failing because it ignored the 'Kitchen Rush.' The original system required 2-3 minutes of manual input and staff verification. On-site observation revealed that during peak service, staff were too overwhelmed to manage loyalty, resulting in only 20 active users per restaurant.",
     approach: "Conducted 'In-the-Trenches' research by shadowing restaurant staff during peak lunch hours in Hong Kong. I identified that the true friction was 'Staff Cognitive Load.' I pivoted the product strategy to a 'Customer-Led' model using OCR (Optical Character Recognition) technology. This allowed customers to scan receipts and earn points in 10 seconds with zero staff intervention, removing the bottleneck entirely.",
@@ -283,6 +293,7 @@ export const projects: Project[] = [
     title: "Tenant Passport: Solving the Rental 'Portability' Problem",
     company: "Starter's Path",
     year: "2018",
+    image: "/assets/21729.jpg",
     description: "Accelerated the rental approval cycle by 40% (10 days to 2 days) by engineering a portable digital identity. Validated a $432K pipeline from 5 major property management firms through a high-trust verification network.",
     problem: "The rental market suffered from 'Verification Paralysis.' Every new application forced tenants to re-collect sensitive documents and property managers to manually re-verify the same data from scratch. This redundant, 14-day cycle created massive friction and increased vacancy risks for landlords.",
     approach: "Applied 'Network Effect' strategy to solve the trust gap. I interviewed 30+ stakeholders to identify that the root cause was the lack of a 'Single Source of Truth.' I designed a portable Tenant Passport where documents are uploaded once and verified by previous landlords. By adding a landlord-rating system, I created a virtuous cycle: every completed lease increased the tenant's 'Trust Score,' making the next approval nearly instantaneous.",
@@ -297,6 +308,7 @@ export const projects: Project[] = [
     title: "Liquid Assets: Real-Time RFID Inventory Tracking",
     company: "Starter's Path",
     year: "2018",
+    image: "/assets/NA_SEP._29.jpg",
     description: "Engineered a first-of-its-kind RFID liquid-tracking system that gave restaurant owners real-time visibility into $40K/month in shrinkage. Reduced manual labor by 24% and identified a $240K/year savings opportunity.",
     problem: "A multi-unit restaurant group was bleeding ~$40K/month across 4 locations due to 'invisible' inventory loss. Manual counts took 3 hours per day, were frequently falsified or skipped, and couldn't distinguish between heavy-handed pouring, accidental waste, or intentional theft.",
     approach: "Shifted the strategy from 'Reporting' to 'Prevention.' After observing bar operations, I identified that the 24-hour lag in manual counts made accountability impossible. I adapted medical-grade RFID technology (originally for liquid sensing in diapers) to liquor bottles. I architected a system that synced bottle-weight changes with POS transactions in real-time, moving the source of truth from a clipboard to a live dashboard that flagged discrepancies the moment a drink was poured.",
@@ -311,6 +323,7 @@ export const projects: Project[] = [
     title: "Scaling Leadership: Operationalizing a $260K ARR Beta",
     company: "Productbot AI",
     year: "2025",
+    image: "/assets/20943804.jpg",
     description: "Architected a decision-making framework that reduced CEO product-dependency by 90%, accelerating beta delivery by 6 weeks and enabling the leadership team to focus on a $130K–$260K ARR pipeline and seed fundraising.",
     problem: "Productbot was trapped in 'Founder Bottleneck.' With only one engineer and no prioritization framework, the CEO was spending 5 hours/day on micro-level product decisions. This lack of autonomy delayed the beta launch and prevented the CEO from focusing on the high-leverage activities needed for seed funding: investor relations and customer development.",
     approach: "Diagnosed the root cause as a lack of 'Decision Guardrails.' I introduced a high-velocity OKR framework paired with RICE prioritization to decentralize decision-making. We evaluated the backlog against three high-stakes pillars: beta-customer revenue ($65K+ per segment), technical feasibility for a solo engineer, and fundraising narrative. By establishing these 'No-Go' zones, we successfully pruned 40% of the backlog, empowering the engineering team to execute without constant CEO intervention.",
@@ -325,6 +338,7 @@ export const projects: Project[] = [
     title: "AI Feedback Engine: From Manual Analysis to $260K ARR",
     company: "Productbot AI",
     year: "2025",
+    image: "https://productbot.ai/wp-content/uploads/2024/12/Problem-Discovery-Productbot-V2.svg",
     description: "Shipped an AI-powered insights dashboard that converted 100% of beta users and validated a $260K ARR pipeline. Reduced manual analysis time by 65% and engineered a human-in-the-loop system that boosted AI accuracy to a market-leading 85%.",
     problem: "B2B Product Managers were drowning in 'Feedback Debt,' spending 8–12 hours/week manually triaging data across Intercom, Zendesk, and Slack. Existing tools lacked the accuracy (hovering at ~70%) to be trusted for roadmap decisions, leading to 'analysis paralysis' and fragmented product strategies.",
     approach: "Identified that tool fragmentation was the root cause of friction, not just the volume of data. I prioritized a 'Workflow-First' strategy, building deep integrations to reduce 'tab-switching' by 90%. To solve the trust gap, I designed a human-in-the-loop tagging system that turned manual user corrections into training data. This strategic move raised AI accuracy from 70% to 85%, creating a defensible 'Data Moat' against established competitors like Dovetail and Productboard.",
@@ -349,6 +363,7 @@ export const projects: Project[] = [
     title: "Telegram Gaming: Scaling from 0 to 500 Players",
     company: "Joystick",
     year: "2023",
+    image: "/assets/10339984.jpg",
     description: "Architected a full-funnel growth strategy for an emerging Telegram gaming platform, scaling the player base from 0 to 476 users in 8 weeks by reverse-engineering viral mechanics from top-tier titles like Notcoin and Hamster Kombat.",
     problem: "Following a pivot from B2B tools to consumer gaming, Joystick lacked a user acquisition playbook for the nascent Telegram ecosystem. The core challenge was identifying whether Telegram's unique social infrastructure could sustain a viable cost-per-acquisition (CPA) and high-retention player base.",
     approach: "Adopted a 'Deconstructionist' strategy to bypass the lack of platform documentation. I audited 15+ high-growth Telegram games to map out the 'Social Loop'—specifically how referral incentives and bot-based group notifications drive organic virality. I engineered a two-phase pipeline: first, building a high-trust organic community of 200 players to validate gameplay; second, deploying targeted 'Growth Sprints' via Telegram ads and group bot integrations to test scalability and unit economics.",
@@ -363,6 +378,8 @@ export const projects: Project[] = [
     title: "Phygital Scale: Immersive UX for MGM Macau",
     company: "Obscura Digital",
     year: "2017",
+    image: "https://matthewragan.com/wp-content/uploads/2024/12/mgm-cotai-.jpg",
+    link: "https://vimeo.com/268686672",
     description: "Orchestrated the product direction for a massive-scale interactive lobby installation at MGM Macau. Pioneered early WeChat mini-program integration to engage hundreds of thousands of users, bridging the gap between physical space and digital interaction.",
     problem: "MGM Macau needed to transform their physical lobby into a high-engagement 'Phygital' (physical + digital) destination. The technical challenge was to build a system that was creatively avant-garde yet robust enough to handle hundreds of thousands of concurrent users with zero latency, all within the constraints of an emerging WeChat ecosystem.",
     approach: "Evolved from Software Engineer to a 'Hybrid Product Lead' to bridge the communication gap between technical limitations and creative vision. I identified that the friction point wasn't the hardware, but the onboarding; I championed the use of WeChat mini-programs—cutting-edge at the time—to eliminate app-download friction. I led the cross-functional roadmap between engineering and visual design, ensuring that the 10-foot tall interactive elements remained intuitive for users of all ages and tech-literacy levels.",
@@ -484,14 +501,6 @@ export function getAggregateStats(persona: string = "default"): string[] {
         "8-Week Product Launches",
       ];
 
-    case "pmm":
-      return [
-        totalValue,
-        userAdoption,
-        "97% Faster GTM Decisions",
-        "Clear Value Proposition Design",
-      ];
-
     case "investor":
       return [
         automationROI,
@@ -508,7 +517,7 @@ export function getAggregateStats(persona: string = "default"): string[] {
         `${featuredWorkProjects.length} Products Across 4+ Industries`,
       ];
 
-    case "vp-product":
+    case "product-leader":
       return [
         totalRevenue,
         crossFunctionalTeams,
@@ -537,35 +546,26 @@ export function getAggregateStats(persona: string = "default"): string[] {
 export const personaHandshakes: PersonaMap = {
   designer: {
     headline: "PM. Builder. User Advocate.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I believe the best products are built in the field, not in Figma.",
-    body: "I've spent weeks shadowing users in restaurant kitchens, sports press boxes, and procurement offices to understand real friction—not assumed friction. That's how I **reduced decision time by 97%**, **improved NPS by 800%**, and shipped products people actually **love** using. Great UX starts with empathy, and empathy starts with showing up.",
+    greeting: "Hey there— I'm Jeff.",
+    intro: "I build products in the field, not in Figma.",
+    body: "I've shadowed users in restaurant kitchens, sports press boxes, and procurement offices—that's how I reduced decision time by 97% and improved NPS by 800%.",
     stats: ["97% Friction Reduction", "100+ User Interviews", "800% NPS Improvement"],
     cta: "Want to build something users will love? Let's talk.",
     focus: "Empathy & Craft",
   },
   founder: {
     headline: "PM. Revenue-Driver. Creator.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I build products that make money. Fast.",
-    body: "In the last two years: shipped products generating **$1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation that created **$700K** in value from a $40/month tool, and launched AI systems that became primary sales differentiators. I don't just ship features—I ship outcomes that move the business forward.",
+    greeting: "Hey there— I'm Jeff.",
+    intro: "I build products that make money—fast.",
+    body: "$1.3M+ revenue across 4 companies, $700K in value from a $40/month tool, AI systems that became primary sales differentiators. I ship outcomes, not features.",
     stats: ["$1.3M+ Revenue Generated", "1,400x Automation ROI", "Multiple 0→1 Launches"],
     cta: "Let's talk about what we could build together.",
     focus: "Speed, Revenue, & Capital Efficiency",
   },
-  pmm: {
-    headline: "PM. Storyteller. Creator.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I build products that sales teams love pitching.",
-    body: "I've shipped features that became the primary sales differentiator in 90%+ of deals, reduced decision time by **97%**, and made sure customers could explain the value in 30 seconds or less. Product-market fit isn't just about usage—it's about whether your team can sell it without a 40-slide deck. Let's build something they'll actually want to demo.",
-    stats: ["Primary Sales Differentiator", "97% Faster Decisions", "80% Adoption Rate"],
-    cta: "Let's build something your sales team will fight over.",
-    focus: "Messaging & Market Fit",
-  },
   investor: {
     headline: "PM. Strategist. Builder.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I build products that create defensible moats.",
+    greeting: "Hey there— I'm Jeff.",
+    intro: "I build products that create defensible moats.",
     body: "In the last two years: expanded TAM by **3x** through strategic B2B2C positioning, built automation with **1,400x ROI** that extended runway by 2-3 months, and shipped products that created 6-month competitive leads. I think in terms of unit economics, capital efficiency, and long-term defensibility—not just feature lists. Product strategy should directly map to business strategy.",
     stats: ["3x TAM Expansion", "1,400x Capital Efficiency", "6-Month Competitive Lead"],
     cta: "Let's talk about what's possible.",
@@ -573,35 +573,35 @@ export const personaHandshakes: PersonaMap = {
   },
   recruiter: {
     headline: "PM. Builder. Results-Driven.",
-    greeting: "Hi {firstName}—",
-    intro: "I'm Jeff, and I've spent 7+ years building AI products that generate revenue and drive adoption.",
-    body: "Most recently: shipped products generating **$1.3M+ in revenue** across ShortTok ($340K+), Artifact Labs ($680K), Productbot ($260K), and Meed ($26K), reduced procurement time by **97%** at Globality (80% adoption), and designed fraud prevention systems at Visa with **$15B** potential impact. I've worked across startups and Fortune 500s, and I'm looking for a company where product leadership shapes strategy—not just executes it.",
+    greeting: "Hi there— I'm Jeff.",
+    intro: "I've spent 7+ years building AI products across startups and Fortune 500s.",
+    body: "Most recently: $1.3M+ revenue across 4 companies, 97% friction reduction at Globality (80% adoption), and fraud prevention at Visa with $15B potential impact. I'm looking for a company where product leadership shapes strategy—not just executes it.",
     stats: ["$1.3M+ Revenue Generated", "80% Enterprise Adoption", "7+ Years Experience"],
     cta: "Let's talk about what I can bring to your team.",
     focus: "Qualifications & Cultural Fit",
   },
-  "vp-product": {
+  "product-leader": {
     headline: "PM. Builder. Strategic Leader.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I own strategic initiatives from ideation to revenue.",
-    body: "I've led products that drove **40% account expansion**, coordinated teams of **10+ people** across engineering, data science, and design, and shipped enterprise AI tools that became primary sales differentiators. I don't need hand-holding, and I don't create bottlenecks—I clear them. Looking for a team where product leadership has a real seat at the table and drives company strategy.",
+    greeting: "Hey there— I'm Jeff. ",
+    intro: "I own strategic initiatives from ideation to revenue.",
+    body: "I've led products that drove 40% account expansion, coordinated cross-functional teams of 10+ across engineering and data science, and shipped enterprise AI tools that became primary sales differentiators. I clear bottlenecks, I don't create them.",
     stats: ["40% Account Expansion", "Cross-Functional Leadership", "Enterprise AI Experience"],
     cta: "Let's talk about scaling impact together.",
     focus: "Strategic Ownership & Leadership",
   },
   engineer: {
     headline: "PM. Builder. Technical Partner.",
-    greeting: "Hey {firstName}—",
-    intro: "I'm Jeff, and I write PRDs you'll actually want to read.",
-    body: "I've built AI products, automated CI/CD pipelines, and shipped systems with **1,400x ROI** using modern dev tools (Cursor, GitHub Actions, the good stuff). I document edge cases, respect technical constraints, and never hand-wave feasibility. The best products happen when PMs and engineers actually trust each other—and that starts with speaking the same language.",
+    greeting: "Hey there— I'm Jeff. ",
+    intro: "I write PRDs you'll actually want to read.",
+    body: "I've built AI products, automated CI/CD pipelines with 1,400x ROI, and shipped features you'll be proud of. I document edge cases, respect constraints, and never hand-wave feasibility.",
     stats: ["1,400x Automation ROI", "AI/ML Product Development", "Technical Feasibility Partner"],
     cta: "Let's ship something great together.",
     focus: "Technical Partnership & Mutual Respect",
   },
   default: {
     headline: "PM. Builder. Creator.",
-    greeting: "Hey there—",
-    intro: "I'm Jeff, and I build AI products that generate revenue, reduce friction, and scale.",
+    greeting: "Hey there— I'm Jeff.",
+    intro: "I build AI products that generate revenue, reduce friction, and scale.",
     body: "In the last two years: I shipped products **generating $1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation with **1,400x ROI**, and reduced user friction by **97%**. I've worked across startups (ShortTok, Productbot AI, Artifact Labs, Meed Loyalty, Joystick) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions. \n\nCurrently building a social events app called Hoolie while searching for my next full-time opportunity.",
     stats: ["$1.3M+ Revenue", "1,400x ROI", "97% Friction Reduction"],
     cta: "Let's talk about what we could build together.",
@@ -622,7 +622,7 @@ export function getPersonaFromJobTitle(jobTitle: string): string {
     return "engineer";
   }
   if (title === "product leader") {
-    return "vp-product";
+    return "product-leader";
   }
   if (title === "designer") {
     return "designer";
@@ -641,9 +641,6 @@ export function getPersonaFromJobTitle(jobTitle: string): string {
   if (title.includes("founder") || title.includes("ceo") || title.includes("co-founder")) {
     return "founder";
   }
-  if (title.includes("pmm") || title.includes("product marketing") || title.includes("marketing")) {
-    return "pmm";
-  }
   if (title.includes("investor") || title.includes("advisor") || title.includes("board")) {
     return "investor";
   }
@@ -656,7 +653,7 @@ export function getPersonaFromJobTitle(jobTitle: string): string {
     title.includes("head of product") ||
     title.includes("product lead")
   ) {
-    return "vp-product";
+    return "product-leader";
   }
   if (
     title.includes("engineer") ||
@@ -705,30 +702,13 @@ export function getIndustryFromJobTitle(jobTitle: string): string {
 
 export function getPersonaHandshake(
   persona: string,
-  jobTitle: string = "",
-  fullName: string = ""
+  jobTitle: string = ""
 ): PersonaHandshake {
   const handshake = personaHandshakes[persona] || personaHandshakes.default;
 
-  // Extract first name from full name
-  const firstName = fullName ? fullName.split(" ")[0] : "";
-
-  // Replace {firstName} placeholder in greeting
-  let greeting = handshake.greeting;
-  if (firstName) {
-    greeting = greeting.replace(/{firstName}/g, firstName);
-  } else {
-    // Handle default cases when no name provided
-    if (greeting.includes("{firstName}")) {
-      greeting = greeting.replace(/Hey {firstName}—/g, "Hey there—");
-      greeting = greeting.replace(/Hi {firstName}—/g, "Hi there—");
-    }
-  }
-
-  // Use stats directly from personaHandshakes (they're already persona-specific)
+  // Return handshake directly - no name personalization needed
   return {
     ...handshake,
-    greeting,
     stats: handshake.stats,
   };
 }

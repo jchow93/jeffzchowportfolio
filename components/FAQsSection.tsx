@@ -11,39 +11,39 @@ interface FAQ {
 const beyondTheBullets: FAQ[] = [
   {
     question: "What do you do when you're not building products?",
-    answer: "I'm a DJ and music producer (my tracks have hit 750K+ streams). There's something about creating music that mirrors product work—both require understanding emotional arcs, building tension and release, and knowing when to strip things back to the essentials.\n\nI also love cooking, photography, boxing, and calisthenics. I played basketball at Cal Berkeley (practice squad for Women's Varsity), so I'm competitive by nature. That translates into how I approach product—I want to win, but I want to win as a team."
+    answer: "I'm a DJ and music producer (750K+ streams). I also love cooking, photography, boxing, and calisthenics. I played practice squad for Cal Berkeley Women's Varsity Basketball—learned to support team success without being the star, which is pretty much what being a PM is."
   },
   {
     question: "What's something you believe that most PMs don't?",
-    answer: "The best product work often costs $0.\n\nAt ShortTok, I created $700K+ in annual value using a $40/month tool (Cursor). At Productbot AI, I shipped beta 6 weeks early by implementing OKRs—just frameworks and discipline. I've seen too many PMs default to \"we need more budget\" when the real answer is \"we need more clarity.\"\n\nConstraints breed creativity. The best solutions come from asking \"How can we do this with what we have?\" not \"What do we need to buy?\""
+    answer: "The best product work often costs $0. At ShortTok, I created $700K+ in annual value using a $40/month tool. At Productbot AI, I shipped beta 6 weeks early by implementing OKRs—just frameworks and discipline. Constraints breed creativity."
   },
   {
     question: "What's your superpower as a PM?",
-    answer: "I build products users actually use—not products that launch and die. \n\nAt Productbot AI, we hit daily active usage with beta customers. At Meed Loyalty, 78% adoption (vs 20% target). At Globality, 80% adoption for Glo Insights. These weren't flukes—they came from obsessive user research. \n\nI've conducted 100+ user interviews across my career, and I don't just ask questions—I shadow people during their actual work. I spent weeks in restaurant kitchens, sports press boxes, and procurement offices watching real friction in real time. That's why my products reduce time by 90-97% consistently—I'm not guessing what the problem is. \n\nMy philosophy: spend 2 weeks in the field, then ship something in 8 weeks that people love. Most PMs spend 8 weeks building, then 2 weeks wondering why no one uses it. I do it backwards."
+    answer: "I build products users actually use—not products that launch and die. I've conducted 100+ user interviews and shadow people during their actual work (restaurant kitchens, sports press boxes, procurement offices). That's why my products reduce time by 90-97% consistently—I'm not guessing what the problem is."
   },
   {
     question: "What's the best product decision you've ever made?",
-    answer: "Walking away.\n\nAt Meed Loyalty, we launched a gamified rewards system (points, badges, leaderboards). Within 2 weeks, I realized it wasn't working—<5% engagement, no behavior change.\n\nInstead of doubling down, I killed it and pivoted to a partnership program that connected complementary businesses (restaurants + gyms). That drove 20% retention increase.\n\nThe lesson: The best product managers know when to stop building. Sometimes the right call is \"this isn't working\" and moving on fast. Ego is expensive."
+    answer: "Walking away. At Meed Loyalty, we launched a gamified rewards system that got <5% engagement. Instead of doubling down, I killed it and pivoted to a partnership program that drove 20% retention increase. The best product managers know when to stop building."
   },
   {
     question: "Why did you leave your last job?",
-    answer: "ShortTok deprioritized product strategy in favor of pure engineering velocity. The PM role was eliminated—it wasn't a performance issue, it was a strategic shift.\n\nI learned an important lesson: I need to work at companies where product leadership actively shapes direction, not just executes what founders decide. That's what I'm optimizing for now.\n\nIf you're a founder who sees PMs as \"order takers,\" we're probably not a fit. If you see PMs as strategic partners who push back and bring ideas to the table, let's talk."
+    answer: "ShortTok eliminated the PM role in favor of pure engineering velocity. Not a performance issue—a strategic shift. Now I'm looking for companies where PMs are strategic partners, not order takers."
   },
   {
     question: "What's your relationship with AI tools?",
-    answer: "I'm an AI power user—I built entire systems using Cursor, automated workflows with GitHub Actions, and shipped prototypes that saved weeks of engineering time.\n\nBut here's my hot take: AI tools are only as good as the person using them. I've seen too many PMs generate 50-page PRDs with ChatGPT that no one reads. The tool doesn't replace judgment—it amplifies your existing skillset.\n\nI use AI to move faster, not to avoid thinking. The prototypes I built in Cursor weren't just \"AI-generated code dumps\"—they were solutions to real problems I'd validated through user research. The AI was the implementation tool, not the strategy tool."
+    answer: "I'm an AI power user—I built entire systems using Cursor and automated workflows that saved weeks of engineering time. But AI tools are only as good as the person using them. I use AI to move faster, not to avoid thinking."
   },
   {
     question: "What are you building right now?",
-    answer: "I'm building Hoolie—a social events coordination app that eliminates the screenshot-to-group-chat coordination hell. You know the pattern: someone posts an event on Instagram, you screenshot it, text 5 friends, then it dies in the group chat.\n\nI'm leading product and building the frontend (React, Next.js, Tailwind) with a small team. I started the build on December 26, 2025, and we're launching our PoC with customers in January 2026.\n\n**Transparency:** This is nights and weekends. My primary focus is finding the right full-time role. If I join a company, Hoolie transitions to the team or shuts down—I'm not looking to split my attention. I mention it because it shows I'm a builder who stays sharp, not because I'm hedging my career bets."
+    answer: "I'm building Hoolie—a social events coordination app that eliminates the screenshot-to-group-chat coordination hell. This is nights and weekends; my primary focus is finding the right full-time role. If I join a company, Hoolie transitions to the team or shuts down."
   },
   {
     question: "What's something that would surprise people about you?",
-    answer: "I played practice squad for Cal Berkeley Women's Varsity Basketball.\n\nYes, really. I got a chance to be part of a D1 team, and am technically a NCAA student athlete. It taught me how to support a team's success without being the star, which is pretty much what being a PM is.\n\nAlso: I once built an RFID system that tracks liquid levels in liquor bottles. It was adapted from... adult diaper technology. Product work is weird sometimes."
+    answer: "I played practice squad for Cal Berkeley Women's Varsity Basketball—technically a NCAA student athlete. Also: I once built an RFID system that tracks liquid levels in liquor bottles, adapted from adult diaper technology. Product work is weird sometimes."
   },
   {
     question: "What's your 'North Star' as a PM?",
-    answer: "Ship products people actually use.\n\nNot \"ship features and hope.\" Not \"ship and iterate later.\" Ship products people want to use every day.\n\nI measure success by retention, not launches. At Productbot AI, we hit daily active usage and 8.5/10 NPS with beta customers. At Meed Loyalty, we achieved 78% adoption (vs 20% target). At Globality, we hit 80% adoption for Glo Insights.\n\nAdoption is the ultimate validation. If people don't use it, you didn't build the right thing—no matter how clean the code is or how impressive the tech stack.\n\nThat's why I spend so much time in user research. I'd rather spend 2 weeks talking to users than 2 months building the wrong thing."
+    answer: "Ship products people actually use. I measure success by retention, not launches. At Productbot AI, we hit daily active usage. At Meed Loyalty, 78% adoption (vs 20% target). At Globality, 80% adoption. If people don't use it, you didn't build the right thing."
   }
 ];
 
