@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Jeff Chow - Product Manager",
   description: "Building products that create measurable impact",
+  icons: {
+    icon: "/assets/logo.png",
+  },
 };
 
 export default function RootLayout({
