@@ -84,11 +84,20 @@ export default function MoreThanPMSection() {
               <div
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`group relative cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white transition-all duration-300 ease-in-out ${
+                className={`group relative cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white transition-all duration-300 ease-in-out touch-manipulation ${
                   isExpanded
                     ? "shadow-lg scale-[1.02] min-h-[400px]"
-                    : "h-[250px] shadow-sm hover:shadow-md hover:-translate-y-1"
+                    : "h-[250px] shadow-sm hover:shadow-md hover:-translate-y-1 active:scale-[0.98]"
                 }`}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleCardClick(card.id);
+                  }
+                }}
+                aria-expanded={isExpanded}
               >
                 {!isExpanded ? (
                   // Collapsed State

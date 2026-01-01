@@ -458,6 +458,13 @@ export function getFeaturedProjects(persona: string = "default"): Project[] {
 
 export function getFeaturedWork(industry: string = "default", persona: string = "default"): Project[] {
   const content = getPersonalizedContent(industry);
+  if (!content || !content.projects || !Array.isArray(content.projects)) {
+    // Fallback to default if content is invalid
+    const defaultContent = getPersonalizedContent("default");
+    const industryProjects = projects.filter((project) => defaultContent?.projects?.includes(project.id) || false);
+    const featuredWorkProjects = industryProjects.filter((project) => project.category === "featured-work" || !project.category);
+    return featuredWorkProjects.map((project) => getProjectForPersona(project, persona));
+  }
   const industryProjects = projects.filter((project) => content.projects.includes(project.id));
   const featuredWorkProjects = industryProjects.filter((project) => project.category === "featured-work" || !project.category);
   return featuredWorkProjects.map((project) => getProjectForPersona(project, persona));

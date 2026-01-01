@@ -1,3 +1,5 @@
+"use client";
+
 import { Code, Zap, Rocket, TrendingUp } from 'lucide-react';
 
 const skills = [
@@ -27,7 +29,9 @@ export default function AboutSection() {
   return (
     <div className="px-6 py-20 md:px-10 md:py-32 bg-[#F5F1E8]">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16 md:mb-20">
+        {/* Desktop: Two-column layout (text left, cards right), Mobile: Single column */}
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16 md:items-center mb-16 md:mb-20">
+          {/* Left Column - Text Content */}
           <div>
             <h2 className="mb-6 text-4xl font-bold md:text-5xl">About Me</h2>
             <div className="space-y-5 text-gray-600 leading-relaxed">
@@ -46,7 +50,8 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          {/* Right Column - Cards Grid (Desktop: 2x2, hidden on mobile) */}
+          <div className="hidden md:grid grid-cols-2 gap-6">
             {skills.map((skill) => {
               const Icon = skill.icon;
               return (
@@ -63,6 +68,25 @@ export default function AboutSection() {
               );
             })}
           </div>
+        </div>
+
+        {/* Mobile: 1 card per row (shown only on mobile) */}
+        <div className="grid grid-cols-1 gap-6 md:hidden">
+          {skills.map((skill) => {
+            const Icon = skill.icon;
+            return (
+              <div
+                key={skill.title}
+                className="bg-[#FAFAF8] p-6 rounded-[20px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 bg-[#8BA888]/10 rounded-full flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-[#8BA888]" />
+                </div>
+                <h4 className="mb-2 text-lg font-semibold text-gray-900">{skill.title}</h4>
+                <p className="text-sm text-gray-600 leading-relaxed">{skill.description}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

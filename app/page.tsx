@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F5F1E8]">
+    <main className="min-h-screen bg-[#F5F1E8] pt-24 md:pt-0">
       <ViewSelector currentView={currentView} onViewChange={handleViewChange} />
       <Navigation />
       <section id="home">

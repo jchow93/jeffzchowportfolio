@@ -20,11 +20,61 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       className="group relative cursor-pointer border-b border-gray-200 transition-all hover:bg-gray-50/30"
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      {/* Collapsed State: Image on left + 3 Tags + 1 Sentence */}
+      {/* Collapsed State: Desktop - Image left + Content right, Mobile - Image/Tags top + Description below */}
       {!isExpanded && (
         <div className="px-6 py-8 md:px-10 md:py-10">
-          <div className="flex gap-6">
-            {/* Image/Screenshot - Left side */}
+          {/* Mobile Layout: Image + Tags on top, Description full width below */}
+          <div className="flex flex-col md:hidden space-y-4">
+            {/* Top row: Image + Tags */}
+            <div className="flex gap-4 items-start">
+              {/* Image/Screenshot - Smaller for mobile */}
+              <div className="relative h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    <span className="text-2xl text-gray-400">{project.company.charAt(0)}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Tags - Smaller for mobile */}
+              {tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 items-start pt-1">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Description - Full width on mobile */}
+            <div className="space-y-3">
+              <p className="text-base leading-relaxed text-gray-700 max-w-none">
+                {project.description}
+              </p>
+
+              {/* Click hint */}
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <span>Click to expand case study</span>
+                <span className="text-lg">→</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout: Image on left + Content on right (original layout) */}
+          <div className="hidden md:flex gap-6">
+            {/* Image/Screenshot - Original size for desktop */}
             <div className="relative h-48 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
               {project.image ? (
                 <Image
@@ -42,7 +92,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Content - Right side */}
             <div className="flex-1 space-y-4">
-              {/* 3 Tags */}
+              {/* 3 Tags - Original size for desktop */}
               {tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {tags.map((tag, idx) => (
@@ -97,10 +147,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
 
             {/* Image and Tags side by side */}
-            <div className="flex gap-6">
-              {/* Image if available */}
+            <div className="flex gap-4 md:gap-6 items-start">
+              {/* Image if available - Smaller on mobile, original on desktop */}
               {project.image && (
-                <div className="relative h-48 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                <div className="relative h-32 w-32 md:h-48 md:w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -110,13 +160,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </div>
               )}
 
-              {/* Tags */}
+              {/* Tags - Smaller on mobile, original on desktop */}
               {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 items-start pt-2">
+                <div className="flex flex-wrap gap-2 items-start pt-1 md:pt-2">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700"
+                      className="inline-block rounded-full border border-gray-200 bg-white px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium text-gray-700"
                     >
                       {tag}
                     </span>

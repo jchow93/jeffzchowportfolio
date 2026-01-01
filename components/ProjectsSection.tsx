@@ -20,18 +20,35 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
   const [featuredWork, setFeaturedWork] = useState<Project[]>([]);
 
   useEffect(() => {
-    // Get persona from jobTitle
-    const persona = getPersonaFromJobTitle(personalizationData?.jobTitle || "");
+    // Get persona from jobTitle - default to "default" if not provided
+    const jobTitle = personalizationData?.jobTitle || "Generalist";
+    const persona = getPersonaFromJobTitle(jobTitle);
     
     // Featured Projects - Always show Hoolie and portfolio website
-    setFeaturedProjects(getFeaturedProjects(persona));
+    const projects = getFeaturedProjects(persona) || [];
+    logger.log("ProjectsSection: Featured projects:", projects?.map?.(p => p.id) || [], "count:", projects?.length || 0);
+    if (projects && projects.length > 0) {
+      setFeaturedProjects(projects);
+    } else {
+      // Fallback to default persona if no projects found
+      logger.log("ProjectsSection: No projects found for persona, trying default");
+      const defaultProjects = getFeaturedProjects("default") || [];
+      setFeaturedProjects(defaultProjects);
+    }
 
     // Featured Work - Show industry-relevant work projects
     const industry = personalizationData?.industry || "default";
-    logger.log("ProjectsSection: Setting featured work for industry:", industry, "persona:", persona, "from personalizationData:", personalizationData);
-    const work = getFeaturedWork(industry, persona);
-    logger.log("ProjectsSection: Featured work projects:", work.map(p => p.id));
-    setFeaturedWork(work);
+    logger.log("ProjectsSection: Setting featured work for industry:", industry, "persona:", persona, "jobTitle:", jobTitle, "from personalizationData:", personalizationData);
+    const work = getFeaturedWork(industry, persona) || [];
+    logger.log("ProjectsSection: Featured work projects:", work?.map?.(p => p.id) || [], "count:", work?.length || 0);
+    if (work && work.length > 0) {
+      setFeaturedWork(work);
+    } else {
+      // Fallback to default industry if no work found
+      logger.log("ProjectsSection: No work found for industry, trying default");
+      const defaultWork = getFeaturedWork("default", persona) || [];
+      setFeaturedWork(defaultWork);
+    }
 
     // Listen for personalization updates
     const handleUpdate = (event: CustomEvent<PersonalizationData>) => {
@@ -44,17 +61,20 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
         const industry = data.industry || "default";
         const persona = getPersonaFromJobTitle(data.jobTitle || "");
         logger.log("ProjectsSection: Personalization update event - industry:", industry, "persona:", persona);
-        const work = getFeaturedWork(industry, persona);
-        logger.log("ProjectsSection: Updated featured work projects:", work.map(p => p.id));
+        const work = getFeaturedWork(industry, persona) || [];
+        logger.log("ProjectsSection: Updated featured work projects:", work?.map?.(p => p.id) || []);
         setFeaturedWork(work);
-        setFeaturedProjects(getFeaturedProjects(persona));
+        const updatedProjects = getFeaturedProjects(persona) || [];
+        setFeaturedProjects(updatedProjects);
       } catch (error) {
         logger.error("Error handling personalization update:", error);
       }
     };
 
-    window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
-    return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
+    if (typeof window !== "undefined") {
+      window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
+      return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
+    }
   }, [personalizationData]);
 
   return (

@@ -53,8 +53,10 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
       }
     };
 
-    window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
-    return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
+    if (typeof window !== "undefined") {
+      window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
+      return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
+    }
   }, [personalizationData]);
 
   const statusStyles = getStatusStyles(currentStatus.type);
@@ -64,7 +66,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
   return (
     <section className="flex min-h-screen items-center justify-center px-6 md:px-10">
       <div className="mx-auto w-full max-w-5xl">
-        {/* Top Section: Text Content and Photo/Status */}
+        {/* Desktop: Two-column layout, Mobile: Single column */}
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:gap-12 md:items-start">
           {/* Left Column - Text Content */}
           <div className="flex flex-col">
@@ -77,6 +79,37 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             <p className="mb-2 text-xl font-medium text-gray-800 md:text-2xl">
               {formatTextWithBold(handshake.greeting)}
             </p>
+
+            {/* Mobile: Image and Status after greeting */}
+            <div className="flex flex-col items-start gap-3 mb-4 w-full md:hidden">
+              {/* Profile Photo - Full width on mobile */}
+              <div className="relative h-[280px] w-full overflow-hidden rounded-[5px] border border-gray-200 bg-gray-100">
+                {/* Placeholder - Replace with your photo */}
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8BA888] to-[#6B8E6B] text-white">
+                  <span className="text-6xl font-bold">J</span>
+                </div>
+                {/* Uncomment and update path when you have your photo */}
+                {/* <Image
+                  src="/jeff-photo.jpg"
+                  alt="Jeff Chow"
+                  fill
+                  className="object-cover"
+                  priority
+                /> */}
+              </div>
+
+              {/* Status Pill - Full width on mobile */}
+              <div className="w-full">
+                <div
+                  className={`flex items-center justify-center gap-2 rounded-[5px] border px-3 py-2 ${statusStyles.bg} ${statusStyles.border} ${statusStyles.text}`}
+                >
+                  <StatusIcon className="h-3.5 w-3.5 flex-shrink-0 text-green-600" />
+                  <span className="text-xs font-medium leading-tight text-center break-words line-clamp-2">
+                    {statusText}
+                  </span>
+                </div>
+              </div>
+            </div>
 
             {/* Intro - One punchy sentence */}
             <p className="mb-4 text-xl leading-relaxed text-gray-700 md:mb-6 md:text-2xl">
@@ -121,13 +154,13 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Column - Photo and Status */}
-          <div className="flex flex-col items-start gap-3">
-            {/* Profile Photo - Vertical Rectangle (1/3 smaller than 4x) */}
-            <div className="relative h-[341px] w-[213px] overflow-hidden rounded-[5px] border border-gray-200 bg-gray-100 md:h-[427px] md:w-[299px]">
+          {/* Right Column - Photo and Status (Desktop only) */}
+          <div className="hidden md:flex flex-col items-start gap-3">
+            {/* Profile Photo - Vertical Rectangle */}
+            <div className="relative h-[427px] w-[299px] overflow-hidden rounded-[5px] border border-gray-200 bg-gray-100">
               {/* Placeholder - Replace with your photo */}
               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8BA888] to-[#6B8E6B] text-white">
-                <span className="text-6xl font-bold md:text-7xl">J</span>
+                <span className="text-7xl font-bold">J</span>
               </div>
               {/* Uncomment and update path when you have your photo */}
               {/* <Image
@@ -140,7 +173,7 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             </div>
 
             {/* Status Pill - Same width as photo */}
-            <div className="w-[213px] md:w-[299px]">
+            <div className="w-[299px]">
               <div
                 className={`flex items-center justify-center gap-2 rounded-[5px] border px-3 py-2 ${statusStyles.bg} ${statusStyles.border} ${statusStyles.text}`}
               >

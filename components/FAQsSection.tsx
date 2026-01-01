@@ -15,11 +15,11 @@ const beyondTheBullets: FAQ[] = [
   },
   {
     question: "What's something you believe that most PMs don't?",
-    answer: "The best product work often costs $0. At ShortTok, I created $700K+ in annual value using a $40/month tool. At Productbot AI, I shipped beta 6 weeks early by implementing OKRs—just frameworks and discipline. Constraints breed creativity."
+    answer: "The best PMs are resourceful, not well-resourced. \n\nAt ShortTok, I created $700K+ in annual value using a $40/month tool. At Productbot AI, I shipped beta 6 weeks early by implementing OKRs—just frameworks and discipline. I've seen too many PMs default to 'we need more budget' when the real answer is 'we need more clarity.'"
   },
   {
     question: "What's your superpower as a PM?",
-    answer: "I build products users actually use—not products that launch and die. I've conducted 100+ user interviews and shadow people during their actual work (restaurant kitchens, sports press boxes, procurement offices). That's why my products reduce time by 90-97% consistently—I'm not guessing what the problem is."
+    answer: "I get things done by building—I don't wait for engineering bandwidth. At ShortTok, I built automation that created $700K+ in value. At Hoolie, I shipped the frontend in 5 days to unblock the team. I eliminate bottlenecks by coding through them."
   },
   {
     question: "What's the best product decision you've ever made?",
