@@ -26,10 +26,6 @@ const beyondTheBullets: FAQ[] = [
     answer: "Walking away. At Meed Loyalty, we launched a gamified rewards system that got <5% engagement. Instead of doubling down, I killed it and pivoted to a partnership program that drove 20% retention increase. The best product managers know when to stop building."
   },
   {
-    question: "Why did you leave your last job?",
-    answer: "ShortTok eliminated the PM role in favor of pure engineering velocity. Not a performance issue—a strategic shift. Now I'm looking for companies where PMs are strategic partners, not order takers."
-  },
-  {
     question: "What's your relationship with AI tools?",
     answer: "I'm an AI power user—I built entire systems using Cursor and automated workflows that saved weeks of engineering time. But AI tools are only as good as the person using them. I use AI to move faster, not to avoid thinking."
   },
