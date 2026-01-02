@@ -44,9 +44,6 @@ export default function AboutSection() {
               <p>
                 I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate Fortune 500 politics and ship startup products—basically, I can handle both the bureaucracy and the chaos.
               </p>
-              <p className="text-gray-500 italic border-l-4 border-[#8BA888] pl-4">
-                Currently building Hoolie (a social events app) on nights and weekends because I can't help myself—I see a problem and I want to solve it. Also, it keeps me sharp while I search for my next full-time adventure.
-              </p>
             </div>
           </div>
 

@@ -23,7 +23,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
     const jobTitle = personalizationData?.jobTitle || "Generalist";
     const persona = getPersonaFromJobTitle(jobTitle);
     
-    // Featured Projects - Always show Hoolie and portfolio website
+    // Featured Projects - Personal projects
     const projects = getFeaturedProjects(persona) || [];
     logger.log("ProjectsSection: Featured projects:", projects?.map?.(p => p.id) || [], "count:", projects?.length || 0);
     if (projects && projects.length > 0) {

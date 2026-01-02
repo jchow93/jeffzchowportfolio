@@ -15,7 +15,7 @@ const beyondTheBullets: FAQ[] = [
   },
   {
     question: "What's your superpower as a PM?",
-    answer: "I get things done by building—I don't wait for engineering bandwidth. At ShortTok, I built automation that created $700K+ in value. At Hoolie, I shipped the frontend in 5 days to unblock the team. I eliminate bottlenecks by coding through them."
+    answer: "I get things done by building—I don't wait for engineering bandwidth. At ShortTok, I built automation that created $700K+ in value. I eliminate bottlenecks by coding through them."
   },
   {
     question: "What's the best product decision you've ever made?",

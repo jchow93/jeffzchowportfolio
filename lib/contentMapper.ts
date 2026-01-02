@@ -48,21 +48,22 @@ export interface PersonaMap {
 
 export const projects: Project[] = [
   // Featured Projects - Personal projects
-  {
-    id: "hoolie",
-    title: "Hoolie: Eliminating 'Coordination Friction' in Social Discovery",
-    company: "Hoolie",
-    year: "2025-2026 (In Progress / PoC Phase)",
-    description: "Leading product for a social events app that eliminates coordination friction. Shipped a functional frontend in 5 days using Cursor to unblock the team and maintain velocity.",
-    problem: "Event discovery is fragmented and 'leaky.' Users screenshot events on social media, but coordination dies in the group chat. There's no single source of truth for event intent, leading to a 70% drop-off between 'that looks cool' and 'I'm going.",
-    approach: "Leading a team of 4 (backend engineer, designer, PM, and me). I own product strategy, wrote the Product Requirement Documents, and defined 'Time-to-Coordination' as our primary success metric. I built the frontend experience myself in React/Next.js using Cursor and shipped it in 5 days to keep the team moving.",
-    impact: "• Built functional frontend in 5 days using Cursor to eliminate bottleneck and maintain team velocity. \n• Led cross-functional team of 4 to align on core loop (Save → Interest → Status). \n• Launching with real customers in January 2026 to validate product-market fit hypothesis",
-    fullStory: "Hoolie is a living lab for my product and technical skills. I'm solving a personal pain point: the frustration of losing event details in a sea of screenshots and dead-end group chats. \n\nI own the full lifecycle: from writing the PRD and designing the user experience, to building the frontend with React, Next.js, and Tailwind. By leveraging AI-assisted development (Cursor), I bypassed the 'validation paralysis' that kills most startups, shipping a complete UI quickly after starting the build on December 26, 2025. \n\nSuccess isn't launching. It's learning. This project shows I can move from problem to working solution at a speed most PMs can't match.",
-    metrics: ["Started: Dec 26, 2025", "Frontend shipped: 5 days", "Launch: Jan 2026"],
-    industry: ["consumer", "startups", "social media"],
-    category: "featured-project",
-    image: "/assets/hoolie.png",
-  },
+  // Hoolie project in stealth mode - commented out
+  // {
+  //   id: "hoolie",
+  //   title: "Hoolie: Eliminating 'Coordination Friction' in Social Discovery",
+  //   company: "Hoolie",
+  //   year: "2025-2026 (In Progress / PoC Phase)",
+  //   description: "Leading product for a social events app that eliminates coordination friction. Shipped a functional frontend in 5 days using Cursor to unblock the team and maintain velocity.",
+  //   problem: "Event discovery is fragmented and 'leaky.' Users screenshot events on social media, but coordination dies in the group chat. There's no single source of truth for event intent, leading to a 70% drop-off between 'that looks cool' and 'I'm going.",
+  //   approach: "Leading a team of 4 (backend engineer, designer, PM, and me). I own product strategy, wrote the Product Requirement Documents, and defined 'Time-to-Coordination' as our primary success metric. I built the frontend experience myself in React/Next.js using Cursor and shipped it in 5 days to keep the team moving.",
+  //   impact: "• Built functional frontend in 5 days using Cursor to eliminate bottleneck and maintain team velocity. \n• Led cross-functional team of 4 to align on core loop (Save → Interest → Status). \n• Launching with real customers in January 2026 to validate product-market fit hypothesis",
+  //   fullStory: "Hoolie is a living lab for my product and technical skills. I'm solving a personal pain point: the frustration of losing event details in a sea of screenshots and dead-end group chats. \n\nI own the full lifecycle: from writing the PRD and designing the user experience, to building the frontend with React, Next.js, and Tailwind. By leveraging AI-assisted development (Cursor), I bypassed the 'validation paralysis' that kills most startups, shipping a complete UI quickly after starting the build on December 26, 2025. \n\nSuccess isn't launching. It's learning. This project shows I can move from problem to working solution at a speed most PMs can't match.",
+  //   metrics: ["Started: Dec 26, 2025", "Frontend shipped: 5 days", "Launch: Jan 2026"],
+  //   industry: ["consumer", "startups", "social media"],
+  //   category: "featured-project",
+  //   image: "/assets/hoolie.png",
+  // },
   {
     id: "portfolio-website",
     title: "The Dynamic Portfolio: A Study in Conversion UX",
@@ -572,7 +573,7 @@ export const personaHandshakes: PersonaMap = {
     headline: "PM. Builder. Creator.",
     greeting: "Hey there! I'm Jeff.",
     intro: "I build AI products that generate revenue, reduce friction, and scale.",
-    body: "In the last two years: I shipped products **generating $1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation with **1,400x ROI**, and reduced user friction by **97%**. I've worked across startups (ShortTok, Productbot AI, Artifact Labs, Meed Loyalty, Joystick) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions. \n\nCurrently building a social events app called Hoolie while searching for my next full-time opportunity.",
+    body: "In the last two years: I shipped products **generating $1.3M+ in revenue** across ShortTok, Artifact Labs, Productbot, and Meed Loyalty, built automation with **1,400x ROI**, and reduced user friction by **97%**. I've worked across startups (ShortTok, Productbot AI, Artifact Labs, Meed Loyalty, Joystick) and Fortune 500s (Visa, Globality), turning complex problems into simple solutions.",
     cta: "Let's talk about what we could build together.",
     focus: "Broad Appeal & Proven Impact",
   },
