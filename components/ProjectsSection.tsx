@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getFeaturedProjects, getFeaturedWork, Project, getPersonaFromJobTitle } from "@/lib/contentMapper";
+import { useEffect, useState, useCallback } from "react";
+import { getFeaturedProjects, getFeaturedWork, getAllFeaturedWork, Project, getPersonaFromJobTitle } from "@/lib/contentMapper";
 import { logger } from "@/lib/logger";
 import ProjectCard from "./ProjectCard";
 
@@ -17,11 +17,20 @@ interface ProjectsSectionProps {
 export default function ProjectsSection({ personalizationData }: ProjectsSectionProps) {
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
   const [featuredWork, setFeaturedWork] = useState<Project[]>([]);
+  const [allFeaturedWork, setAllFeaturedWork] = useState<Project[]>([]);
+  const [showAllWork, setShowAllWork] = useState(false);
+  const [currentPersona, setCurrentPersona] = useState<string>("default");
 
-  useEffect(() => {
-    // Get persona from jobTitle - default to "default" if not provided
-    const jobTitle = personalizationData?.jobTitle || "Generalist";
+  // Function to update projects based on persona
+  const updateProjectsForPersona = useCallback((jobTitle: string) => {
     const persona = getPersonaFromJobTitle(jobTitle);
+    logger.log("ProjectsSection: Updating projects for persona:", persona, "from jobTitle:", jobTitle);
+    
+    // Track current persona
+    setCurrentPersona(persona);
+    
+    // Reset showAllWork when persona changes
+    setShowAllWork(false);
     
     // Featured Projects - Personal projects
     const projects = getFeaturedProjects(persona) || [];
@@ -35,12 +44,26 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
       setFeaturedProjects(defaultProjects);
     }
 
-    // Featured Work - Show all featured work projects, personalized by persona
+    // Featured Work - Show filtered projects for persona
     const work = getFeaturedWork(persona) || [];
     logger.log("ProjectsSection: Featured work projects:", work?.map?.(p => p.id) || [], "count:", work?.length || 0);
     setFeaturedWork(work);
+    
+    // Store all featured work for "View All" functionality (only needed for default persona)
+    if (persona === "default") {
+      const allWork = getAllFeaturedWork(persona) || [];
+      setAllFeaturedWork(allWork);
+    } else {
+      setAllFeaturedWork([]);
+    }
+  }, []);
 
-    // Listen for personalization updates
+  useEffect(() => {
+    // Initial load - get persona from jobTitle - default to "default" if not provided
+    const jobTitle = personalizationData?.jobTitle || "Generalist";
+    updateProjectsForPersona(jobTitle);
+
+    // Listen for personalization updates from view selector
     const handleUpdate = (event: CustomEvent<PersonalizationData>) => {
       try {
         const data = event.detail;
@@ -48,13 +71,8 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
           logger.error("Personalization event missing data");
           return;
         }
-        const persona = getPersonaFromJobTitle(data.jobTitle || "");
-        logger.log("ProjectsSection: Personalization update event - persona:", persona);
-        const work = getFeaturedWork(persona) || [];
-        logger.log("ProjectsSection: Updated featured work projects:", work?.map?.(p => p.id) || []);
-        setFeaturedWork(work);
-        const updatedProjects = getFeaturedProjects(persona) || [];
-        setFeaturedProjects(updatedProjects);
+        logger.log("ProjectsSection: Personalization update event received:", data);
+        updateProjectsForPersona(data.jobTitle || "Generalist");
       } catch (error) {
         logger.error("Error handling personalization update:", error);
       }
@@ -64,7 +82,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
       window.addEventListener("personalizationUpdated", handleUpdate as EventListener);
       return () => window.removeEventListener("personalizationUpdated", handleUpdate as EventListener);
     }
-  }, [personalizationData]);
+  }, [personalizationData, updateProjectsForPersona]);
 
   return (
     <section className="px-6 py-20 md:px-10">
@@ -81,9 +99,33 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
 
           <div className="mx-auto max-w-5xl">
             {featuredWork.length > 0 ? (
-              featuredWork.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
-              ))
+              <>
+                {(showAllWork && allFeaturedWork.length > 0 ? allFeaturedWork : featuredWork).map((project, index) => (
+                  <ProjectCard key={project.id} project={project} index={index} />
+                ))}
+                {/* Show "View All Work" button only for default persona when there are more projects */}
+                {currentPersona === "default" && !showAllWork && allFeaturedWork.length > featuredWork.length && (
+                  <div className="mt-12 text-center">
+                    <button
+                      onClick={() => setShowAllWork(true)}
+                      className="px-8 py-4 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200"
+                    >
+                      View All Work
+                    </button>
+                  </div>
+                )}
+                {/* Show "Show Less" button when all projects are shown (only for default persona) */}
+                {currentPersona === "default" && showAllWork && allFeaturedWork.length > featuredWork.length && (
+                  <div className="mt-12 text-center">
+                    <button
+                      onClick={() => setShowAllWork(false)}
+                      className="px-8 py-4 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200"
+                    >
+                      Show Less
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <p className="py-20 text-center text-gray-500">No projects to display.</p>
             )}

@@ -430,13 +430,94 @@ export const projects: Project[] = [
 ];
 
 
+// Map of which project IDs should be shown for each persona
+// If a persona is not listed, it will show all projects (default behavior)
+// Based on portfolio-structure.md persona priorities
+const PERSONA_PROJECT_MAP: Record<string, string[]> = {
+  default: [
+    "shorttok-sports",
+    "globality-insights",
+    "productbot-dashboard",
+    "visa-fraud",
+    "meed-receipt-scanning",
+  ],
+  designer: [
+    "globality-insights",
+    "shorttok-sports",
+    "visa-fraud",
+  ],
+  founder: [
+    "shorttok-sports",
+    "shorttok-productivity",
+    "shorttok-qa",
+    "productbot-okrs",
+    "productbot-dashboard",
+  ],
+  investor: [
+    "shorttok-sports",
+    "shorttok-productivity",
+    "globality-insights",
+  ],
+  recruiter: [
+    "shorttok-sports",
+    "globality-insights",
+    "visa-fraud",
+    "shorttok-productivity",
+    "shorttok-qa",
+    "productbot-dashboard",
+  ],
+  "product-leader": [
+    "globality-insights",
+    "shorttok-sports",
+    "shorttok-productivity",
+    "shorttok-qa",
+    "visa-fraud",
+    "productbot-dashboard",
+  ],
+  engineer: [
+    "shorttok-productivity",
+    "visa-developer",
+    "shorttok-qa",
+  ],
+};
+
+/**
+ * Check if a project should be shown for a given persona
+ */
+function shouldShowProjectForPersona(projectId: string, persona: string): boolean {
+  // If persona has a specific mapping, only show those projects
+  const personaProjects = PERSONA_PROJECT_MAP[persona];
+  if (personaProjects) {
+    return personaProjects.includes(projectId);
+  }
+
+  // If persona not in map, show all (fallback)
+  return true;
+}
+
+/**
+ * Get all featured work projects (for "View All" functionality)
+ */
+export function getAllFeaturedWork(persona: string = "default"): Project[] {
+  const featuredWorkProjects = projects.filter((project) => project.category === "featured-work" || !project.category);
+  return featuredWorkProjects.map((project) => getProjectForPersona(project, persona));
+}
+
 export function getFeaturedProjects(persona: string = "default"): Project[] {
   const featuredProjects = projects.filter((project) => project.category === "featured-project");
   return featuredProjects.map((project) => getProjectForPersona(project, persona));
 }
 
 export function getFeaturedWork(persona: string = "default"): Project[] {
-  const featuredWorkProjects = projects.filter((project) => project.category === "featured-work" || !project.category);
+  const featuredWorkProjects = projects.filter((project) => {
+    // First filter by category
+    const isFeaturedWork = project.category === "featured-work" || !project.category;
+    if (!isFeaturedWork) return false;
+    
+    // Then filter by persona
+    return shouldShowProjectForPersona(project.id, persona);
+  });
+  
   return featuredWorkProjects.map((project) => getProjectForPersona(project, persona));
 }
 
@@ -599,6 +680,9 @@ export function getPersonaFromJobTitle(jobTitle: string): string {
   }
   if (title === "founder") {
     return "founder";
+  }
+  if (title === "investor") {
+    return "investor";
   }
   if (title === "generalist" || title === "other") {
     return "default";
