@@ -148,9 +148,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Image and Tags side by side */}
             <div className="flex gap-4 md:gap-6 items-start">
-              {/* Image if available - Smaller on mobile, original on desktop */}
+              {/* Image if available - Mobile only (desktop image is inside Team & Scope) */}
               {project.image && (
-                <div className="relative h-32 w-32 md:h-48 md:w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                <div className="relative h-32 w-32 md:hidden flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -160,19 +160,70 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </div>
               )}
 
-              {/* Tags - Smaller on mobile, original on desktop */}
-              {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 items-start pt-1 md:pt-2">
-                  {tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block rounded-full border border-gray-200 bg-white px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium text-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Right side: Tags and Team & Scope in a column (desktop) */}
+              <div className="flex-1 flex flex-col">
+                {/* Tags - Smaller on mobile, original on desktop */}
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 items-start pt-1 md:pt-2">
+                    {tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-block rounded-full border border-gray-200 bg-white px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium text-gray-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Team & Scope - Desktop only: appears under tags on the right side, with image inside */}
+                {(project.teamSize || project.budget || project.stakeholders) && (
+                  <div className="hidden md:block mt-4">
+                    <div className="bg-gray-50 rounded-lg p-4 md:p-6 border border-gray-200">
+                      <div className="flex gap-4 md:gap-6 items-start">
+                        {/* Image inside Team & Scope container - Desktop only */}
+                        {project.image && (
+                          <div className="relative h-32 w-32 md:h-48 md:w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
+                        
+                        {/* Text content */}
+                        <div className="flex-1">
+                          <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                            Team & Scope
+                          </h4>
+                          <div className="space-y-3">
+                            {project.teamSize && (
+                              <div>
+                                <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Team Size:</span>
+                                <p className="text-base text-gray-700 mt-1">{project.teamSize}</p>
+                              </div>
+                            )}
+                            {project.budget && (
+                              <div>
+                                <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Budget/Scope:</span>
+                                <p className="text-base text-gray-700 mt-1">{project.budget}</p>
+                              </div>
+                            )}
+                            {project.stakeholders && project.stakeholders.length > 0 && (
+                              <div>
+                                <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Key Stakeholders:</span>
+                                <p className="text-base text-gray-700 mt-1">{project.stakeholders.join(", ")}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* External Link if available */}
@@ -192,6 +243,35 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Full Case Study Content */}
             <div className="space-y-6 border-t border-gray-200 pt-6">
+              {/* Team Size and Scope Information - Mobile only */}
+              {(project.teamSize || project.budget || project.stakeholders) && (
+                <div className="md:hidden bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    Team & Scope
+                  </h4>
+                  <div className="space-y-3">
+                    {project.teamSize && (
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Team Size:</span>
+                        <p className="text-base text-gray-700 mt-1">{project.teamSize}</p>
+                      </div>
+                    )}
+                    {project.budget && (
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Budget/Scope:</span>
+                        <p className="text-base text-gray-700 mt-1">{project.budget}</p>
+                      </div>
+                    )}
+                    {project.stakeholders && project.stakeholders.length > 0 && (
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Key Stakeholders:</span>
+                        <p className="text-base text-gray-700 mt-1">{project.stakeholders.join(", ")}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {project.problem && (
                 <div>
                   <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">

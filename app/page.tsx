@@ -9,12 +9,10 @@ import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import FAQsSection from "@/components/FAQsSection";
-import { getIndustryFromJobTitle } from "@/lib";
 
 export interface PersonalizationData {
   name: string;
   jobTitle: string;
-  industry: string;
 }
 
 // Map view names to job titles
@@ -36,19 +34,16 @@ export default function Home() {
     return {
       name: "",
       jobTitle: "Generalist",
-      industry: "default",
     };
   });
 
   const handleViewChange = (view: string) => {
     setCurrentView(view);
     const jobTitle = VIEW_TO_JOB_TITLE[view] || "Generalist";
-    const industry = getIndustryFromJobTitle(jobTitle);
     
     const newData: PersonalizationData = {
       name: "",
       jobTitle,
-      industry,
     };
     
     setPersonalizationData(newData);
@@ -66,13 +61,13 @@ export default function Home() {
       <section id="home">
         <HeroSection personalizationData={personalizationData} />
       </section>
-      <MoreThanPMSection />
-      <section>
-        <ProjectsSection personalizationData={personalizationData} />
-      </section>
       <section id="about">
         <AboutSection />
       </section>
+      <section>
+        <ProjectsSection personalizationData={personalizationData} />
+      </section>
+      <MoreThanPMSection />
       <FAQsSection />
       <ContactSection />
     </main>

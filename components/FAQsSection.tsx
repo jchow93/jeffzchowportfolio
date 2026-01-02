@@ -10,10 +10,6 @@ interface FAQ {
 
 const beyondTheBullets: FAQ[] = [
   {
-    question: "What do you do when you're not building products?",
-    answer: "I'm a DJ and music producer (750K+ streams). I also love cooking, photography, boxing, and calisthenics. I played practice squad for Cal Berkeley Women's Varsity Basketball—learned to support team success without being the star, which is pretty much what being a PM is."
-  },
-  {
     question: "What's something you believe that most PMs don't?",
     answer: "The best PMs are resourceful, not well-resourced. \n\nAt ShortTok, I created $700K+ in annual value using a $40/month tool. At Productbot AI, I shipped beta 6 weeks early by implementing OKRs—just frameworks and discipline. I've seen too many PMs default to 'we need more budget' when the real answer is 'we need more clarity.'"
   },
@@ -25,22 +21,6 @@ const beyondTheBullets: FAQ[] = [
     question: "What's the best product decision you've ever made?",
     answer: "Walking away. At Meed Loyalty, we launched a gamified rewards system that got <5% engagement. Instead of doubling down, I killed it and pivoted to a partnership program that drove 20% retention increase. The best product managers know when to stop building."
   },
-  {
-    question: "What's your relationship with AI tools?",
-    answer: "I'm an AI power user—I built entire systems using Cursor and automated workflows that saved weeks of engineering time. But AI tools are only as good as the person using them. I use AI to move faster, not to avoid thinking."
-  },
-  {
-    question: "What are you building right now?",
-    answer: "I'm building Hoolie—a social events coordination app that eliminates the screenshot-to-group-chat coordination hell. This is nights and weekends; my primary focus is finding the right full-time role. If I join a company, Hoolie transitions to the team or shuts down."
-  },
-  {
-    question: "What's something that would surprise people about you?",
-    answer: "I played practice squad for Cal Berkeley Women's Varsity Basketball—technically a NCAA student athlete. Also: I once built an RFID system that tracks liquid levels in liquor bottles, adapted from adult diaper technology. Product work is weird sometimes."
-  },
-  {
-    question: "What's your 'North Star' as a PM?",
-    answer: "Ship products people actually use. I measure success by retention, not launches. At Productbot AI, we hit daily active usage. At Meed Loyalty, 78% adoption (vs 20% target). At Globality, 80% adoption. If people don't use it, you didn't build the right thing."
-  }
 ];
 
 export default function FAQsSection() {

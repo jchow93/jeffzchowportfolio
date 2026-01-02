@@ -20,7 +20,7 @@ const skills = [
   },
   {
     icon: TrendingUp,
-    title: 'Fortune 500 + Startup DNA',
+    title: 'Startup Speed, Enterprise Scale',
     description: 'I learned patience and stakeholder management at Visa, then learned to ship fast at startups. Now I bring both: I can navigate corporate politics AND move at startup speed when it matters.'
   }
 ];
@@ -39,7 +39,7 @@ export default function AboutSection() {
                 Hi! You're probably here because you need a PM who can actually ship things, not just talk about shipping things. I get it—there's a difference.
               </p>
               <p>
-                You know that moment when you're in a meeting and someone says "we need to validate this idea" and everyone looks around waiting for someone else to build it? That's when I pull out Cursor and start coding. Because sometimes the fastest way to know if something works is to just... build it.
+              You know that moment in meetings when someone says 'we need to validate this idea' and everyone looks around? That's when I pull out Cursor and start coding.
               </p>
               <p>
                 I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate Fortune 500 politics and ship startup products—basically, I can handle both the bureaucracy and the chaos.

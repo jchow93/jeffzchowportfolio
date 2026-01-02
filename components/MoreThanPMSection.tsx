@@ -113,12 +113,34 @@ export default function MoreThanPMSection() {
                       {/* Image if available */}
                       {card.image && (
                         <div className="relative h-48 w-full overflow-hidden rounded-lg bg-gray-100">
-                          <Image
-                            src={card.image}
-                            alt={card.expandedTitle}
-                            fill
-                            className="object-cover"
-                          />
+                          {card.id === "photography" ? (
+                            // Mobile-only top crop for photography image
+                            <>
+                              <div className="hidden md:block relative h-full w-full">
+                                <Image
+                                  src={card.image}
+                                  alt={card.expandedTitle}
+                                  fill
+                                  className="object-cover object-top"
+                                />
+                              </div>
+                              <div className="md:hidden absolute top-[-60px] left-0 right-0 h-[calc(100%+60px)]">
+                                <Image
+                                  src={card.image}
+                                  alt={card.expandedTitle}
+                                  fill
+                                  className="object-cover object-top"
+                                />
+                              </div>
+                            </>
+                          ) : (
+                            <Image
+                              src={card.image}
+                              alt={card.expandedTitle}
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
                       )}
 

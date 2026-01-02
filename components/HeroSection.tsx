@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import {
-  getPersonalizedContent,
   getPersonaFromJobTitle,
   getPersonaHandshake,
 } from "@/lib/contentMapper";
@@ -14,7 +13,6 @@ import Image from "next/image";
 interface PersonalizationData {
   name: string;
   jobTitle: string;
-  industry: string;
 }
 
 interface HeroSectionProps {
@@ -88,14 +86,15 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8BA888] to-[#6B8E6B] text-white">
                   <span className="text-6xl font-bold">J</span>
                 </div>
-                {/* Uncomment and update path when you have your photo */}
-                {/* <Image
-                  src="/jeff-photo.jpg"
-                  alt="Jeff Chow"
-                  fill
-                  className="object-cover"
-                  priority
-                /> */}
+                <div className="absolute top-[-60px] left-0 right-0 h-[calc(100%+60px)]">
+                  {<Image
+                    src="/assets/profile.JPG"
+                    alt="Jeff Chow"
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />}
+                </div>
               </div>
 
               {/* Status Pill - Full width on mobile */}
@@ -120,22 +119,6 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
               {formatTextWithBold(handshake.body)}
             </p>
-
-            {/* Key Stats */}
-            {handshake.stats && handshake.stats.length > 0 && (
-              <div className="space-y-2 mb-8">
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
-                  Key Stats
-                </h3>
-                <ul className="space-y-1">
-                  {handshake.stats.map((stat, index) => (
-                    <li key={index} className="text-lg text-gray-700 md:text-xl">
-                      • {stat}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
@@ -162,14 +145,13 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8BA888] to-[#6B8E6B] text-white">
                 <span className="text-7xl font-bold">J</span>
               </div>
-              {/* Uncomment and update path when you have your photo */}
-              {/* <Image
-                src="/jeff-photo.jpg"
-                alt="Jeff Chow"
-                fill
-                className="object-cover"
-                priority
-              /> */}
+              {<Image
+                  src="/assets/profile.JPG"
+                  alt="Jeff Chow"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />}
             </div>
 
             {/* Status Pill - Same width as photo */}

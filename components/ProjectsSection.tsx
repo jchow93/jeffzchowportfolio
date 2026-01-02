@@ -8,7 +8,6 @@ import ProjectCard from "./ProjectCard";
 interface PersonalizationData {
   name: string;
   jobTitle: string;
-  industry: string;
 }
 
 interface ProjectsSectionProps {
@@ -36,19 +35,10 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
       setFeaturedProjects(defaultProjects);
     }
 
-    // Featured Work - Show industry-relevant work projects
-    const industry = personalizationData?.industry || "default";
-    logger.log("ProjectsSection: Setting featured work for industry:", industry, "persona:", persona, "jobTitle:", jobTitle, "from personalizationData:", personalizationData);
-    const work = getFeaturedWork(industry, persona) || [];
+    // Featured Work - Show all featured work projects, personalized by persona
+    const work = getFeaturedWork(persona) || [];
     logger.log("ProjectsSection: Featured work projects:", work?.map?.(p => p.id) || [], "count:", work?.length || 0);
-    if (work && work.length > 0) {
-      setFeaturedWork(work);
-    } else {
-      // Fallback to default industry if no work found
-      logger.log("ProjectsSection: No work found for industry, trying default");
-      const defaultWork = getFeaturedWork("default", persona) || [];
-      setFeaturedWork(defaultWork);
-    }
+    setFeaturedWork(work);
 
     // Listen for personalization updates
     const handleUpdate = (event: CustomEvent<PersonalizationData>) => {
@@ -58,10 +48,9 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
           logger.error("Personalization event missing data");
           return;
         }
-        const industry = data.industry || "default";
         const persona = getPersonaFromJobTitle(data.jobTitle || "");
-        logger.log("ProjectsSection: Personalization update event - industry:", industry, "persona:", persona);
-        const work = getFeaturedWork(industry, persona) || [];
+        logger.log("ProjectsSection: Personalization update event - persona:", persona);
+        const work = getFeaturedWork(persona) || [];
         logger.log("ProjectsSection: Updated featured work projects:", work?.map?.(p => p.id) || []);
         setFeaturedWork(work);
         const updatedProjects = getFeaturedProjects(persona) || [];
@@ -80,7 +69,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
   return (
     <section className="px-6 py-20 md:px-10">
       <div className="mx-auto max-w-6xl">
-        {/* Featured Work Section - Comes first, personalized by industry */}
+        {/* Featured Work Section - Comes first, personalized by persona */}
         <div id="featured-work" className="mb-20 md:mb-24 scroll-mt-20">
           <div className="mb-12 md:mb-16">
             <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">Featured Work</h2>
