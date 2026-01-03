@@ -42,7 +42,7 @@ export default function AboutSection() {
               You know that moment in meetings when someone says 'we need to validate this idea' and everyone looks around? That's when I pull out Cursor and start coding.
               </p>
               <p>
-                I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate Fortune 500 politics and ship startup products—basically, I can handle both the bureaucracy and the chaos.
+                I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate enterprise politics while building products for Fortune 500 clients and ship startup products—basically, I can handle both the bureaucracy and the chaos.
               </p>
             </div>
           </div>

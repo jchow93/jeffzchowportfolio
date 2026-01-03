@@ -121,16 +121,16 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             </p>
 
             {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center">
               <a
                 href="#featured-work"
-                className="px-6 py-3 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200 text-center"
+                className="text-[#8BA888] font-medium underline hover:text-[#6B8E6B] transition-colors duration-200"
               >
                 View My Work
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200 text-center"
+                className="px-6 py-3 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200 text-center"
               >
                 {handshake.cta}
               </a>
