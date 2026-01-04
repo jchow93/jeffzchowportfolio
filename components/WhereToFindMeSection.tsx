@@ -12,7 +12,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/jeffchow",
+    url: "https://linkedin.com/in/jeffzchow",
     icon: Linkedin,
     description: "Connect with me on LinkedIn"
   },

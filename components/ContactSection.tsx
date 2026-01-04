@@ -15,7 +15,7 @@ export default function ContactSection() {
         
         <div className="flex gap-6 justify-center items-center">
           <a
-            href="https://linkedin.com/in/jeffchow"
+            href="https://linkedin.com/in/jeffzchow"
             target="_blank"
             rel="noopener noreferrer"
             className="group w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center hover:border-[#8BA888] hover:shadow-lg transition-all duration-200"
