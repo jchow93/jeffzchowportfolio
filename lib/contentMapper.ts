@@ -87,12 +87,12 @@ export const projects: Project[] = [
     company: "ShortTok",
     year: "2025",
     image: "https://images.sidearmdev.com/resize?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fredstormsports.com%2Fimages%2F2025%2F10%2F30%2FShortTok_WEB.jpg&height=1100&type=webp",
-    description: "Shipped an AI-powered sports clipping platform in 8 weeks that reduced highlight creation time by 90%. Generated $100K in immediate revenue and accelerated sales cycles by 50%.",
+    description: "Shipped an AI-powered sports clipping platform in 8 weeks that reduced highlight creation time by 90%.",
     problem: "College sports programs were missing their viral window. Manually clipping highlights during live games took 45+ minutes, meaning the moment was old content before it was posted. The friction wasn't just speed. It was the cognitive load of SIDs trying to manage a live game while wrestling with editing software.",
     approach: "Conducted in person research by shadowing SIDs during live games. I identified that the solution wasn't just AI, it was workflow harmony. I designed a platform that automatically extracts clips from live streams but keeps the human in the loop for tagging and publishing. We prioritized Time-to-Social as our primary KPI, shipping a V1 in just 8 weeks.",
-    impact: "• Reduced highlight turnaround time by 90% (45 minutes to <5 minutes) by deploying AI-powered moment detection on live streams.\n• Increased content volume by 10x by automating clip extraction while keeping human-in-the-loop for tagging and publishing.\n• Shortened sales cycles by 50% (6 months to 3 months) by delivering immediate ROI that opened a $240K pipeline.",
-    fullStory: "By shadowing SIDs during live games, I realized they needed a moment catcher, not another complex editor. Led the 8-week sprint to ship a platform that fit the chaos of a live press box. Became ShortTok's primary sales demo and second paying product.",
-    metrics: ["$340K Total Pipeline", "90% Time Reduction", "8-Week GTM"],
+    impact: "• Reduced highlight turnaround time by 90% (45 minutes to <5 minutes) by deploying AI-powered moment detection on live streams.\n• Increased content volume by 10x by automating clip extraction while keeping human-in-the-loop for tagging and publishing.",
+    fullStory: "By shadowing SIDs during live games, I realized they needed a moment catcher, not another complex editor. Led the 8-week sprint to ship a platform that fit the chaos of a live press box.",
+    metrics: ["90% Time Reduction", "8-Week GTM"],
     industry: ["media", "ai-ml", "startups"],
     category: "featured-work",
     teamSize: "3 (2 engineers, 1 PM)",
@@ -101,8 +101,8 @@ export const projects: Project[] = [
     personaContent: {
       founder: {
         title: "ShortTok Sports: 0→1 Revenue in 8 Weeks",
-        description: "Shipped revenue-generating product in 8 weeks (vs 16-week estimate). Generated $100K immediate revenue + $240K pipeline from 3 prospective customers.",
-        metrics: ["$100K Revenue", "$240K Pipeline", "8-Week Delivery"],
+        description: "Shipped revenue-generating product in 8 weeks. Generated $100K+ in immediate revenue.",
+        metrics: ["$100K Revenue", "8-Week Delivery"],
       },
       designer: {
         title: "ShortTok Sports: Solving the viral window Problem",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
       investor: {
         title: "ShortTok Sports: First-Mover Advantage in AI Sports Clipping",
         description: "Created 6-month competitive lead in college sports market. First-mover advantage in AI sports clipping positioned us as category leader.",
-        metrics: ["6-Month Competitive Lead", "$340K Pipeline", "Category Leadership"],
+        metrics: ["6-Month Competitive Lead", "Category Leadership"],
       },
     },
   },
