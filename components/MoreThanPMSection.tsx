@@ -20,7 +20,7 @@ interface CardData {
 const cardsData: CardData[] = [
   {
     id: "dj",
-    icon: "🎵",
+    icon: "/assets/Music.png",
     collapsedTitle: "DJ & Producer",
     collapsedSubtitle: "750K+ streams",
     expandedTitle: "DJ & Producer",
@@ -32,7 +32,7 @@ const cardsData: CardData[] = [
   },
   {
     id: "athlete",
-    icon: "💪",
+    icon: "/assets/Sports.png",
     collapsedTitle: "Athlete",
     collapsedSubtitle: "Cal Basketball, Boxing, Training",
     expandedTitle: "Competitive Athlete",
@@ -41,7 +41,7 @@ const cardsData: CardData[] = [
   },
   {
     id: "cooking",
-    icon: "🍳",
+    icon: "/assets/Cooking.png",
     collapsedTitle: "Amateur Chef",
     collapsedSubtitle: "Dairy & egg-free experiments",
     expandedTitle: "Amateur Chef",
@@ -50,7 +50,7 @@ const cardsData: CardData[] = [
   },
   {
     id: "photography",
-    icon: "📸",
+    icon: "/assets/Photography.png",
     collapsedTitle: "Visual Storyteller",
     collapsedSubtitle: "Street & nature photography",
     expandedTitle: "Visual Storyteller",
@@ -102,7 +102,14 @@ export default function MoreThanPMSection() {
                 {!isExpanded ? (
                   // Collapsed State
                   <div className="flex h-full flex-col items-center justify-center p-6 text-center">
-                    <div className="mb-4 text-5xl">{card.icon}</div>
+                    <div className="mb-4 relative w-16 h-16">
+                      <Image
+                        src={card.icon}
+                        alt={card.collapsedTitle}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                     <h3 className="mb-2 text-xl font-bold text-black">{card.collapsedTitle}</h3>
                     <p className="text-sm text-gray-600">{card.collapsedSubtitle}</p>
                   </div>
