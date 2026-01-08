@@ -108,6 +108,8 @@ export default function MoreThanPMSection() {
                         alt={card.collapsedTitle}
                         fill
                         className="object-contain"
+                        loading="lazy"
+                        sizes="64px"
                       />
                     </div>
                     <h3 className="mb-2 text-xl font-bold text-black">{card.collapsedTitle}</h3>
@@ -129,6 +131,7 @@ export default function MoreThanPMSection() {
                                   alt={card.expandedTitle}
                                   fill
                                   className="object-cover object-top"
+                                  loading="lazy"
                                 />
                               </div>
                               <div className="md:hidden absolute top-[-60px] left-0 right-0 h-[calc(100%+60px)]">
@@ -137,6 +140,7 @@ export default function MoreThanPMSection() {
                                   alt={card.expandedTitle}
                                   fill
                                   className="object-cover object-top"
+                                  loading="lazy"
                                 />
                               </div>
                             </>
@@ -146,6 +150,7 @@ export default function MoreThanPMSection() {
                               alt={card.expandedTitle}
                               fill
                               className="object-cover"
+                              loading="lazy"
                             />
                           )}
                         </div>

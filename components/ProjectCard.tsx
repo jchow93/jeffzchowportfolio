@@ -35,6 +35,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                     alt={project.title}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 128px, 192px"
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
@@ -82,6 +84,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                   alt={project.title}
                   fill
                   className="object-cover transition-transform group-hover:scale-105"
+                  loading="lazy"
+                  sizes="192px"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
@@ -156,6 +160,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                     alt={project.title}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="128px"
                   />
                 </div>
               )}
@@ -189,6 +195,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                               alt={project.title}
                               fill
                               className="object-cover"
+                              loading="lazy"
+                              sizes="(max-width: 768px) 128px, 192px"
                             />
                           </div>
                         )}
