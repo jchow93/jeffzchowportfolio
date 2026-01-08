@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
+    "postbuild": "find out -name 'README.md' -type f -delete 2>/dev/null || true",
     "export": "next build",
     "start": "next start -p 3001",
     "lint": "next lint"
