@@ -76,3 +76,22 @@ h3 {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   }
 }
+
+/* Glasses settle onto the face when a reading lens is put on */
+@keyframes lensOn {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) rotate(-14deg) scale(1.25);
+  }
+}
+
+.lens-on {
+  animation: lensOn 0.28s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-on,
+  .animate-expand {
+    animation: none;
+  }
+}

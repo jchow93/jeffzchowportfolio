@@ -18,7 +18,7 @@ export default function Home() {
   const personalizationData: PersonalizationData = { name: "", jobTitle: "Generalist" };
 
   return (
-    <main className="min-h-screen bg-[#F2F5F3] pt-16 md:pt-0">
+    <main className="min-h-screen bg-[#F2F5F3] pt-16 xl:pt-0">
       <Navigation />
       <section id="home">
         <HeroSection personalizationData={personalizationData} />

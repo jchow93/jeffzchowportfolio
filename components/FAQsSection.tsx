@@ -49,44 +49,32 @@ export default function FAQsSection() {
   };
 
   return (
-    <section id="faqs" className="px-6 py-20 md:px-10 md:py-32 bg-[#F2F5F3]">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="mb-4 text-4xl font-bold text-pine md:text-5xl">
-          Beyond the Bullets
-        </h2>
-        <p className="mb-12 text-xl text-gray-600 md:text-2xl">
-          The things you won't learn from my resume—passions, beliefs, and the stories behind the work.
-        </p>
+    <section id="faqs" className="bg-mist px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl">
+        <div className="field-label mb-4">Questions</div>
+        <h2 className="mb-10 text-3xl font-bold leading-tight text-pine md:text-5xl">Beyond the resume</h2>
 
-        <div className="space-y-4">
+        <div className="max-w-3xl divide-y divide-black/10 border-y border-black/10">
           {beyondTheBullets.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg border border-gray-200 overflow-hidden transition-all duration-200 hover:shadow-md"
-            >
+            <div key={index}>
               <button
+                id={`faq-${index}`}
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                className="flex w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-filament"
                 aria-expanded={openIndex === index}
               >
-                <span className="font-semibold text-gray-900 pr-4">
-                  {faq.question}
-                </span>
+                <span className="font-display text-lg font-bold text-pine">{faq.question}</span>
                 <ChevronDown
-                  className={`h-5 w-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${
-                    openIndex === index ? "transform rotate-180" : ""
+                  className={`h-5 w-5 flex-shrink-0 text-gray-500 transition-transform duration-200 ${
+                    openIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="px-6 py-4 text-gray-700 leading-relaxed border-t border-gray-100 whitespace-pre-line">
+              {openIndex === index && (
+                <div className="animate-expand max-w-2xl whitespace-pre-line pb-6 text-base leading-relaxed text-gray-700">
                   {renderAnswer(faq.answer)}
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>

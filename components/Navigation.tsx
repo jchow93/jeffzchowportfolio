@@ -7,7 +7,7 @@ const sections = [
   { id: "about", label: "About" },
   { id: "featured-work", label: "Featured Work" },
   { id: "featured-projects", label: "Featured Projects" },
-  { id: "more-than-pm", label: "More Than a PM" },
+  { id: "more-than-pm", label: "Off the clock" },
   { id: "faqs", label: "FAQs" },
   { id: "contact", label: "Contact" },
 ];
@@ -115,7 +115,7 @@ export default function Navigation() {
     <>
       {/* Desktop Navigation */}
       <nav 
-        className="hidden md:block fixed right-8 top-1/2 -translate-y-1/2 z-50"
+        className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-50"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -261,7 +261,7 @@ export default function Navigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="md:hidden fixed top-6 right-6 z-50" data-mobile-nav>
+      <nav className="xl:hidden fixed top-6 right-6 z-50" data-mobile-nav>
         <div className="relative">
           {/* Circle Icon Button */}
           <button

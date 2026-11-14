@@ -1,39 +1,29 @@
-"use client";
-
-import { Linkedin, Mail } from "lucide-react";
-
 export default function ContactSection() {
   return (
-    <section id="contact" className="px-6 py-20 md:px-10 md:py-32 bg-[#FAFAF8]">
-      <div className="mx-auto max-w-4xl text-center">
-        <h2 className="mb-6 text-3xl font-bold text-pine md:text-4xl">
-          Let's Build Something Together
-        </h2>
-        <p className="mb-12 text-lg text-gray-600 md:text-xl">
-          Whether you're looking for a PM who can ship, a product advisor, or just want to chat about building products—I'd love to hear from you.
+    <section id="contact" className="bg-mist px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl border-t border-black/10 pt-12">
+        <div className="field-label mb-4">Contact</div>
+        <h2 className="mb-5 text-3xl font-bold leading-tight text-pine md:text-5xl">Let’s talk.</h2>
+        <p className="mb-8 max-w-xl text-lg leading-relaxed text-gray-600">
+          If you’re building something where the experience is the product, I’d like to hear about it.
         </p>
-        
-        <div className="flex gap-6 justify-center items-center">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-lg">
+          <a
+            href="mailto:jeff.chow93@gmail.com"
+            className="font-medium text-pine underline underline-offset-4 transition-colors hover:text-[#5F7A5A]"
+          >
+            jeff.chow93@gmail.com
+          </a>
           <a
             href="https://linkedin.com/in/jeffzchow"
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center hover:border-[#7F9879] hover:shadow-lg transition-all duration-200"
-            aria-label="LinkedIn"
+            className="font-medium text-pine underline underline-offset-4 transition-colors hover:text-[#5F7A5A]"
           >
-            <Linkedin className="w-7 h-7 text-[#7F9879]" />
-          </a>
-          
-          <a
-            href="mailto:jeff.chow93@gmail.com"
-            className="group w-16 h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center hover:border-[#7F9879] hover:shadow-lg transition-all duration-200"
-            aria-label="Email"
-          >
-            <Mail className="w-7 h-7 text-[#7F9879]" />
+            LinkedIn
           </a>
         </div>
       </div>
     </section>
   );
 }
-
