@@ -69,7 +69,10 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
           {/* Left Column - Text Content */}
           <div className="flex flex-col">
             {/* Persona-Based Headline */}
-            <h2 className="mb-6 text-4xl font-bold text-black md:text-5xl">
+            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#8BA888]/30 bg-[#8BA888]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#526B52] md:ml-20">
+              0→1 discovery · 1→10 scale
+            </div>
+            <h2 className="mb-6 text-5xl font-bold leading-[0.95] tracking-[-0.045em] text-black md:text-7xl">
               {handshake.headline}
             </h2>
 
@@ -121,6 +124,20 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
             </p>
 
             {/* CTA */}
+            <div className="mt-4 grid grid-cols-2 gap-3 border-y border-black/10 py-5 sm:grid-cols-4">
+              {[
+                ["2 → 7", "enterprise customers"],
+                ["60 → 95%+", "AI performance"],
+                ["+23%", "weekly usage"],
+                ["2×", "customer satisfaction"],
+              ].map(([value, label]) => (
+                <div key={label}>
+                  <div className="text-xl font-bold tracking-tight text-black">{value}</div>
+                  <div className="mt-1 text-xs leading-tight text-gray-500">{label}</div>
+                </div>
+              ))}
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center">
               <a
                 href="#contact"
@@ -171,4 +188,3 @@ export default function HeroSection({ personalizationData }: HeroSectionProps) {
     </section>
   );
 }
-

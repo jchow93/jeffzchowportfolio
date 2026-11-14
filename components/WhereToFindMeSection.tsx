@@ -18,7 +18,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: "Email",
-    url: "mailto:jeff@example.com",
+    url: "mailto:jeff.chow93@gmail.com",
     icon: Mail,
     description: "Send me an email"
   },
@@ -80,4 +80,3 @@ export default function WhereToFindMeSection() {
     </section>
   );
 }
-

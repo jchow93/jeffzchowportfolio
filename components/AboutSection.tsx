@@ -1,27 +1,27 @@
 "use client";
 
-import { Code, Zap, Rocket, TrendingUp } from 'lucide-react';
+import { Compass, Layers3, Sparkles, Workflow } from 'lucide-react';
 
 const skills = [
   {
-    icon: Code,
-    title: 'I Actually Build Things',
-    description: 'When I need to validate an idea, I code it. Cursor became my best friend—I use it to build frontend components, prototypes, and automation systems. Because sometimes the fastest way to know if something works is to just build it yourself.'
+    icon: Compass,
+    title: 'Find the real problem',
+    description: 'I get close to the workflow—kitchens, operations rooms, enterprise teams—until the question behind the question becomes clear.'
   },
   {
-    icon: Zap,
-    title: 'Scrappy Execution',
-    description: 'I build systems that deliver outsized leverage from off-the-shelf tooling. My philosophy? Do more with less, not more with more. I\'d rather ship something scrappy that works than wait for the perfect solution.'
+    icon: Sparkles,
+    title: 'Make AI trustworthy',
+    description: 'The demo is the easy part. I design the evaluation loops, human judgment, and UX that make AI reliable enough to become part of real work.'
   },
   {
-    icon: Rocket,
-    title: '0→1 is My Happy Place',
-    description: 'I\'ve shipped products from scratch multiple times—AI products under tight timelines, fraud systems with massive impact, features that hit 78% adoption. There\'s something magical about taking an idea from "what if" to "it works."'
+    icon: Workflow,
+    title: 'Build the first version',
+    description: 'I prototype to learn, not to perform. Being technical lets me shorten the distance between a customer insight and something we can put in their hands.'
   },
   {
-    icon: TrendingUp,
-    title: 'Startup Speed, Enterprise Scale',
-    description: 'I learned patience and stakeholder management at Visa, then learned to ship fast at startups. Now I bring both: I can navigate corporate politics AND move at startup speed when it matters.'
+    icon: Layers3,
+    title: 'Turn repeats into product',
+    description: 'At 1→10, I look for the common layer beneath customer requests—then turn bespoke delivery into configurable workflows that compound.'
   }
 ];
 
@@ -36,13 +36,13 @@ export default function AboutSection() {
             <h2 className="mb-6 text-4xl font-bold md:text-5xl">About Me</h2>
             <div className="space-y-5 text-gray-600 leading-relaxed">
               <p className="text-lg font-medium text-gray-900">
-                Hi! You're probably here because you need a PM who can actually ship things, not just talk about shipping things. I get it—there's a difference.
+                I’m a builder PM, but building is only one part of the job.
               </p>
               <p>
-              You know that moment in meetings when someone says 'we need to validate this idea' and everyone looks around? That's when I pull out Cursor and start coding.
+                My best work starts inside a messy customer problem: an enterprise workflow that takes weeks, an AI system people don’t trust yet, or a product that works for two customers but won’t survive ten.
               </p>
               <p>
-                I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate enterprise politics while building products for Fortune 500 clients and ship startup products—basically, I can handle both the bureaucracy and the chaos.
+                I move between customer discovery, product strategy, UX, and technical execution to find the product hiding underneath. Sometimes that means a prototype. Sometimes it means saying no to an attractive feature. Increasingly, it means turning repeated customer work into a system that scales.
               </p>
             </div>
           </div>
@@ -89,4 +89,3 @@ export default function AboutSection() {
     </div>
   );
 }
-
