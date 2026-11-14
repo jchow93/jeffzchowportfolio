@@ -7,7 +7,7 @@ const sections = [
   { id: "about", label: "About" },
   { id: "featured-work", label: "Featured Work" },
   { id: "featured-projects", label: "Featured Projects" },
-  { id: "more-than-pm", label: "More Than a PM" },
+  { id: "more-than-pm", label: "Off the clock" },
   { id: "faqs", label: "FAQs" },
   { id: "contact", label: "Contact" },
 ];
@@ -115,7 +115,7 @@ export default function Navigation() {
     <>
       {/* Desktop Navigation */}
       <nav 
-        className="hidden md:block fixed right-8 top-1/2 -translate-y-1/2 z-50"
+        className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-50"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -136,7 +136,7 @@ export default function Navigation() {
             {/* Logo at the top */}
             <button
               onClick={() => scrollToSection("home")}
-              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8BA888] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
+              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7F9879] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
               aria-label="Home"
               title="Go to Home"
             >
@@ -163,7 +163,7 @@ export default function Navigation() {
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className={`relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8BA888] focus:ring-offset-2 focus:ring-offset-transparent rounded-full ${
+                  className={`relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7F9879] focus:ring-offset-2 focus:ring-offset-transparent rounded-full ${
                     activeSection === section.id ? "scale-125" : ""
                   }`}
                   aria-label={section.label}
@@ -172,8 +172,8 @@ export default function Navigation() {
                   <div
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       activeSection === section.id
-                        ? "bg-[#8BA888] shadow-lg shadow-[#8BA888]/30"
-                        : "bg-gray-300 hover:bg-[#8BA888]/50 active:scale-90"
+                        ? "bg-[#7F9879] shadow-lg shadow-[#7F9879]/30"
+                        : "bg-gray-300 hover:bg-[#7F9879]/50 active:scale-90"
                     }`}
                   />
                   <span className="absolute right-8 top-1/2 -translate-y-1/2 px-3 py-1 bg-gray-900/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
@@ -189,7 +189,7 @@ export default function Navigation() {
             {/* Email Icon */}
             <button
               onClick={copyEmail}
-              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8BA888] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
+              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7F9879] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
               aria-label="Copy Email"
               title={emailCopied ? "Copied!" : "Copy Email"}
               aria-pressed={emailCopied}
@@ -239,7 +239,7 @@ export default function Navigation() {
             {/* LinkedIn Icon */}
             <button
               onClick={openLinkedIn}
-              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8BA888] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
+              className="relative group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7F9879] focus:ring-offset-2 focus:ring-offset-transparent rounded-full"
               aria-label="LinkedIn"
               title="View LinkedIn Profile"
             >
@@ -261,7 +261,7 @@ export default function Navigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="md:hidden fixed top-6 right-6 z-50" data-mobile-nav>
+      <nav className="xl:hidden fixed top-6 right-6 z-50" data-mobile-nav>
         <div className="relative">
           {/* Circle Icon Button */}
           <button

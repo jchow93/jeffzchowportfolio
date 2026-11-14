@@ -4,6 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { getFeaturedProjects, getFeaturedWork, getAllFeaturedWork, Project, getPersonaFromJobTitle } from "@/lib/contentMapper";
 import { logger } from "@/lib/logger";
 import ProjectCard from "./ProjectCard";
+import LensRack from "./LensRack";
+import { LensId, getLens } from "@/lib/lenses";
 
 interface PersonalizationData {
   name: string;
@@ -20,6 +22,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
   const [allFeaturedWork, setAllFeaturedWork] = useState<Project[]>([]);
   const [showAllWork, setShowAllWork] = useState(false);
   const [currentPersona, setCurrentPersona] = useState<string>("default");
+  const [lensId, setLensId] = useState<LensId | null>(null);
 
   // Function to update projects based on persona
   const updateProjectsForPersona = useCallback((jobTitle: string) => {
@@ -84,33 +87,56 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
     }
   }, [personalizationData, updateProjectsForPersona]);
 
+  // A lens reorders the featured case studies; it never adds or removes any.
+  const lens = getLens(lensId);
+  const orderedWork = lens
+    ? [...featuredWork].sort((a, b) => {
+        const rank = (id: string) => (lens.order.indexOf(id) === -1 ? lens.order.length : lens.order.indexOf(id));
+        return rank(a.id) - rank(b.id);
+      })
+    : featuredWork;
+
   return (
     <section className="px-6 py-20 md:px-10">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         {/* Featured Work Section - Comes first, personalized by persona */}
         <div id="featured-work" className="mb-20 md:mb-24 scroll-mt-20">
           <div className="mb-12 md:mb-16">
-            <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">Featured Work</h2>
-            <p className="text-4xl font-bold text-gray-600 md:text-5xl">
-              A selection of product initiatives that showcase strategic thinking, user empathy, and
-              measurable results.
+            <div className="field-label mb-4">Selected work</div>
+            <h2 className="mb-4 text-3xl font-bold leading-tight text-pine md:text-5xl">Four workflows, untangled.</h2>
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-600">
+              Each one starts with what I saw and ends with what changed.
             </p>
           </div>
 
           <div className="mx-auto max-w-5xl">
+            <LensRack lens={lensId} onChange={setLensId} />
             {featuredWork.length > 0 ? (
               <>
-                {(showAllWork && allFeaturedWork.length > 0 ? allFeaturedWork : featuredWork).map((project, index) => (
-                  <ProjectCard key={project.id} project={project} index={index} />
+                {orderedWork.map((project, index) => (
+                  <ProjectCard key={project.id} project={project} index={index} lens={lens} />
                 ))}
+                {currentPersona === "default" && showAllWork && (
+                  <div className="mt-16 border-t border-black/10 pt-12">
+                    <div className="mb-8">
+                      <div className="field-label mb-2">Earlier work</div>
+                      <h3 className="text-3xl font-bold tracking-tight text-pine">More from earlier roles.</h3>
+                    </div>
+                    {allFeaturedWork
+                      .filter((project) => !featuredWork.some((featured) => featured.id === project.id))
+                      .map((project, index) => (
+                        <ProjectCard key={project.id} project={project} index={index + featuredWork.length} />
+                      ))}
+                  </div>
+                )}
                 {/* Show "View All Work" button only for default persona when there are more projects */}
                 {currentPersona === "default" && !showAllWork && allFeaturedWork.length > featuredWork.length && (
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => setShowAllWork(true)}
-                      className="px-8 py-4 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200"
+                      className="px-6 py-3 border border-pine text-pine font-semibold rounded hover:bg-pine hover:text-mist transition-colors duration-200"
                     >
-                      View All Work
+                      Browse earlier work
                     </button>
                   </div>
                 )}
@@ -119,7 +145,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => setShowAllWork(false)}
-                      className="px-8 py-4 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200"
+                      className="px-6 py-3 border border-pine text-pine font-semibold rounded hover:bg-pine hover:text-mist transition-colors duration-200"
                     >
                       Show Less
                     </button>
@@ -130,14 +156,18 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
               <p className="py-20 text-center text-gray-500">No projects to display.</p>
             )}
           </div>
+          <p className="mx-auto mt-10 max-w-4xl rounded-md border border-black/10 bg-white/50 px-5 py-4 text-sm leading-relaxed text-gray-600">
+            <strong className="text-gray-800">A note on confidentiality:</strong> Certain company names, interfaces, and commercial figures are anonymized or generalized to honor confidentiality obligations. Outcomes use approved percentages, ranges, and relative improvements where appropriate.
+          </p>
         </div>
 
         {/* Featured Projects Section - Same for all personas */}
         <div id="featured-projects" className="scroll-mt-20">
           <div className="mb-12 md:mb-16">
-            <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">Featured Projects</h2>
-            <p className="text-4xl font-bold text-gray-600 md:text-5xl">
-              Personal projects that demonstrate my approach to building products that adapt to users.
+            <div className="field-label mb-4">Side projects</div>
+            <h2 className="mb-4 text-3xl font-bold leading-tight text-pine md:text-5xl">The workshop</h2>
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-600">
+              Personal experiments where I use the same product instincts on my own ideas.
             </p>
           </div>
 
@@ -155,4 +185,3 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
     </section>
   );
 }
-

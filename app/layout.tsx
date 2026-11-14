@@ -3,20 +3,20 @@ import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 export const metadata: Metadata = {
-  title: "Jeff Chow - Product Builder",
-  description: "Building products that create measurable impact",
+  title: "Jeff Chow · Product Manager",
+  description: "Product manager who designs the workflow, not just the screen. Enterprise AI products, from first version to scale.",
   icons: {
     icon: "/assets/logo.png",
   },
   openGraph: {
-    title: "Jeff Chow - Product Builder",
-    description: "Building products that create measurable impact",
+    title: "Jeff Chow · Product Manager",
+    description: "I design the workflow, not just the screen.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jeff Chow - Product Builder",
-    description: "Building products that create measurable impact",
+    title: "Jeff Chow · Product Manager",
+    description: "I design the workflow, not just the screen.",
   },
   other: {
     // Preload critical images via link tags
@@ -54,4 +54,3 @@ export default function RootLayout({
     </html>
   );
 }
-

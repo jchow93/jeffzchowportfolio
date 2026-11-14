@@ -1,92 +1,59 @@
-"use client";
-
-import { Code, Zap, Rocket, TrendingUp } from 'lucide-react';
-
-const skills = [
+const principles = [
   {
-    icon: Code,
-    title: 'I Actually Build Things',
-    description: 'When I need to validate an idea, I code it. Cursor became my best friend—I use it to build frontend components, prototypes, and automation systems. Because sometimes the fastest way to know if something works is to just build it yourself.'
+    title: "Start with the workflow, not the feature.",
+    description: "Understand what someone is trying to get done and where it breaks down.",
   },
   {
-    icon: Zap,
-    title: 'Scrappy Execution',
-    description: 'I build systems that deliver outsized leverage from off-the-shelf tooling. My philosophy? Do more with less, not more with more. I\'d rather ship something scrappy that works than wait for the perfect solution.'
+    title: "Be customer-led, not request-led.",
+    description: "A request is evidence. The job is finding the problem underneath it.",
   },
   {
-    icon: Rocket,
-    title: '0→1 is My Happy Place',
-    description: 'I\'ve shipped products from scratch multiple times—AI products under tight timelines, fraud systems with massive impact, features that hit 78% adoption. There\'s something magical about taking an idea from "what if" to "it works."'
+    title: "Prototype before debating.",
+    description: "Put something real in front of people early, and build it with the team.",
   },
-  {
-    icon: TrendingUp,
-    title: 'Startup Speed, Enterprise Scale',
-    description: 'I learned patience and stakeholder management at Visa, then learned to ship fast at startups. Now I bring both: I can navigate corporate politics AND move at startup speed when it matters.'
-  }
 ];
 
 export default function AboutSection() {
   return (
-    <div className="px-6 py-20 md:px-10 md:py-32 bg-[#F5F1E8]">
-      <div className="max-w-7xl mx-auto">
-        {/* Desktop: Two-column layout (text left, cards right), Mobile: Single column */}
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16 md:items-center mb-16 md:mb-20">
-          {/* Left Column - Text Content */}
-          <div>
-            <h2 className="mb-6 text-4xl font-bold md:text-5xl">About Me</h2>
-            <div className="space-y-5 text-gray-600 leading-relaxed">
-              <p className="text-lg font-medium text-gray-900">
-                Hi! You're probably here because you need a PM who can actually ship things, not just talk about shipping things. I get it—there's a difference.
-              </p>
-              <p>
-              You know that moment in meetings when someone says 'we need to validate this idea' and everyone looks around? That's when I pull out Cursor and start coding.
-              </p>
-              <p>
-                I'm the PM who gets impatient waiting for engineering bandwidth, so I build prototypes myself. The one who thinks "what if we just tried it?" instead of "what if we scheduled a meeting to discuss trying it?" I've learned to navigate enterprise politics while building products for Fortune 500 clients and ship startup products—basically, I can handle both the bureaucracy and the chaos.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column - Cards Grid (Desktop: 2x2, hidden on mobile) */}
-          <div className="hidden md:grid grid-cols-2 gap-6">
-            {skills.map((skill) => {
-              const Icon = skill.icon;
-              return (
-                <div
-                  key={skill.title}
-                  className="bg-[#FAFAF8] p-6 rounded-[20px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                >
-                  <div className="w-12 h-12 bg-[#8BA888]/10 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[#8BA888]" />
-                  </div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900">{skill.title}</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">{skill.description}</p>
-                </div>
-              );
-            })}
+    <div className="bg-mist px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[1.4fr_1fr] md:gap-20">
+        <div>
+          <div className="field-label mb-4">About</div>
+          <h2 className="mb-8 text-3xl font-bold leading-tight text-pine md:text-4xl">
+            If someone doesn’t understand it in three seconds, it has failed.
+          </h2>
+          <div className="max-w-xl space-y-5 text-lg leading-relaxed text-gray-700">
+            <p>
+              I started as a designer and engineer at Obscura Digital, building large interactive installations. The
+              feedback there was immediate. Someone walked up to a ten-foot screen, and either they understood it or
+              they walked away. I’ve built products that way ever since.
+            </p>
+            <p>
+              I care about how a workflow feels end to end: where people hesitate, what they need to know to make a
+              decision, and whether a complex task ends up feeling simple. I don’t treat design as polish after the
+              product decision. The experience is the product strategy.
+            </p>
+            <p>
+              That’s also why I build. A rough working version in a customer’s hands teaches a team more than another
+              week of debate, so I prototype, write front-end code and ship alongside design and engineering. Across
+              Visa, Globality and early-stage AI startups, the pattern is the same: find the manual, frustrating part of
+              someone’s job and turn it into something that works without them thinking about it.
+            </p>
           </div>
         </div>
 
-        {/* Mobile: 1 card per row (shown only on mobile) */}
-        <div className="grid grid-cols-1 gap-6 md:hidden">
-          {skills.map((skill) => {
-            const Icon = skill.icon;
-            return (
-              <div
-                key={skill.title}
-                className="bg-[#FAFAF8] p-6 rounded-[20px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 bg-[#8BA888]/10 rounded-full flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-[#8BA888]" />
-                </div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900">{skill.title}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">{skill.description}</p>
-              </div>
-            );
-          })}
+        <div className="md:pt-12">
+          <div className="field-label mb-4">How I work</div>
+          <ul className="divide-y divide-black/10 border-y border-black/10">
+            {principles.map((principle) => (
+              <li key={principle.title} className="py-5">
+                <h3 className="text-lg font-bold leading-snug text-pine">{principle.title}</h3>
+                <p className="mt-1 text-base leading-relaxed text-gray-600">{principle.description}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
   );
 }
-

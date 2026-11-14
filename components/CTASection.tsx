@@ -2,7 +2,7 @@
 
 export default function CTASection() {
   return (
-    <section className="px-6 py-16 md:px-10 md:py-24 bg-[#8BA888]">
+    <section className="px-6 py-16 md:px-10 md:py-24 bg-[#7F9879]">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
           Let's Build Something Together
@@ -13,7 +13,7 @@ export default function CTASection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
-            className="px-8 py-3 bg-white text-[#8BA888] font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 text-center"
+            className="px-8 py-3 bg-white text-[#7F9879] font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 text-center"
           >
             Get In Touch
           </a>
