@@ -156,8 +156,8 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
               <p className="py-20 text-center text-gray-500">No projects to display.</p>
             )}
           </div>
-          <p className="mx-auto mt-10 max-w-4xl rounded-md border border-black/10 bg-white/50 px-5 py-4 text-sm leading-relaxed text-gray-600">
-            <strong className="text-gray-800">A note on confidentiality:</strong> Certain company names, interfaces, and commercial figures are anonymized or generalized to honor confidentiality obligations. Outcomes use approved percentages, ranges, and relative improvements where appropriate.
+          <p className="mx-auto mt-8 max-w-5xl text-sm text-gray-500">
+            Some company names and figures are generalized for confidentiality.
           </p>
         </div>
 

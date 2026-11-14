@@ -162,9 +162,6 @@ export default function ProjectCard({ project, lens }: ProjectCardProps) {
                   </li>
                 ))}
               </ol>
-              <p className="mt-6 text-xs text-white/50">
-                Reconstructed strategy model. No customer interface or confidential implementation details shown.
-              </p>
             </div>
           )}
 
