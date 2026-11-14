@@ -30,8 +30,17 @@ export default function HeroSection(_props: HeroSectionProps) {
             <span className="text-filament">workflow</span>, not just the screen.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-600 md:text-xl">
-            Currently {statusText}. Before that, Visa, Globality and early-stage AI startups.
+          <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <span className="field-label">Currently</span>
+            <span
+              id="current-role"
+              className="inline-block -rotate-2 cursor-default rounded-full bg-filament transition-transform duration-200 ease-out hover:-translate-y-1 hover:rotate-2 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:-rotate-2 motion-reduce:hover:scale-100 px-4 py-1.5 text-sm font-semibold text-white shadow-[0_3px_10px_rgba(217,84,26,0.35)] md:text-base"
+            >
+              {statusText}
+            </span>
+          </div>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600 md:text-xl">
+            Before that, Visa, Globality and early-stage AI startups.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-5">
