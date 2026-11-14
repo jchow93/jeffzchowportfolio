@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import PhotoStack from "@/components/PhotoStack";
 import { Pause, Play } from "lucide-react";
 
 const SOUNDCLOUD_URL = "https://soundcloud.com/thisisroem";
@@ -181,7 +181,7 @@ function MusicPlayer() {
 
 export default function MoreThanPMSection() {
   return (
-    <section id="more-than-pm" className="scroll-mt-20 px-6 py-20 md:px-10 md:py-28">
+    <section id="more-than-pm" className="scroll-mt-20 overflow-x-clip px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
         <div className="field-label mb-4">Outside work</div>
         <h2 className="mb-12 text-3xl font-bold leading-tight text-pine md:text-5xl">Off the clock</h2>
@@ -224,26 +224,7 @@ export default function MoreThanPMSection() {
             <h3 className="text-xl font-bold text-pine">Photography</h3>
             <p className="field-label mt-2">Street and travel</p>
           </div>
-          <div className="columns-2 gap-4 md:columns-3">
-            {photos.map((photo) => (
-              <figure key={photo.src} className="mb-4 break-inside-avoid">
-                <div
-                  className={`relative overflow-hidden rounded-sm bg-black/5 ${
-                    photo.portrait ? "aspect-[2/3]" : "aspect-[3/2]"
-                  }`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 50vw, 240px"
-                    className="object-cover"
-                  />
-                </div>
-              </figure>
-            ))}
-          </div>
+          <PhotoStack photos={photos} />
         </div>
 
         {/* The short ones */}
