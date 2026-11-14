@@ -49,9 +49,9 @@ export default function FAQsSection() {
   };
 
   return (
-    <section id="faqs" className="px-6 py-20 md:px-10 md:py-32 bg-[#F5F1E8]">
+    <section id="faqs" className="px-6 py-20 md:px-10 md:py-32 bg-[#F2F5F3]">
       <div className="mx-auto max-w-4xl">
-        <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">
+        <h2 className="mb-4 text-4xl font-bold text-pine md:text-5xl">
           Beyond the Bullets
         </h2>
         <p className="mb-12 text-xl text-gray-600 md:text-2xl">

@@ -72,7 +72,7 @@ export default function MoreThanPMSection() {
       <div className="mx-auto max-w-6xl">
         {/* Section Title */}
         <div className="mb-12 md:mb-16">
-          <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">More Than a PM</h2>
+          <h2 className="mb-4 text-4xl font-bold text-pine md:text-5xl">More Than a PM</h2>
         </div>
 
         {/* Cards Grid */}
@@ -112,7 +112,7 @@ export default function MoreThanPMSection() {
                         sizes="64px"
                       />
                     </div>
-                    <h3 className="mb-2 text-xl font-bold text-black">{card.collapsedTitle}</h3>
+                    <h3 className="mb-2 text-xl font-bold text-pine">{card.collapsedTitle}</h3>
                     <p className="text-sm text-gray-600">{card.collapsedSubtitle}</p>
                   </div>
                 ) : (
@@ -158,7 +158,7 @@ export default function MoreThanPMSection() {
 
                       {/* Title and Subtitle */}
                       <div>
-                        <h3 className="mb-1 text-2xl font-bold text-black">{card.expandedTitle}</h3>
+                        <h3 className="mb-1 text-2xl font-bold text-pine">{card.expandedTitle}</h3>
                         <p className="text-sm text-gray-600">{card.expandedSubtitle}</p>
                       </div>
 
@@ -185,7 +185,7 @@ export default function MoreThanPMSection() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center text-sm font-medium text-[#8BA888] hover:text-[#6B8E6B] transition-colors"
+                              className="inline-flex items-center text-sm font-medium text-[#7F9879] hover:text-[#5F7A5A] transition-colors"
                             >
                               → Listen on Spotify
                             </a>
@@ -196,7 +196,7 @@ export default function MoreThanPMSection() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center text-sm font-medium text-[#8BA888] hover:text-[#6B8E6B] transition-colors"
+                              className="inline-flex items-center text-sm font-medium text-[#7F9879] hover:text-[#5F7A5A] transition-colors"
                             >
                               → Listen on SoundCloud
                             </a>

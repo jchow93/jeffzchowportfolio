@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 245, 241, 232;
+  --foreground-rgb: 16, 35, 29;
+  --background-rgb: 242, 245, 243;
 }
 
 body {
@@ -19,8 +19,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Brand: display face on headings, mono for field-note labels */
+h1,
+h2,
+h3 {
+  font-family: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', sans-serif;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.field-label {
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5A6B64;
+}
+
 ::selection {
-  background: rgba(139, 168, 136, 0.35);
+  background: rgba(217, 84, 26, 0.22);
 }
 
 @layer utilities {

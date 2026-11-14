@@ -10,9 +10,9 @@ export default function GlobalError({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center px-6">
+        <div className="min-h-screen bg-[#F2F5F3] flex items-center justify-center px-6">
           <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-6xl font-bold text-black mb-4">⚠️</h1>
+            <h1 className="text-6xl font-bold text-pine mb-4">⚠️</h1>
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">
               Application Error
             </h2>
@@ -21,7 +21,7 @@ export default function GlobalError({
             </p>
             <button
               onClick={reset}
-              className="px-6 py-3 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200"
+              className="px-6 py-3 bg-[#7F9879] text-white font-semibold rounded-lg hover:bg-[#5F7A5A] transition-colors duration-200"
             >
               Try Again
             </button>

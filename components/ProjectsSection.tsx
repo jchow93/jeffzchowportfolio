@@ -90,10 +90,10 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
         {/* Featured Work Section - Comes first, personalized by persona */}
         <div id="featured-work" className="mb-20 md:mb-24 scroll-mt-20">
           <div className="mb-12 md:mb-16">
-            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#6B8E6B]">Discover → Build → Scale</div>
-            <h2 className="mb-4 text-4xl font-bold tracking-tight text-black md:text-6xl">The work behind the positioning.</h2>
+            <div className="field-label mb-4">Selected work</div>
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-pine md:text-6xl">Four workflows, untangled.</h2>
             <p className="max-w-3xl text-xl leading-relaxed text-gray-600 md:text-2xl">
-              One flagship 1→10 story, followed by focused proof of 0→1 discovery and customer-led product judgment.
+              Each one starts with what I saw and ends with what changed.
             </p>
           </div>
 
@@ -106,8 +106,8 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
                 {currentPersona === "default" && showAllWork && (
                   <div className="mt-16 border-t border-black/10 pt-12">
                     <div className="mb-8">
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#6B8E6B]">Earlier work</div>
-                      <h3 className="text-3xl font-bold tracking-tight text-black">More range, without diluting the headline.</h3>
+                      <div className="field-label mb-2">Earlier work</div>
+                      <h3 className="text-3xl font-bold tracking-tight text-pine">More from earlier roles.</h3>
                     </div>
                     {allFeaturedWork
                       .filter((project) => !featuredWork.some((featured) => featured.id === project.id))
@@ -121,7 +121,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => setShowAllWork(true)}
-                      className="px-8 py-4 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200"
+                      className="px-6 py-3 border border-pine text-pine font-semibold rounded hover:bg-pine hover:text-mist transition-colors duration-200"
                     >
                       Browse earlier work
                     </button>
@@ -132,7 +132,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => setShowAllWork(false)}
-                      className="px-8 py-4 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200"
+                      className="px-6 py-3 border border-pine text-pine font-semibold rounded hover:bg-pine hover:text-mist transition-colors duration-200"
                     >
                       Show Less
                     </button>
@@ -151,7 +151,7 @@ export default function ProjectsSection({ personalizationData }: ProjectsSection
         {/* Featured Projects Section - Same for all personas */}
         <div id="featured-projects" className="scroll-mt-20">
           <div className="mb-12 md:mb-16">
-            <h2 className="mb-4 text-4xl font-bold text-black md:text-5xl">The workshop</h2>
+            <h2 className="mb-4 text-4xl font-bold text-pine md:text-5xl">The workshop</h2>
             <p className="max-w-3xl text-xl text-gray-600 md:text-2xl">
               Personal experiments where I use the same product instincts on my own ideas.
             </p>

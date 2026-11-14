@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Project } from "@/lib/contentMapper";
+import { ThreadLine } from "@/components/Thread";
 
 interface ProjectCardProps {
   project: Project;
@@ -18,9 +19,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article 
-      className={`group relative mb-5 cursor-pointer overflow-hidden border transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-        isFlagship ? "rounded-[28px] border-[#8BA888]/40 bg-[#E8EEE4]" : "rounded-[20px] border-black/10 bg-white/45"
-      }`}
+      className="group relative mb-5 cursor-pointer overflow-hidden rounded-md border border-black/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-filament"
       onClick={() => setIsExpanded(!isExpanded)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -35,114 +34,67 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       {/* Collapsed State: Desktop - Image left + Content right, Mobile - Image/Tags top + Description below */}
       {!isExpanded && (
-        <div className="px-6 py-8 md:px-10 md:py-10">
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div>
-              {isFlagship && <div className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#526B52]">Flagship case study · 1→10</div>}
-              <h3 className="text-2xl font-bold leading-tight tracking-tight text-black md:text-3xl">{project.title}</h3>
-              <p className="mt-1 text-sm text-gray-500">{project.company} · {project.year}</p>
-            </div>
-            <span className="text-2xl text-[#6B8E6B] transition-transform group-hover:translate-x-1">↗</span>
-          </div>
-          {/* Mobile Layout: Image + Tags on top, Description full width below */}
-          <div className="flex flex-col md:hidden space-y-4">
-            {/* Top row: Image + Tags */}
-            <div className="flex gap-4 items-start">
-              {/* Image/Screenshot - Smaller for mobile */}
-              <div className="relative h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 128px, 192px"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                    <span className="text-2xl text-gray-400">{project.company.charAt(0)}</span>
-                  </div>
-                )}
-              </div>
+        <div className="grid gap-8 px-6 py-8 md:grid-cols-[1fr_220px] md:px-10 md:py-10">
+          <div className="min-w-0">
+            <div className="field-label">{project.company}</div>
+            <h3 className="mt-2 text-2xl font-bold leading-tight text-pine md:text-3xl">
+              {project.headline || project.title}
+            </h3>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
+              {project.summary || project.description}
+            </p>
 
-              {/* Tags - Smaller for mobile */}
-              {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 items-start pt-1">
-                  {tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            {project.before && project.after && (
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <div className="field-label">Before</div>
+                  <ThreadLine />
+                  <div className="font-mono text-sm text-gray-600">{project.before}</div>
+                </div>
+                <div>
+                  <div className="field-label">After</div>
+                  <ThreadLine straight />
+                  <div className="font-mono text-sm text-pine">{project.after}</div>
+                </div>
+              </div>
+            )}
+
+            <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-black/10 pt-4 sm:grid-cols-3">
+              <div>
+                <dt className="field-label">Years</dt>
+                <dd className="mt-1 text-sm text-pine">{project.year}</dd>
+              </div>
+              {project.roleTitle && (
+                <div>
+                  <dt className="field-label">Role</dt>
+                  <dd className="mt-1 text-sm text-pine">{project.roleTitle}</dd>
                 </div>
               )}
-            </div>
+              {project.scope && (
+                <div>
+                  <dt className="field-label">Scope</dt>
+                  <dd className="mt-1 text-sm text-pine">{project.scope}</dd>
+                </div>
+              )}
+            </dl>
 
-            {/* Description - Full width on mobile */}
-            <div className="space-y-3">
-              <p className="text-base leading-relaxed text-gray-700 max-w-none">
-                {project.description}
-              </p>
-
-              {/* Click hint */}
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <span>Open the case study</span>
-                <span className="text-lg">→</span>
-              </div>
+            <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-pine underline underline-offset-4">
+              View case study
             </div>
           </div>
 
-          {/* Desktop Layout: Image on left + Content on right (original layout) */}
-          <div className="hidden md:flex gap-6">
-            {/* Image/Screenshot - Original size for desktop */}
-            <div className="relative h-48 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform group-hover:scale-105"
-                  loading="lazy"
-                  sizes="192px"
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                  <span className="text-3xl text-gray-400">{project.company.charAt(0)}</span>
-                </div>
-              )}
+          {project.image && (
+            <div className="relative order-first h-44 overflow-hidden rounded-md bg-gray-100 md:order-last md:h-[220px]">
+              <Image
+                src={project.image}
+                alt=""
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 220px"
+              />
             </div>
-
-            {/* Content - Right side */}
-            <div className="flex-1 space-y-4">
-              {/* 3 Tags - Original size for desktop */}
-              {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* 1 Sentence Description */}
-              <p className="text-base leading-relaxed text-gray-700 md:text-lg">
-                {project.description}
-              </p>
-
-              {/* Click hint */}
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <span>Open the case study</span>
-                <span className="text-lg">→</span>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       )}
 
@@ -153,7 +105,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {/* Header with close button */}
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <h3 className="mb-2 text-2xl font-bold leading-tight text-black md:text-3xl">
+                <h3 className="mb-2 text-2xl font-bold leading-tight text-pine md:text-3xl">
                   {project.title}
                 </h3>
                 <p className="text-sm text-gray-500">
@@ -257,7 +209,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-[#8BA888] hover:text-[#6B8E6B] transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#7F9879] hover:text-[#5F7A5A] transition-colors"
                 >
                   → View Project
                 </a>
@@ -267,14 +219,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {/* Full Case Study Content */}
             <div className="space-y-6 border-t border-gray-200 pt-6">
               {project.role && (
-                <div className="rounded-2xl border border-[#8BA888]/30 bg-white/70 p-5 md:p-6">
+                <div className="rounded-2xl border border-[#7F9879]/30 bg-white/70 p-5 md:p-6">
                   <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#526B52]">My role and ownership</h4>
                   <p className="text-base leading-relaxed text-gray-700">{project.role}</p>
                 </div>
               )}
 
               {isFlagship && (
-                <div className="rounded-2xl bg-[#18231D] p-5 text-white md:p-7">
+                <div className="rounded-2xl bg-[#0D1714] p-5 text-white md:p-7">
                   <div className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#B8CDB3]">How the work evolved</div>
                   <div className="grid gap-3 md:grid-cols-3">
                     {[
@@ -358,7 +310,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               )}
 
               {project.metricNote && (
-                <div className="rounded-xl border-l-4 border-[#8BA888] bg-[#8BA888]/10 px-4 py-3">
+                <div className="rounded-xl border-l-4 border-[#7F9879] bg-[#7F9879]/10 px-4 py-3">
                   <h4 className="mb-1 text-xs font-bold uppercase tracking-wide text-[#526B52]">About the 95% figure</h4>
                   <p className="text-sm leading-relaxed text-gray-600">{project.metricNote}</p>
                 </div>

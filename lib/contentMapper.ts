@@ -29,6 +29,12 @@ export interface Project {
   teamSize?: string; // e.g., "8 (3 engineers, 2 designers, 1 data scientist, 2 PMs)"
   budget?: string; // e.g., "Six-figure initiative"
   stakeholders?: string[]; // e.g., ["VP Product", "Engineering Director", "C-suite"]
+  headline?: string; // One-line title for the home page card
+  summary?: string; // Three sentences: the problem, what I did, the result
+  roleTitle?: string; // Job title on this work
+  scope?: string; // Short list of what I covered
+  before?: string; // Old workflow in one line (shown under the tangled thread)
+  after?: string; // New workflow in one line (shown under the straight thread)
   role?: string; // Clear ownership boundary for the case study
   metricNote?: string; // Methodology/context for sensitive or ambiguous metrics
 }
@@ -85,9 +91,15 @@ export const projects: Project[] = [
   // Featured Work - Professional projects
   {
     id: "salient-enterprise-ai",
+    headline: "Onboarding in hours instead of weeks",
+    summary: "Every new enterprise customer needed 4–6 weeks of engineering setup before a pilot could start. I sat with compliance teams, redesigned onboarding around self-serve configuration, and built parts of the front end myself. Setup now takes a few hours, and live customers grew from 2 to 7 in seven months.",
+    roleTitle: "Product & Growth Lead",
+    scope: "Strategy, UX, Front end",
+    before: "Weeks of engineering setup per customer",
+    after: "Hours, through self-serve configuration",
     title: "Scaling Salient’s Compliance Product Line",
     company: "Salient",
-    year: "2025–2026",
+    year: "2026",
     image: "/assets/case-study-salient.png",
     description: "Grew Salient’s compliance and audit product line from 2 to 7 live enterprise customers. I built a repeatable onboarding process, improved accuracy, and reduced the engineering work required to get a pilot started.",
     problem: "We did not have a proper onboarding system for the compliance product. Every pilot depended on a small team manually translating the customer’s policies, examples, and review process into a working set of alerts. Because we were resource constrained, that work could take weeks or months before the pilot even began. The AI also started at roughly 60% accuracy on a new customer’s use cases, so the same engineers were handling setup, tuning, and ongoing product work at the same time.",
@@ -105,6 +117,12 @@ export const projects: Project[] = [
   },
   {
     id: "globality-insights",
+    headline: "Ten hours of spreadsheets, now twenty minutes",
+    summary: "Procurement teams spent 10+ hours in spreadsheets and documents to understand their own data. I researched how they made vendor decisions and worked with data science, design and engineering on an insights dashboard that shows where each answer comes from. The work now takes about 20 minutes, and NPS rose from 5 to 40.",
+    roleTitle: "Product Manager",
+    scope: "Discovery, AI UX, Strategy",
+    before: "10+ hours in spreadsheets per decision",
+    after: "About 20 minutes with automated insights",
     title: "Glo Insights: Automating Fortune 500 Strategic Sourcing",
     company: "Globality",
     year: "2022",
@@ -165,6 +183,8 @@ export const projects: Project[] = [
   },
   {
     id: "engineering-velocity-automation",
+    before: "Same status tracked three times by hand",
+    after: "Synced automatically from the work",
     title: "Automating Delivery Reporting Across GitHub, Jira, and Slack",
     company: "Confidential AI Startup",
     year: "Recent",
@@ -237,6 +257,8 @@ export const projects: Project[] = [
   },
   {
     id: "visa-developer",
+    before: "Every API access request verified by hand",
+    after: "Known customers approved automatically",
     title: "Visa Dev Portal: Accelerating the API Onboarding Funnel",
     company: "Visa",
     year: "2020",
@@ -255,6 +277,8 @@ export const projects: Project[] = [
   },
   {
     id: "artifactlabs-museum",
+    before: "Weeks of email chains per license",
+    after: "48 hours in one flow",
     title: "Artifact Labs: The Blockchain Licensing Engine",
     company: "Artifact Labs",
     year: "2023",
@@ -273,6 +297,12 @@ export const projects: Project[] = [
   },
   {
     id: "meed-receipt-scanning",
+    headline: "A loyalty program that survives the lunch rush",
+    summary: "Restaurant staff were too busy during service to run the loyalty program, so few customers used it. I watched how restaurants worked during the rush and redesigned loyalty around customers scanning their own receipts. Receipt scanning reached 78% adoption, and the customer base grew from 3 to 15 restaurants.",
+    roleTitle: "Product Manager / Advisor",
+    scope: "Field research, UX, Strategy",
+    before: "3 minutes, staff verifies each visit",
+    after: "15 seconds, customer scans the receipt",
     title: "Meed: Solving Adoption via Digital Loyalty",
     company: "Meed Loyalty",
     year: "2024",
@@ -292,6 +322,8 @@ export const projects: Project[] = [
   },
   {
     id: "starterspath-tenant-passport",
+    before: "14 days re-verifying every application",
+    after: "40% faster with a reusable tenant profile",
     title: "Tenant Passport: Solving the Rental 'Portability' Problem",
     company: "Starter's Path",
     year: "2018",
@@ -310,6 +342,8 @@ export const projects: Project[] = [
   },
   {
     id: "starterspath-rfid-inventory",
+    before: "3-hour manual counts every day",
+    after: "Real-time tracking, no counting",
     title: "Liquid Assets: Real-Time RFID Inventory Tracking",
     company: "Starter's Path",
     year: "2018",
@@ -328,6 +362,8 @@ export const projects: Project[] = [
   },
   {
     id: "productbot-okrs",
+    before: "CEO spends 4–5 hours a day on product decisions",
+    after: "2–3 hours a week",
     title: "Scaling Leadership: Operationalizing a Revenue-Ready Beta",
     company: "Productbot AI",
     year: "2025",
@@ -346,6 +382,12 @@ export const projects: Project[] = [
   },
   {
     id: "productbot-dashboard",
+    headline: "AI feedback sorting that people could trust",
+    summary: "Product teams were sorting customer feedback by hand and did not trust AI tools to do it for them. I interviewed 20+ customers, recruited three design partners, and designed a tagging flow where each correction improved the model. Accuracy rose from 70% to 85%, and every beta customer committed to buy.",
+    roleTitle: "Product Manager",
+    scope: "Discovery, AI quality, 0 to 1",
+    before: "8 hours a week triaging feedback by hand",
+    after: "3 hours a week, with AI doing the sorting",
     title: "AI Feedback Engine: From Manual Analysis to Revenue-Ready Beta",
     company: "Productbot AI",
     year: "2025",

@@ -16,9 +16,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#F2F5F3] flex items-center justify-center px-6">
       <div className="max-w-2xl mx-auto text-center">
-        <h1 className="text-6xl font-bold text-black mb-4">Oops!</h1>
+        <h1 className="text-6xl font-bold text-pine mb-4">Oops!</h1>
         <h2 className="text-3xl font-semibold text-gray-800 mb-6">
           Something went wrong
         </h2>
@@ -35,13 +35,13 @@ export default function Error({
         <div className="flex gap-4 justify-center">
           <button
             onClick={reset}
-            className="px-6 py-3 bg-[#8BA888] text-white font-semibold rounded-lg hover:bg-[#6B8E6B] transition-colors duration-200"
+            className="px-6 py-3 bg-[#7F9879] text-white font-semibold rounded-lg hover:bg-[#5F7A5A] transition-colors duration-200"
           >
             Try Again
           </button>
           <Link
             href="/"
-            className="px-6 py-3 bg-white border-2 border-[#8BA888] text-[#8BA888] font-semibold rounded-lg hover:bg-[#8BA888]/10 transition-colors duration-200"
+            className="px-6 py-3 bg-white border-2 border-[#7F9879] text-[#7F9879] font-semibold rounded-lg hover:bg-[#7F9879]/10 transition-colors duration-200"
           >
             Go Home
           </Link>

@@ -1,89 +1,57 @@
-"use client";
-
-import { Compass, Layers3, Sparkles, Workflow } from 'lucide-react';
-
-const skills = [
+const principles = [
   {
-    icon: Compass,
-    title: 'Find the real problem',
-    description: 'I get close to the workflow—kitchens, operations rooms, enterprise teams—until the question behind the question becomes clear.'
+    title: "Start with the workflow, not the feature.",
+    description: "Understand what someone is trying to get done and where it breaks down.",
   },
   {
-    icon: Sparkles,
-    title: 'Make AI trustworthy',
-    description: 'The demo is the easy part. I design the evaluation loops, human judgment, and UX that make AI reliable enough to become part of real work.'
+    title: "Be customer-led, not request-led.",
+    description: "A request is evidence. The job is finding the problem underneath it.",
   },
   {
-    icon: Workflow,
-    title: 'Build the first version',
-    description: 'I prototype to learn, not to perform. Being technical lets me shorten the distance between a customer insight and something we can put in their hands.'
+    title: "Prototype before debating.",
+    description: "Put something real in front of people early, and build it with the team.",
   },
-  {
-    icon: Layers3,
-    title: 'Turn repeats into product',
-    description: 'At 1→10, I look for the common layer beneath customer requests—then turn bespoke delivery into configurable workflows that compound.'
-  }
 ];
 
 export default function AboutSection() {
   return (
-    <div className="px-6 py-20 md:px-10 md:py-32 bg-[#F5F1E8]">
-      <div className="max-w-7xl mx-auto">
-        {/* Desktop: Two-column layout (text left, cards right), Mobile: Single column */}
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16 md:items-center mb-16 md:mb-20">
-          {/* Left Column - Text Content */}
-          <div>
-            <h2 className="mb-6 text-4xl font-bold md:text-5xl">About Me</h2>
-            <div className="space-y-5 text-gray-600 leading-relaxed">
-              <p className="text-lg font-medium text-gray-900">
-                I’m a builder PM, but building is only one part of the job.
-              </p>
-              <p>
-                My best work starts inside a messy customer problem: an enterprise workflow that takes weeks, an AI system people don’t trust yet, or a product that works for two customers but won’t survive ten.
-              </p>
-              <p>
-                I move between customer discovery, product strategy, UX, and technical execution to find the product hiding underneath. Sometimes that means a prototype. Sometimes it means saying no to an attractive feature. Increasingly, it means turning repeated customer work into a system that scales.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column - Cards Grid (Desktop: 2x2, hidden on mobile) */}
-          <div className="hidden md:grid grid-cols-2 gap-6">
-            {skills.map((skill) => {
-              const Icon = skill.icon;
-              return (
-                <div
-                  key={skill.title}
-                  className="bg-[#FAFAF8] p-6 rounded-[20px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                >
-                  <div className="w-12 h-12 bg-[#8BA888]/10 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[#8BA888]" />
-                  </div>
-                  <h4 className="mb-2 text-lg font-semibold text-gray-900">{skill.title}</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">{skill.description}</p>
-                </div>
-              );
-            })}
+    <div className="bg-mist px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[1.4fr_1fr] md:gap-20">
+        <div>
+          <div className="field-label mb-4">About</div>
+          <h2 className="mb-8 text-3xl font-bold leading-tight text-pine md:text-4xl">
+            If someone doesn’t understand it in three seconds, it has failed.
+          </h2>
+          <div className="max-w-xl space-y-5 text-lg leading-relaxed text-gray-700">
+            <p>
+              I started as a designer and engineer at Obscura Digital, building large interactive installations. The
+              feedback there was immediate. Someone walked up to a ten-foot screen, and either they understood it or
+              they walked away. I’ve built products that way ever since.
+            </p>
+            <p>
+              I care about how a workflow feels end to end: where people hesitate, what they need to know to make a
+              decision, and whether a complex task ends up feeling simple. I don’t treat design as polish after the
+              product decision. The experience is the product strategy.
+            </p>
+            <p>
+              That’s also why I build. A rough working version in a customer’s hands teaches a team more than another
+              week of debate, so I prototype, write front-end code and ship alongside design and engineering. Across
+              Visa, Globality and early-stage AI startups, the pattern is the same: find the manual, frustrating part of
+              someone’s job and turn it into something that works without them thinking about it.
+            </p>
           </div>
         </div>
 
-        {/* Mobile: 1 card per row (shown only on mobile) */}
-        <div className="grid grid-cols-1 gap-6 md:hidden">
-          {skills.map((skill) => {
-            const Icon = skill.icon;
-            return (
-              <div
-                key={skill.title}
-                className="bg-[#FAFAF8] p-6 rounded-[20px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 bg-[#8BA888]/10 rounded-full flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-[#8BA888]" />
-                </div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900">{skill.title}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">{skill.description}</p>
-              </div>
-            );
-          })}
+        <div className="md:pt-12">
+          <div className="field-label mb-4">How I work</div>
+          <ul className="divide-y divide-black/10 border-y border-black/10">
+            {principles.map((principle) => (
+              <li key={principle.title} className="py-5">
+                <h3 className="text-lg font-bold leading-snug text-pine">{principle.title}</h3>
+                <p className="mt-1 text-base leading-relaxed text-gray-600">{principle.description}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
