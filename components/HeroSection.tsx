@@ -34,7 +34,7 @@ export default function HeroSection(_props: HeroSectionProps) {
             <span className="field-label">Currently</span>
             <span
               id="current-role"
-              className="inline-block -rotate-2 rounded-full bg-filament px-4 py-1.5 text-sm font-semibold text-white shadow-[0_3px_10px_rgba(217,84,26,0.35)] md:text-base"
+              className="inline-block -rotate-2 cursor-default rounded-full bg-filament transition-transform duration-200 ease-out hover:-translate-y-1 hover:rotate-2 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:-rotate-2 motion-reduce:hover:scale-100 px-4 py-1.5 text-sm font-semibold text-white shadow-[0_3px_10px_rgba(217,84,26,0.35)] md:text-base"
             >
               {statusText}
             </span>
